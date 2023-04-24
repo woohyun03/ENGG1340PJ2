@@ -2,13 +2,19 @@
 #define PLAYER_H
 #include <iostream>
 #include <string>
+#include "Mal.h"
 using namespace std;
 
 class Player {
   private:
-
+    string name;
+    Mal first;
+    Mal second;
+    Mal third;
 
   public:
+    Player();
+    Player(string name, int first1, int first2, int second1, int second2, int third1, int third2);
 
 };
 
