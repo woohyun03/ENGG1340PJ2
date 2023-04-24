@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Player.h"
+#include "Map.h"
 using namespace std;
 
 Player::Player() {
@@ -47,4 +48,27 @@ int Player::getThirdRow() {
 
 int Player::getThirdCol() {
     return third.column;
+}
+
+void Player::moveMal(int malNum, int moveNum, Map &playerMap) {
+    if (malNum == 1){
+        int previRow = first.row;
+        int previCol = first.column;
+        int* newRC = newRowCol(first, moveNum);
+        playerMap.UpdatePlayerLocation(previRow, previCol, newRC[0], newRC[1]);
+    } else if (malNum == 2){
+        int previRow = second.row;
+        int previCol = second.column;
+        int* newRC = newRowCol(second, moveNum);
+        playerMap.UpdatePlayerLocation(previRow, previCol, newRC[0], newRC[1]);
+    } else if (malNum == 3){
+        int previRow = second.row;
+        int previCol = second.column;
+        int* newRC = newRowCol(second, moveNum);
+        playerMap.UpdatePlayerLocation(previRow, previCol, newRC[0], newRC[1]);
+    }
+}
+
+int* Player::newRowCol (Mal &playerMal, int &moveNum){
+    
 }

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include "Mal.h"
+#include "Map.h"
 using namespace std;
 
 class Player {
@@ -23,7 +24,8 @@ class Player {
     int getSecondCol();
     int getThirdRow();
     int getThirdCol();
-
+    void moveMal(int malNum, int moveNum, Map &playerMap);
+    int* newRowCol (Mal &playerMal, int &moveNum);
 };
 
 #endif
