@@ -12,6 +12,7 @@ class Player {
     Mal first;
     Mal second;
     Mal third;
+    
 
   public:
     Player();
@@ -26,6 +27,8 @@ class Player {
     int getThirdCol();
     void moveMal(int malNum, int moveNum, Map &playerMap);
     int* newRowCol (Mal &playerMal, int &moveNum);
+    void only_six_positions_in_edges(Mal playerMal);
+    void moveStraight(Mal &playerMal, int &moveNum);
 };
 
 #endif
