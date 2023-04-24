@@ -112,3 +112,29 @@ void Player::moveStraight(Mal &playerMal, int &moveNum){
         }
     }
 }
+
+void Player::corner_and_diagonal(Mal &playerMal, int &moveNum){
+    if (playerMal.row == playerMal.column && playerMal.row != 0){
+        while (playerMal.row != 0 && moveNum != 0){
+            playerMal.row -= 1;
+            playerMal.column -= 1;
+            moveNum -= 1;
+        }
+    } else if (playerMal.row + playerMal.column == 6 && playerMal.row != 6){
+        while(playerMal.row != 6 && moveNum != 0){
+            playerMal.row += 1;
+            playerMal.column -= 1;
+            moveNum -= 1;
+        }
+    }
+}
+
+void Player::center(Mal &playerMal, int &moveNum){
+    if (playerMal.row == playerMal.column && playerMal.row == 3){
+        while(playerMal.row != 6 && moveNum != 0){
+            playerMal.row += 1;
+            playerMal.column -= 1;
+            moveNum -= 1;
+        }
+    }
+}
