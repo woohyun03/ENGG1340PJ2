@@ -138,3 +138,15 @@ void Player::center(Mal &playerMal, int &moveNum){
         }
     }
 }
+
+void Player::can_finish(Mal &playerMal){
+    if (playerMal.row != 0 || playerMal.column != 0 ){
+        playerMal.can_finish = true;
+    }
+}
+
+void Player::finish(Mal &playerMal, int &moveNum){
+    if (playerMal.row == 6 && playerMal.column == 0 && moveNum >=1 && playerMal.can_finish){
+        playerMal.finished = true;
+    }
+}

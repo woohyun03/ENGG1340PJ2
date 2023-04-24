@@ -31,6 +31,8 @@ class Player {
     void moveStraight(Mal &playerMal, int &moveNum);
     void corner_and_diagonal(Mal &playerMal, int &moveNum);
     void center(Mal &playerMal, int &moveNum);
+    void can_finish(Mal &playerMal);
+    void finish(Mal &playerMal, int &moveNum);
 };
 
 #endif
