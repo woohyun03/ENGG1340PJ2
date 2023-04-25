@@ -1,5 +1,4 @@
 #include <iostream>
-
 // ANSI escape codes for colors
 #define RESET "\033[0m"
 #define RED "\033[31m"
@@ -13,19 +12,23 @@
 
 void displayTicket(const std::string& type)
 {
+    int moves = 0; // Initialize moves to 0
     if (type == "platinum")
     {
         std::cout << CYAN << "   _________ _________ _________ _________ _________ _________ _________ _________" << RESET << "\n";
         std::cout << CYAN << "  /         |         |         |         |         |         |         |         |" << RESET << "\n";
         std::cout << CYAN << " /    P    /    L    /    A    /    T    /    I    /    N    /    U    /    M    /" << RESET << "\n";
         std::cout << CYAN << "/_________/_________/_________/_________/_________/_________/_________/_________/" << RESET << "\n";
+        moves=5;
     }
+    
     else if (type == "gold")
     {
         std::cout << YELLOW << "   _________ _________ _________ _________ " << RESET << "\n";
         std::cout << YELLOW << "  /         |         |         |         |" << RESET << "\n";
         std::cout << YELLOW << " /    G    /    O    /    L    /    D    /" << RESET << "\n";
         std::cout << YELLOW << "/_________/_________/_________/_________/" << RESET << "\n";
+        moves=4;
     }
     else if (type == "silver")
     {
@@ -33,6 +36,7 @@ void displayTicket(const std::string& type)
         std::cout << GRAY << "  /         |         |         |         |         |         |" << RESET << "\n";
         std::cout << GRAY << " /    S    /    I    /    L    /    V    /    E    /    R    /" << RESET << "\n";
         std::cout << GRAY << "/_________/_________/_________/_________/_________/_________/" << RESET << "\n";
+        moves=3;
     }
     else if (type == "bronze")
     {
@@ -40,6 +44,7 @@ void displayTicket(const std::string& type)
         std::cout << BROWN << "  /         |         |         |         |         |         |" << RESET << "\n";
         std::cout << BROWN << " /    B    /    R    /    O    /    N    /    Z    /    E    /" << RESET << "\n";
         std::cout << BROWN << "/_________/_________/_________/_________/_________/_________/" << RESET << "\n";
+        moves=2;
     }
     else if (type == "diamond")
     {
@@ -47,24 +52,15 @@ void displayTicket(const std::string& type)
         std::cout << BLUE << "  /         |         |         |         |         |        |          |" << RESET << "\n";
         std::cout << BLUE << " /    D    /    I    /    A    /    M    /    O    /    N   /     D    /" << RESET << "\n";
         std::cout << BLUE << "/_________/_________/_________/_________/_________/_________/_________/" << RESET << "\n";
+        moves=1;
     }
-    else if (type == "bronze")
+    else if (type == "secret")
     {
     std::cout << MAGENTA << "   _________ _________ _________ _________ _________ _________" << RESET << "\n";
     std::cout << MAGENTA << "  /         |         |         |         |         |         |" << RESET << "\n";
     std::cout << MAGENTA << " /    S    /    E    /    C    /    R    /    E    /    T    /" << RESET << "\n";
     std::cout << MAGENTA << "/_________/_________/_________/_________/_________/_________/" << RESET << "\n";
+        moves=-1;
     }
 
-}
-
-int main()
-{
-    displayTicket("platinum");
-    displayTicket("gold");
-    displayTicket("silver");
-    displayTicket("bronze");
-    displayTicket("diamond");
-    
-    return 0;
 }
