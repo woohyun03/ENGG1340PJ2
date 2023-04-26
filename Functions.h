@@ -16,6 +16,7 @@
 #define BROWN "\033[38;2;205;127;50m"
 using namespace std;
 
+int getTicket();
 void killMal(Map &gameMap, int playerNum, int killerMalNum, int newRow, int newCol);
 void displayTicket(int moves);
 
