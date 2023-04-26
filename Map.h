@@ -17,6 +17,8 @@ public:
     Map(Station mapPlayerLocation[7][7]);
     void moveMal(int previRow, int previCol, int row, int col, string** mal);
     void movePlayerLocation(int previRow, int previCol, int row, int col);
+    void removePlayerLocation(int row, int col, int playerNum, int malNum);
+    void addPlayerLocation(int row, int col, int playerNum, int malNum);
     void UpdatePlayerLocation(int previRow, int previCol, int row, int col, int playerNum, int malNum);
     string printMap();
     
