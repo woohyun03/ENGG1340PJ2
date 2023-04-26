@@ -85,85 +85,118 @@ void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int p
             };
         gameMap.moveMal(previRow, previCol, row, col, arrA1);
     }
-
-    string arrA2[3][3] = {
-        {"A", "2", "A"},
-        {"2", " ", "2"},
-        {"A", "2", "A"}
+    
+    if (playerNum == 0, malNum == 2){
+        string arrA2[3][3] = {
+            {"A", "2", "A"},
+            {"2", " ", "2"},
+            {"A", "2", "A"}
+            };
+        gameMap.moveMal(previRow, previCol, row, col, arrA2);
+    };
+   if (playerNum == 0, malNum == 3){
+        string arrA3[3][3] = {
+            {"A", "3", "A"},
+            {"3", " ", "3"},
+            {"A", "3", "A"}
+            };
+        gameMap.moveMal(previRow, previCol, row, col, arrA3);
+    };
+   if (playerNum == 0, malNum == 12){
+        string arrA12[3][3] = {
+            {"A", "1", "2"},
+            {"1", " ", "A"},
+            {"A", "2", "1"}
+            };
+        gameMap.moveMal(previRow, previCol, row, col, arrA12);
+    };
+   if (playerNum == 0, malNum = 23){
+        string arrA23[3][3] = {
+            {"A", "2", "3"},
+            {"2", " ", "A"},
+            {"A", "3", "2"}
+            };
+        gameMap.moveMal(previRow, previCol, row, col, arrA23);
     };
 
-    string arrA3[3][3] = {
-        {"A", "3", "A"},
-        {"3", " ", "3"},
-        {"A", "3", "A"}
+   if (playerNum == 0, malNum = 13){
+        string arrA13[3][3] = {
+            {"A", "1", "3"},
+            {"1", " ", "A"},
+            {"A", "3", "1"}
+            };
+        gameMap.moveMal(previRow, previCol, row, col, arrA13);
     };
-
-    string arrA12[3][3] = {
-        {"A", "1", "2"},
-        {"1", " ", "A"},
-        {"A", "2", "1"}
-    };
-
-    string arrA13[3][3] = {
-        {"A", "1", "3"},
-        {"1", " ", "A"},
-        {"A", "3", "1"}
-    };
-
-    string arrA23[3][3] = {
-        {"A", "2", "3"},
-        {"2", " ", "A"},
-        {"A", "3", "2"}
-    };
-
-    string arrA123[3][3] = {
-        {"A", "1", "A"},
-        {"2", " ", "2"},
-        {"A", "3", "A"}
+   if (playerNum == 0, malNum = 123){
+        string arrA123[3][3] = {
+            {"A", "1", "2"},
+            {"3", " ", "3"},
+            {"2", "1", "A"}
+            };
+        gameMap.moveMal(previRow, previCol, row, col, arrA123);
     };
 
 
-    // Array with using B
-    string arrB1[3][3] = {
-        {"B", "1", "B"},
-        {"1", " ", "1"},
-        {"B", "1", "B"}
+   if (playerNum == 1, malNum = 1){
+        string arrB2[3][3] = {
+            {"B", "1", "B"},
+            {"1", " ", "1"},
+            {"B", "1", "B"}
+            };
+        gameMap.moveMal(previRow, previCol, row, col, arrB1);
     };
 
-    string arrB2[3][3] = {
-        {"B", "2", "B"},
-        {"2", " ", "2"},
-        {"B", "2", "B"}
+   if (playerNum == 1, malNum = 2){
+        string arrB2[3][3] = {
+            {"B", "2", "B"},
+            {"2", " ", "2"},
+            {"B", "2", "B"}
+            };
+        gameMap.moveMal(previRow, previCol, row, col, arrB2);
+    };
+   if (playerNum == 1, malNum = 3){
+        string arrB3[3][3] = {
+            {"B", "3", "B"},
+            {"3", " ", "3"},
+            {"B", "3", "B"}
+            };
+        gameMap.moveMal(previRow, previCol, row, col, arrB3);
     };
 
-    string arrB3[3][3] = {
-        {"B", "3", "B"},
-        {"3", " ", "3"},
-        {"B", "3", "B"}
+   if (playerNum == 1, malNum = 12){
+        string arrB12[3][3] = {
+            {"B", "1", "2"},
+            {"1", " ", "B"},
+            {"B", "2", "1"}
+            };
+        gameMap.moveMal(previRow, previCol, row, col, arrB12);
     };
 
-    string arrB12[3][3] = {
-        {"B", "1", "2"},
-        {"2", " ", "B"},
-        {"B", "1", "2"}
+   if (playerNum == 1, malNum = 23){
+        string arrB23[3][3] = {
+            {"B", "2", "3"},
+            {"2", " ", "B"},
+            {"B", "3", "2"}
+            };
+        gameMap.moveMal(previRow, previCol, row, col, arrB23);
     };
 
-    string arrB13[3][3] = {
-        {"B", "1", "3"},
-        {"1", " ", "B"},
-        {"B", "3", "1"}
+   if (playerNum == 1, malNum = 13){
+        string arrB13[3][3] = {
+            {"B", "1", "3"},
+            {"1", " ", "B"},
+            {"B", "3", "1"}
+            };
+        gameMap.moveMal(previRow, previCol, row, col, arrB13);
     };
 
-    string arrB23[3][3] = {
-        {"B", "2", "3"},
-        {"2", " ", "B"},
-        {"B", "3", "2"}
-    };
-
-    string arrB123[3][3] = {
-        {"B", "1", "B"},
-        {"1", " ", "2"},
-        {"B", "3", "B"}
+   if (playerNum == 1, malNum = 123){
+        string arrB123[3][3] = {
+            {"B", "1", "2"},
+            {"3", " ", "3"},
+            {"2", "1", "B"}
+            };
+        gameMap.moveMal(previRow, previCol, row, col, arrB123);
     };
 
 
