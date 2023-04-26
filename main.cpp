@@ -3,7 +3,7 @@ using namespace std;
 
 int main(){
     cout << "=== Korean Traditional Yut Game (MTR EDITION) ===" << endl;
-    int counter = 0;
+    int counter = -1;
     int turnShower;
 
     while (true) {
@@ -17,7 +17,7 @@ int main(){
             break;
         }
         int malSelect;
-        if(counter % 2 != 0){
+        if(counter % 2 == 0){
             cout << "Which mal would you like to move? (1,2,3)" << endl;
             turnShower = 1;
         }

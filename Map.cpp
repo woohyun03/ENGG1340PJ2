@@ -57,7 +57,7 @@ void Map::moveMal(int previRow, int previCol, int row, int col, string** mal) {
 }
 
 void Map::removePlayerLocation(int row, int col, int playerNum, int malNum){
-    if (playerNum == 1){
+    if (playerNum == 0){
         if (malNum == 1){
             mapPlayerLocation[row][col].Playerone_first = false;
         } else if(malNum == 2){
@@ -65,7 +65,7 @@ void Map::removePlayerLocation(int row, int col, int playerNum, int malNum){
         } else if (malNum ==3){
             mapPlayerLocation[row][col].Playerone_third = false;
         }
-    } else if (playerNum == 2){
+    } else if (playerNum == 1){
         if (malNum == 1){
             mapPlayerLocation[row][col].Playertwo_first = false;
         } else if(malNum == 2){
@@ -77,7 +77,7 @@ void Map::removePlayerLocation(int row, int col, int playerNum, int malNum){
 }
 
 void Map::addPlayerLocation(int row, int col, int playerNum, int malNum){
-    if (playerNum == 1){
+    if (playerNum == 0){
         if (malNum == 1){
             mapPlayerLocation[row][col].Playerone_first = true;
         } else if(malNum == 2){
@@ -85,7 +85,7 @@ void Map::addPlayerLocation(int row, int col, int playerNum, int malNum){
         } else if (malNum ==3){
             mapPlayerLocation[row][col].Playerone_third = true;
         }
-    } else if (playerNum == 2){
+    } else if (playerNum == 1){
         if (malNum == 1){
             mapPlayerLocation[row][col].Playertwo_first = true;
         } else if(malNum == 2){

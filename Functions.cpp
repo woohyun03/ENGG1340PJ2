@@ -31,13 +31,12 @@ int getTicket(){
         return -1; //secret
 }
 
-
 void killMal(Map &gameMap, int killerPlayerNum, int row, int col){
     bool killFirst = false;
     bool killSecond = false;
     bool killThird = false;
 
-    if (killerPlayerNum == 1){
+    if (killerPlayerNum == 0){
         if (gameMap.getPlayerLocation(row, col).Playertwo_first){
             killFirst = true;
         }
@@ -47,7 +46,7 @@ void killMal(Map &gameMap, int killerPlayerNum, int row, int col){
         if (gameMap.getPlayerLocation(row, col).Playertwo_third){
             killThird = true;
         }
-    } else if (killerPlayerNum == 2){
+    } else if (killerPlayerNum == 1){
         if (gameMap.getPlayerLocation(row, col).Playerone_first){
             killFirst = true;
         }
@@ -62,15 +61,15 @@ void killMal(Map &gameMap, int killerPlayerNum, int row, int col){
     cout << "You killed the opponent's mal number:";
 
     if (killFirst){
-        gameMap.removePlayerLocation(row, col, killerPlayerNum + 1, 1);
+        gameMap.removePlayerLocation(row, col, (killerPlayerNum + 1)%2, 1);
         cout << " 1";
     }
     if (killSecond){
-        gameMap.removePlayerLocation(row, col, killerPlayerNum + 1, 2);
+        gameMap.removePlayerLocation(row, col, (killerPlayerNum + 1)%2, 2);
         cout << " 2";
     }
     if (killThird){
-        gameMap.removePlayerLocation(row, col, killerPlayerNum + 1, 3);
+        gameMap.removePlayerLocation(row, col, (killerPlayerNum + 1)%2, 3);
         cout << " 3";
     }
 
