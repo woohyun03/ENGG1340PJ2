@@ -53,8 +53,30 @@ void Map::moveMal(int previRow, int previCol, int row, int col, string** mal) {
 }
 
 
-void Map::UpdatePlayerLocation(int previRow, int previCol, int row, int col) {
-
+void Map::UpdatePlayerLocation(int previRow, int previCol, int row, int col, int playerNum, int malNum) {
+    if (playerNum == 1){
+        if (malNum == 1){
+            mapPlayerLocation[row][col].Playerone_first = true;
+            mapPlayerLocation[previRow][previCol].Playerone_first = false;
+        } else if(malNum == 2){
+            mapPlayerLocation[row][col].Playerone_second = true;
+            mapPlayerLocation[previRow][previCol].Playerone_second = false;
+        } else if (malNum ==3){
+            mapPlayerLocation[row][col].Playerone_third = true;
+            mapPlayerLocation[previRow][previCol].Playerone_third = false;
+        }
+    } else if (playerNum == 2){
+        if (malNum == 1){
+            mapPlayerLocation[row][col].Playertwo_first = true;
+            mapPlayerLocation[previRow][previCol].Playertwo_first = false;
+        } else if(malNum == 2){
+            mapPlayerLocation[row][col].Playertwo_second = true;
+            mapPlayerLocation[previRow][previCol].Playertwo_second = false;
+        } else if (malNum ==3){
+            mapPlayerLocation[row][col].Playertwo_third = true;
+            mapPlayerLocation[previRow][previCol].Playertwo_third = false;
+        }
+    }
 }
 
 string Map::printMap(){
