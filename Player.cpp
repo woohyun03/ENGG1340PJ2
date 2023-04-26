@@ -70,7 +70,25 @@ void Player::moveMal(int malNum, int moveNum, Map &playerMap) {
 }
 
 int* Player::newRowCol (Mal &playerMal, int &moveNum){
-    
+    if (moveNum == -1){
+        Back(playerMal);
+    }
+    while (moveNum > 0){
+        if (playerMal.can_finish){
+            finish(playerMal, moveNum);
+        }
+        if (playerMal.row == playerMal.column && playerMal.row == 3){
+            center(playerMal, moveNum);
+        }
+        if ((playerMal.row == playerMal.column && playerMal.row != 0) || (playerMal.row + playerMal.column == 6 && playerMal.row != 6)){
+            corner_and_diagonal(playerMal, moveNum);
+        }
+        if (playerMal.row == 6 || playerMal.row == 0 || playerMal.column == 0 || playerMal.column == 6){
+            moveStraight(playerMal, moveNum);
+        }
+    }
+    int newRowCol[2] = {playerMal.row, playerMal.column};
+    return newRowCol;
 }
 
 void Player::only_six_positions_in_edges(Mal playerMal){
