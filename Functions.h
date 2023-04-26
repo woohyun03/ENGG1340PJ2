@@ -19,5 +19,6 @@ using namespace std;
 int getTicket();
 void killMal(Map &gameMap, int playerNum, int killerMalNum, int newRow, int newCol);
 void displayTicket(int moves);
+void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int previCol, int row, int col);
 
 #endif

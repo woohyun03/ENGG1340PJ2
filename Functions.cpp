@@ -76,6 +76,98 @@ void killMal(Map &gameMap, int killerPlayerNum, int row, int col){
     cout << "." << endl;
 }
 
+void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int previCol, int row, int col){
+    if (playerNum == 0, malNum == 1){
+        string arrA1[3][3] = {
+            {"A", "1", "A"},
+            {"1", " ", "1"},
+            {"A", "1", "A"}
+            };
+        gameMap.moveMal(previRow, previCol, row, col, arrA1);
+    }
+
+    string arrA2[3][3] = {
+        {"A", "2", "A"},
+        {"2", " ", "2"},
+        {"A", "2", "A"}
+    };
+
+    string arrA3[3][3] = {
+        {"A", "3", "A"},
+        {"3", " ", "3"},
+        {"A", "3", "A"}
+    };
+
+    string arrA12[3][3] = {
+        {"A", "1", "2"},
+        {"1", " ", "A"},
+        {"A", "2", "1"}
+    };
+
+    string arrA13[3][3] = {
+        {"A", "1", "3"},
+        {"1", " ", "A"},
+        {"A", "3", "1"}
+    };
+
+    string arrA23[3][3] = {
+        {"A", "2", "3"},
+        {"2", " ", "A"},
+        {"A", "3", "2"}
+    };
+
+    string arrA123[3][3] = {
+        {"A", "1", "A"},
+        {"2", " ", "2"},
+        {"A", "3", "A"}
+    };
+
+
+    // Array with using B
+    string arrB1[3][3] = {
+        {"B", "1", "B"},
+        {"1", " ", "1"},
+        {"B", "1", "B"}
+    };
+
+    string arrB2[3][3] = {
+        {"B", "2", "B"},
+        {"2", " ", "2"},
+        {"B", "2", "B"}
+    };
+
+    string arrB3[3][3] = {
+        {"B", "3", "B"},
+        {"3", " ", "3"},
+        {"B", "3", "B"}
+    };
+
+    string arrB12[3][3] = {
+        {"B", "1", "2"},
+        {"2", " ", "B"},
+        {"B", "1", "2"}
+    };
+
+    string arrB13[3][3] = {
+        {"B", "1", "3"},
+        {"1", " ", "B"},
+        {"B", "3", "1"}
+    };
+
+    string arrB23[3][3] = {
+        {"B", "2", "3"},
+        {"2", " ", "B"},
+        {"B", "3", "2"}
+    };
+
+    string arrB123[3][3] = {
+        {"B", "1", "B"},
+        {"1", " ", "2"},
+        {"B", "3", "B"}
+    };
+
+
+}
 
 void displayTicket(int moves)
 {
