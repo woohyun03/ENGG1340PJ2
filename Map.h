@@ -15,7 +15,7 @@ private:
 public:
     Map();
     Map(Station mapPlayerLocation[7][7]);
-    Station (*get_mapPlayerLocation())[7][7];
+    Station getPlayerLocation(int row, int col);
     void moveMal(int previRow, int previCol, int row, int col, string** mal);
     void movePlayerLocation(int previRow, int previCol, int row, int col);
     void removePlayerLocation(int row, int col, int playerNum, int malNum);

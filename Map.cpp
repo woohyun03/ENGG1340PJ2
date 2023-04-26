@@ -31,8 +31,8 @@ Map::Map(Station mapPlayerLocation[7][7]) {
     }
 }
 
-Station (*Map::get_mapPlayerLocation())[7][7] {
-    return &mapPlayerLocation;
+Station Map::getPlayerLocation(int row, int col){
+    return mapPlayerLocation[row][col];
 }
 
 void Map::removeMal(int row, int col){
