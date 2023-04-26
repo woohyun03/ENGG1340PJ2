@@ -75,7 +75,6 @@ int* mapPlayerLocation_to_mapChart(int row, int col){
     rowColMatch[{{0,4}}] = {{2,44}}; //Ladies' Market
     rowColMatch[{{0,5}}] = {{2,58}}; //Soho
     rowColMatch[{{0,6}}] = {{2,72}}; //North Point
-    rowColMatch[{{1, 0}}] = {{0, 1}};
 
     int IndexInMapDisplay[29][2] =
     
