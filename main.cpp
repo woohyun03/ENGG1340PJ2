@@ -30,27 +30,24 @@ int main(){
         TicketResult = getTicket();
         cout << "Your ticket is..." << TicketResult << endl;
 
-        플레이어 기준 말의 위치 저장
-        디스플레이
-        ...
-        ...
-        등등 다른 기능들 (불러오는건 클래스/어래이 이름에따라 변동)
+        //move mal and save other info (function to be added)
+        //display map (functions to be added)
 
-        cout << "You have arrived to..." << 장소이름 불러오기 << endl;
+        cout << "You have arrived to..." << //place explantion functio << endl;
 
         for(int i = 0, i < 5; ++i){
             if(currentPosition == PositionArray[i]){
-                if(상대편말일경우){
+                if(//catched opponent's mal){
                     cout << "You have Killed the oppoent's mal number " << MalArray[i] << endl;
                     PositionArray[i] = 0;
                 }
                 else{
                     cout << "You are now carrying this mal" << endl;
-                    말 업기기능
+                    //carry mal function to be added
                 }
             }
         }
-        if(이겼을때 변수){
+        if(//winning condition){
             break
         }
         cout << "Your turn has ended, it is player " << turnShower << "'s turn" << /n << endl;
