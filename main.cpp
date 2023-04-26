@@ -2,7 +2,7 @@
 using namespace std;
 
 int main(){
-    cout << "=== Korean Traditional Yut Game (MTR EDITION) ===" << endl;
+    cout << "Welcome to ... Korean Traditional Yut Game (MTR EDITION) !!!" << endl;
     int counter = -1;
     int turnShower;
 
