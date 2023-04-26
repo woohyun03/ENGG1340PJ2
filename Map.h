@@ -10,13 +10,13 @@ private:
     string mapChart[100][100];
     Station mapPlayerLocation[7][7]; 
     void removeMal(int row, int col);
-    void addMal(int row, int col, string** mal);
+    void addMal(int row, int col, string mal[3][3]);
 
 public:
     Map();
     Map(Station mapPlayerLocation[7][7]);
     Station getPlayerLocation(int row, int col);
-    void moveMal(int previRow, int previCol, int row, int col, string** mal);
+    void moveMal(int previRow, int previCol, int row, int col, string mal[3][3]);
     void movePlayerLocation(int previRow, int previCol, int row, int col);
     void removePlayerLocation(int row, int col, int playerNum, int malNum);
     void addPlayerLocation(int row, int col, int playerNum, int malNum);

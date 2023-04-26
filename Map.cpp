@@ -43,7 +43,7 @@ void Map::removeMal(int row, int col){
     }
 }
 
-void Map::addMal(int row, int col, string** mal){
+void Map::addMal(int row, int col, string mal[3][3]){
     for (int i = row; i < row+3; i++){
         for (int j = col; j < col+3; j++){
             mapChart[i][j] = mal[i][j];
@@ -51,7 +51,7 @@ void Map::addMal(int row, int col, string** mal){
     }
 }
 
-void Map::moveMal(int previRow, int previCol, int row, int col, string** mal) {
+void Map::moveMal(int previRow, int previCol, int row, int col, string mal[3][3]) {
     removeMal(previRow, previCol);
     addMal(row, col, mal);
 }
