@@ -89,7 +89,7 @@ void PrintExplain(int mapdisplayindex[2])
 {
     if (mapdisplayindex[0] == 2 & mapdisplayindex[1] == 2)
     {
-        cout << "You have arrived at Koloon. There is a Kowloon Park, which is large park with gardens, lakes, and a swimming pool." << endl;
+        cout << "You have arrived at Kowloon. There is a Kowloon Park, which is large park with gardens, lakes, and a swimming pool." << endl;
     }
     else if (mapdisplayindex[0] == 2 & mapdisplayindex[1] == 16)
     {
