@@ -4,6 +4,7 @@
 #include <map>
 #include "Map.h"
 #include "Station.h"
+#include "MapChartDisplay.h"
 using namespace std;
 
 Map::Map() {
@@ -23,6 +24,12 @@ Map::Map() {
     mapPlayerLocation[6][0].Playertwo_first = true;
     mapPlayerLocation[6][0].Playertwo_second = true;
     mapPlayerLocation[6][0].Playerone_third = true;
+
+    for (int i = 0; i < 60; i++){
+        for (int j = 0; j< 70; j++){
+            mapChart[i][j] = external_map[i][j];
+        }
+    }
 }
 
 Map::Map(Station mapPlayerLocation[7][7]) {

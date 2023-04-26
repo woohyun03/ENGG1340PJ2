@@ -7,7 +7,7 @@ using namespace std;
 
 class Map {
 private:
-    string mapChart[100][100];
+    string mapChart[60][77];
     Station mapPlayerLocation[7][7]; 
     void removeMal(int row, int col);
     void addMal(int row, int col, string mal[3][3]);
