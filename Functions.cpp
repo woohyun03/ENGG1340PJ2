@@ -33,7 +33,7 @@ void killMal(Map &gameMap, int killerPlayerNum, int row, int col){
         }
     }
 
-    cout << "You killed the opponent's mal number(s):";
+    cout << "You killed the opponent's mal number:";
 
     if (killFirst){
         gameMap.removePlayerLocation(row, col, killerPlayerNum + 1, 1);
