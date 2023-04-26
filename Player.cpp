@@ -139,6 +139,18 @@ void Player::center(Mal &playerMal, int &moveNum){
     }
 }
 
+void Player::Back(Mal &playerMal){
+    if (playerMal.row == 6 && 0 < playerMal.column){
+        playerMal.column -=1;
+    } else if (playerMal.column == 6 && 6 > playerMal.row){
+        playerMal.row +=1;
+    } else if (playerMal.row == 0 && playerMal.column < 6){
+        playerMal.column += 1;
+    } else if (playerMal.column == 0 && playerMal.row){
+
+    }
+}
+
 void Player::can_finish(Mal &playerMal){
     if (playerMal.row != 0 || playerMal.column != 0 ){
         playerMal.can_finish = true;
