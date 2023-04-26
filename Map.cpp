@@ -185,5 +185,10 @@ void Map::UpdatePlayerLocation(int previRow, int previCol, int row, int col, int
 }
 
 string Map::printMap(){
-
+    for (int i=0;i<60;i++) {
+        for (int j=0;j<77;j++) {
+            cout << mapChart[i][j];
+        }
+        cout << "" << endl;
+    }
 }
