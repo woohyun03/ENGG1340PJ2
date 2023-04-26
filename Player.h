@@ -12,7 +12,11 @@ class Player {
     Mal first;
     Mal second;
     Mal third;
-    
+    void only_six_positions_in_edges(Mal playerMal);
+    void moveStraight(Mal &playerMal, int &moveNum);
+    void corner_and_diagonal(Mal &playerMal, int &moveNum);
+    void center(Mal &playerMal, int &moveNum);
+    void Back(Mal &playerMal);
 
   public:
     Player();
@@ -27,11 +31,6 @@ class Player {
     int getThirdCol();
     void moveMal(int malNum, int moveNum, Map &playerMap);
     int* newRowCol (Mal &playerMal, int &moveNum);
-    void only_six_positions_in_edges(Mal playerMal);
-    void moveStraight(Mal &playerMal, int &moveNum);
-    void corner_and_diagonal(Mal &playerMal, int &moveNum);
-    void center(Mal &playerMal, int &moveNum);
-    void Back(Mal &playerMal);
     void can_finish(Mal &playerMal);
     void finish(Mal &playerMal, int &moveNum);
 };
