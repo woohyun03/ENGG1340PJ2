@@ -2,9 +2,9 @@
 #include <string>
 using namespace std;
 
-void printmap(string k[100][100]) {
-    for (int i=0;i<100;i++) {
-        for (int j=0;j<100;j++) {
+void printmap(string k[77][77]) {
+    for (int i=0;i<60;i++) {
+        for (int j=0;j<77;j++) {
             cout << k[i][j];
         }
         cout << "" << endl;
