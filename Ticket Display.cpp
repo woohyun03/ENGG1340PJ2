@@ -11,10 +11,9 @@
 #define BROWN "\033[38;2;205;127;50m"
 using namespace std;
 
-void displayTicket(const string& type)
+void displayTicket(int moves)
 {
-    int moves = 0; // Initialize moves to 0
-    if (type == "platinum")
+    if (moves == 4)
     {
         cout << CYAN << "   _________ _________ _________ _________ _________ _________ _________ _________" << RESET << "\n";
         cout << CYAN << "  /         |         |         |         |         |         |         |         |" << RESET << "\n";
@@ -27,10 +26,9 @@ void displayTicket(const string& type)
         cout << CYAN << "│         │\n";
         cout << CYAN << "│ x     x │\n";
         cout << CYAN << "└─────────┘\n\n";
-        moves=4;
     }
     
-    else if (type == "gold")
+    else if (moves == 3)
     {
         cout << YELLOW << "   _________ _________ _________ _________ " << RESET << "\n";
         cout << YELLOW << "  /         |         |         |         |" << RESET << "\n";
@@ -43,9 +41,8 @@ void displayTicket(const string& type)
         cout << YELLOW << "│         │\n";
         cout << YELLOW << "│       x │\n";
         cout << YELLOW << "└─────────┘\n\n";
-        moves=3;
     }
-    else if (type == "silver")
+    else if (moves == 2)
     {
         cout << GRAY << "   _________ _________ _________ _________ _________ _________ " << RESET << "\n";
         cout << GRAY << "  /         |         |         |         |         |         |" << RESET << "\n";
@@ -58,14 +55,13 @@ void displayTicket(const string& type)
         cout << GRAY << "│         │\n";
         cout << GRAY << "│       x │\n";
         cout << GRAY << "└─────────┘\n\n";
-        moves=2;
     }
-    else if (type == "bronze")
+    else if (moves == 1)
     {
         cout << BROWN << "   _________ _________ _________ _________ _________ _________" << RESET << "\n";
         cout << BROWN << "  /         |         |         |         |         |         |" << RESET << "\n";
         cout << BROWN << " /    B    /    R    /    O    /    N    /    Z    /    E    /" << RESET << "\n";
-        cout << BROWN << "/_________/_________/_________/_________/_________/_________/" << RESET << "\n"
+        cout << BROWN << "/_________/_________/_________/_________/_________/_________/" << RESET << "\n";
         cout << BROWN << "┌─────────┐\n";
         cout << BROWN << "│         │\n";
         cout << BROWN << "│         │\n";
@@ -73,9 +69,8 @@ void displayTicket(const string& type)
         cout << BROWN << "│         │\n";
         cout << BROWN << "│         │\n";
         cout << BROWN << "└─────────┘\n\n";
-        moves=1;
     }
-    else if (type == "diamond")
+    else if (moves == 5)
     {
         cout << BLUE << "   _________ _________ _________ _________ _________ _________ _________" << RESET << "\n";
         cout << BLUE << "  /         |         |         |         |         |        |          |" << RESET << "\n";
@@ -88,14 +83,13 @@ void displayTicket(const string& type)
         cout << BLUE << "│         │\n";
         cout << BLUE << "│ x     x │\n";
         cout << BLUE << "└─────────┘\n\n";
-        moves=5;
     }
-    else if (type == "secret")
+    else if (moves == -1)
     {
         cout << MAGENTA << "   _________ _________ _________ _________ _________ _________" << RESET << "\n";
         cout << MAGENTA << "  /         |         |         |         |         |         |" << RESET << "\n";
         cout << MAGENTA << " /    S    /    E    /    C    /    R    /    E    /    T    /" << RESET << "\n";
-        cout << MAGENTA << "/_________/_________/_________/_________/_________/_________/" << RESET << "\n"
+        cout << MAGENTA << "/_________/_________/_________/_________/_________/_________/" << RESET << "\n";
         cout << MAGENTA <<  "┌─────────┐\n";
         cout << MAGENTA <<  "│ ?     ? │\n";
         cout << MAGENTA <<  "│         │\n";
@@ -103,8 +97,6 @@ void displayTicket(const string& type)
         cout << MAGENTA <<  "│         │\n";
         cout << MAGENTA <<  "│ ?     ? │\n";
         cout << MAGENTA <<  "└─────────┘\n\n";
-        moves=-1;
     }
-    return moves;
 
 }
