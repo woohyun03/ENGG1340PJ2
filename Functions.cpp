@@ -138,7 +138,7 @@ void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int p
 
 
    if (playerNum == 1, malNum = 1){
-        string arrB2[3][3] = {
+        string arrB1[3][3] = {
             {"B", "1", "B"},
             {"1", " ", "1"},
             {"B", "1", "B"}
