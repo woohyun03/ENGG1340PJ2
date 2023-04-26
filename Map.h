@@ -9,12 +9,13 @@ class Map {
 private:
     string mapChart[100][100];
     Station mapPlayerLocation[7][7]; 
-    void Map::removeMal(int row, int col);
-    void Map::addMal(int row, int col, string** mal);
+    void removeMal(int row, int col);
+    void addMal(int row, int col, string** mal);
 
 public:
     Map();
     Map(Station mapPlayerLocation[7][7]);
+    Station (*get_mapPlayerLocation())[7][7];
     void moveMal(int previRow, int previCol, int row, int col, string** mal);
     void movePlayerLocation(int previRow, int previCol, int row, int col);
     void removePlayerLocation(int row, int col, int playerNum, int malNum);
