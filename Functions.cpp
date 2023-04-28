@@ -17,7 +17,7 @@
 #define BROWN "\033[38;2;205;127;50m"
 using namespace std;
 
-void askMalMovement(int turn, Player one, Player two){
+vector<string> askMalMovement(int turn, Player one, Player two){
     vector<string> choices;
     if (turn == 0){
         if (one.getFirstRow() == one.getSecondRow() && one.getFirstCol() == one.getSecondCol() && 
@@ -63,11 +63,12 @@ void askMalMovement(int turn, Player one, Player two){
 
     if (choices.size() == 1){
         cout << "Which mal would you like to move?      " << "1. " << choices[0] << endl;
-    } else if (choices.size() ==2 ){
+    } else if (choices.size() == 2 ){
         cout << "Which mal would you like to move?      " << "1. " << choices[0] << "      2. " << choices[1] << endl;
     } else{
         cout << "Which mal would you like to move?      " << "1. " << choices[0] << "      2. " << choices[1] << "      3. " << choices[2] << endl;
     }
+    return choices;
 }
 
 
