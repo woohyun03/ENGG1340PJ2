@@ -44,7 +44,50 @@ Station Map::getPlayerLocation(int row, int col){
     return mapPlayerLocation[row][col];
 }
 
-array<int, 2> mapPlayerLocation_to_mapChart(int row, int col){
+string Map::mapPlayerLocation_to_station(int row, int col){
+    map<array<int, 2>, string> rowColMatch;
+    
+    rowColMatch[array<int, 2>{6,0}] = "HKU";
+    rowColMatch[array<int, 2>{6,1}] = "Disneyland";
+    rowColMatch[array<int, 2>{6,2}] = "Ocean Park";
+    rowColMatch[array<int, 2>{6,4}] = "Man Mo";
+    rowColMatch[array<int, 2>{6,5}] = "Western Market";
+    rowColMatch[array<int, 2>{6,6}] = "Admiralty";
+    
+    rowColMatch[array<int, 2>{5,0}] = "Repulse Bay";
+    rowColMatch[array<int, 2>{5,1}] = "Victoria Park";
+    rowColMatch[array<int, 2>{5,5}] = "Tai Kwun";
+    rowColMatch[array<int, 2>{5,6}] = "Tai O";
+    
+    rowColMatch[array<int, 2>{4,0}] = "HKMOA";
+    rowColMatch[array<int, 2>{4,2}] = "Clock Tower";
+    rowColMatch[array<int, 2>{4,4}] = "Lan Kwai Fong";
+    rowColMatch[array<int, 2>{4,6}] = "Avenue of Stars";
+    
+    rowColMatch[array<int, 2>{3,3}] = "Tsim Sha Tsui";
+    
+    rowColMatch[array<int, 2>{2,0}] = "HKMOH";
+    rowColMatch[array<int, 2>{2,2}] = "Elements Mall";
+    rowColMatch[array<int, 2>{2,4}] = "Promenade";
+    rowColMatch[array<int, 2>{2,6}] = "Lagham Place";
+    
+    rowColMatch[array<int, 2>{1,0}] = "HKSM";
+    rowColMatch[array<int, 2>{1,1}] = "Wong Tai Sin";
+    rowColMatch[array<int, 2>{1,5}] = "Night Market";
+    rowColMatch[array<int, 2>{1,6}] = "Golden Computer Arcade";
+    
+    rowColMatch[array<int, 2>{0,0}] = "Kowloon";
+    rowColMatch[array<int, 2>{0,1}] = "Sympony of Lights";
+    rowColMatch[array<int, 2>{0,2}] = "Mong Kok";
+    rowColMatch[array<int, 2>{0,4}] = "Ladies' Market";
+    rowColMatch[array<int, 2>{0,5}] = "Soho";
+    rowColMatch[array<int, 2>{0,6}] = "North Point";
+
+    return rowColMatch[{row,col}];
+
+}
+
+array<int, 2> Map::mapPlayerLocation_to_mapChart(int row, int col){
     map<array<int, 2>, array<int, 2>> rowColMatch;
     
     rowColMatch[array<int, 2>{6,0}] = array<int, 2>{54,2}; //HKU
