@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Station.h"
 #include "CImg.h"
+#include <vector>
 #define RESET "\033[0m"
 #define RED "\033[31m"
 #define GREEN "\033[32m"
@@ -15,6 +16,60 @@
 #define GRAY "\033[37m"
 #define BROWN "\033[38;2;205;127;50m"
 using namespace std;
+
+void askingMalMovement(int turn, Player one, Player two){
+    vector<string> choices;
+    if (turn == 0){
+        if (one.getFirstRow() == one.getSecondRow() && one.getFirstCol() == one.getSecondCol() && 
+            one.getSecondRow() == one.getThirdRow() && one.getSecondCol() == one.getThirdCol()){
+            choices.push_back("A123");
+        } else {
+            if (one.getFirstRow() == one.getSecondRow() && one.getFirstCol() == one.getSecondCol()){
+                choices.push_back("A12");
+                choices.push_back("A3");
+            } else if (one.getFirstRow() == one.getThirdRow() && one.getFirstCol() == one.getThirdCol()){
+                choices.push_back("A13");
+                choices.push_back("A2");
+            } if (one.getSecondRow() == one.getThirdRow() && one.getSecondCol() == one.getThirdCol()){
+                choices.push_back("A1");
+                choices.push_back("A23");
+            } else {
+                choices.push_back("A1");
+                choices.push_back("A2");
+                choices.push_back("A3");
+            }
+        }
+    } else {
+        if (one.getFirstRow() == one.getSecondRow() && one.getFirstCol() == one.getSecondCol() && 
+            one.getSecondRow() == one.getThirdRow() && one.getSecondCol() == one.getThirdCol()){
+            choices.push_back("B123");
+        } else {
+            if (one.getFirstRow() == one.getSecondRow() && one.getFirstCol() == one.getSecondCol()){
+                choices.push_back("B12");
+                choices.push_back("B3");
+            } else if (one.getFirstRow() == one.getThirdRow() && one.getFirstCol() == one.getThirdCol()){
+                choices.push_back("B13");
+                choices.push_back("B2");
+            } if (one.getSecondRow() == one.getThirdRow() && one.getSecondCol() == one.getThirdCol()){
+                choices.push_back("B1");
+                choices.push_back("B23");
+            } else {
+                choices.push_back("B1");
+                choices.push_back("B2");
+                choices.push_back("B3");
+            }
+        }
+    }
+
+    if (choices.size() == 1){
+        cout << "Which mal would you like to move?      " << "1. " << choices[0] << endl;
+    } else if (choices.size() ==2 ){
+        cout << "Which mal would you like to move?      " << "1. " << choices[0] << "      2. " << choices[1] << endl;
+    } else{
+        cout << "Which mal would you like to move?      " << "1. " << choices[0] << "      2. " << choices[1] << "      3. " << choices[2] << endl;
+    }
+}
+
 
 int getTicket(){
     int randNum = rand() % 16 + 1;
