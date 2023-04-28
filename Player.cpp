@@ -25,6 +25,26 @@ void Player::setName(string name) {
     this->name = name;
 }
 
+int Player::getRow(int malNum){
+    if (malNum == 1){
+        return first.row;
+    } else if (malNum == 2){
+        return second.row;
+    } else {
+        return third.row;
+    }
+}
+
+int Player::getCol(int malNum){
+    if (malNum == 1){
+        return first.column;
+    } else if (malNum == 2){
+        return second.column;
+    } else {
+        return third.column;
+    }
+}
+
 int Player::getFirstRow() {
     return first.row;
 }

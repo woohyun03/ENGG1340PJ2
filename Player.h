@@ -23,6 +23,8 @@ class Player {
     Player(string name, int first1, int first2, int second1, int second2, int third1, int third2);
     string getName();
     void setName(string name);
+    int getRow(int malNum);
+    int getCol(int malNum);
     int getFirstRow();
     int getFirstCol();
     int getSecondRow();
