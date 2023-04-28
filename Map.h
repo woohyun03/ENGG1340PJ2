@@ -11,7 +11,7 @@ private:
     Station mapPlayerLocation[7][7]; 
     void removeMal(int row, int col);
     void addMal(int row, int col, string mal[3][3]);
-    int* mapPlayerLocation_to_mapChart(int row, int col);
+    array<int, 2> mapPlayerLocation_to_mapChart(int row, int col);
 
 public:
     Map();

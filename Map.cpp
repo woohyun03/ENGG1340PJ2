@@ -44,46 +44,48 @@ Station Map::getPlayerLocation(int row, int col){
     return mapPlayerLocation[row][col];
 }
 
-int* mapPlayerLocation_to_mapChart(int row, int col){
+array<int, 2> mapPlayerLocation_to_mapChart(int row, int col){
     map<array<int, 2>, array<int, 2>> rowColMatch;
     
-    rowColMatch[{{6,0}}] = {{54,2}}; //HKU
-    rowColMatch[{{6,1}}] = {{54,16}}; //Disneyland
-    rowColMatch[{{6,2}}] = {{54,30}}; //Ocean Park
-    rowColMatch[{{6,4}}] = {{54,44}}; //Man Mo
-    rowColMatch[{{6,5}}] = {{54,58}}; //Western Market
-    rowColMatch[{{6,6}}] = {{54,72}}; //Admiralty
+    rowColMatch[array<int, 2>{6,0}] = array<int, 2>{54,2}; //HKU
+    rowColMatch[array<int, 2>{6,1}] = array<int, 2>{54,16}; //Disneyland
+    rowColMatch[array<int, 2>{6,2}] = array<int, 2>{54,30}; //Ocean Park
+    rowColMatch[array<int, 2>{6,4}] = array<int, 2>{54,44}; //Man Mo
+    rowColMatch[array<int, 2>{6,5}] = array<int, 2>{54,58}; //Western Market
+    rowColMatch[array<int, 2>{6,6}] = array<int, 2>{54,72}; //Admiralty
     
-    rowColMatch[{{5,0}}] = {{44,2}}; //Repulse Bay
-    rowColMatch[{{5,1}}] = {{44,14}}; //Victoria Park
-    rowColMatch[{{5,5}}] = {{44,60}}; //Tai Kwun
-    rowColMatch[{{5,6}}] = {{44,72}}; //Tai O
+    rowColMatch[array<int, 2>{5,0}] = array<int, 2>{44,2}; //Repulse Bay
+    rowColMatch[array<int, 2>{5,1}] = array<int, 2>{44,14}; //Victoria Park
+    rowColMatch[array<int, 2>{5,5}] = array<int, 2>{44,60}; //Tai Kwun
+    rowColMatch[array<int, 2>{5,6}] = array<int, 2>{44,72}; //Tai O
     
-    rowColMatch[{{4,0}}] = {{33,2}}; //HKMOA
-    rowColMatch[{{4,2}}] = {{37,26}}; //Clock Tower
-    rowColMatch[{{4,4}}] = {{37,48}}; //Lan Kwai Fong
-    rowColMatch[{{4,6}}] = {{33,72}}; //Avenue of Stars
+    rowColMatch[array<int, 2>{4,0}] = array<int, 2>{33,2}; //HKMOA
+    rowColMatch[array<int, 2>{4,2}] = array<int, 2>{37,26}; //Clock Tower
+    rowColMatch[array<int, 2>{4,4}] = array<int, 2>{37,48}; //Lan Kwai Fong
+    rowColMatch[array<int, 2>{4,6}] = array<int, 2>{33,72}; //Avenue of Stars
     
-    rowColMatch[{{3,3}}] = {{28,37}}; //Tsim Sha Tsui 
+    rowColMatch[array<int, 2>{3,3}] = array<int, 2>{28,37}; //Tsim Sha Tsui 
     
-    rowColMatch[{{2,0}}] = {{23,2}}; //HKMOH
-    rowColMatch[{{2,2}}] = {{19,26}}; //Elements Mall
-    rowColMatch[{{2,4}}] = {{19,48}}; //Promenade
-    rowColMatch[{{2,6}}] = {{23,72}}; //Lagham Place
+    rowColMatch[array<int, 2>{2,0}] = array<int, 2>{23,2}; //HKMOH
+    rowColMatch[array<int, 2>{2,2}] = array<int, 2>{19,26}; //Elements Mall
+    rowColMatch[array<int, 2>{2,4}] = array<int, 2>{19,48}; //Promenade
+    rowColMatch[array<int, 2>{2,6}] = array<int, 2>{23,72}; //Lagham Place
     
-    rowColMatch[{{1,0}}] = {{12,2}}; //HKSM
-    rowColMatch[{{1,1}}] = {{10,14}}; //Wong Tai Sin
-    rowColMatch[{{1,5}}] = {{10,60}}; //Night Market
-    rowColMatch[{{1,6}}] = {{12,72}}; //Golden Computer Arcade
+    rowColMatch[array<int, 2>{1,0}] = array<int, 2>{12,2}; //HKSM
+    rowColMatch[array<int, 2>{1,1}] = array<int, 2>{10,14}; //Wong Tai Sin
+    rowColMatch[array<int, 2>{1,5}] = array<int, 2>{10,60}; //Night Market
+    rowColMatch[array<int, 2>{1,6}] = array<int, 2>{12,72}; //Golden Computer Arcade
     
-    rowColMatch[{{0,0}}] = {{2,2}}; //Kowloon
-    rowColMatch[{{0,1}}] = {{2,16}}; //Sympony of Lights
-    rowColMatch[{{0,2}}] = {{2,30}}; //Mong Kok
-    rowColMatch[{{0,4}}] = {{2,44}}; //Ladies' Market
-    rowColMatch[{{0,5}}] = {{2,58}}; //Soho
-    rowColMatch[{{0,6}}] = {{2,72}}; //North Point
+    rowColMatch[array<int, 2>{0,0}] = array<int, 2>{2,2}; //Kowloon
+    rowColMatch[array<int, 2>{0,1}] = array<int, 2>{2,16}; //Sympony of Lights
+    rowColMatch[array<int, 2>{0,2}] = array<int, 2>{2,30}; //Mong Kok
+    rowColMatch[array<int, 2>{0,4}] = array<int, 2>{2,44}; //Ladies' Market
+    rowColMatch[array<int, 2>{0,5}] = array<int, 2>{2,58}; //Soho
+    rowColMatch[array<int, 2>{0,6}] = array<int, 2>{2,72}; //North Point
 
-    int IndexInMapDisplay[29][2] =
+    return rowColMatch[{row,col}];
+
+    /*int IndexInMapDisplay[29][2] =
     
     {
         { 2, 2 }, //Kowloon
@@ -114,21 +116,25 @@ int* mapPlayerLocation_to_mapChart(int row, int col){
         { 54, 30 }, //Ocean Park
         { 54, 44 }, //Man Mo
         { 54, 58 }, //Western Market
-        { 54, 72 }, //Admiralty
-    };
+        { 54, 72 }, //Admiralty 
+    };*/
 }
 
 void Map::removeMal(int row, int col){
-    for (int i = row; i < row+3; i++){
-        for (int j = col; j < col+3; j++){
+    array<int, 2> rowCol = mapPlayerLocation_to_mapChart(row,col);
+
+    for (int i = rowCol[0]; i < rowCol[0]+3; i++){
+        for (int j = rowCol[1]; j < rowCol[1]+3; j++){
             mapChart[i][j] = " ";
         }
     }
 }
 
 void Map::addMal(int row, int col, string mal[3][3]){
-    for (int i = row; i < row+3; i++){
-        for (int j = col; j < col+3; j++){
+    array<int, 2> rowCol = mapPlayerLocation_to_mapChart(row,col);
+
+    for (int i = rowCol[0]; i < rowCol[0]+3; i++){
+        for (int j = rowCol[1]; j < rowCol[1]+3; j++){
             mapChart[i][j] = mal[i][j];
         }
     }
