@@ -17,7 +17,7 @@
 #define BROWN "\033[38;2;205;127;50m"
 using namespace std;
 
-void askingMalMovement(int turn, Player one, Player two){
+void askMalMovement(int turn, Player one, Player two){
     vector<string> choices;
     if (turn == 0){
         if (one.getFirstRow() == one.getSecondRow() && one.getFirstCol() == one.getSecondCol() && 
