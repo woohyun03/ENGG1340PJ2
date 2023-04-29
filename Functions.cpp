@@ -17,6 +17,25 @@
 #define BROWN "\033[38;2;205;127;50m"
 using namespace std;
 
+int askWhichTicket(vector<int> &tickets){
+    if (tickets.size() == 1){
+        cout << "You got " << getTicketName(tickets[0]) << " ticket." << endl;
+        return tickets[0];
+        tickets.clear();
+    }
+    int input = 0;
+    cout << endl;
+    cout << "You got " << tickets.size() << " moves." << endl;
+    for (int i = 0; i < tickets.size(); i++){
+        cout << i << ". " << getTicketName(tickets[i]) << "     ";
+    }
+    cout << endl;
+    cout << "Please choose the Ticket you want to use" << endl;
+    cin >> input;
+    tickets.erase(tickets.begin() + input);
+    return input;
+}
+
 vector<string> askMalMovement(int turn, Player one, Player two){
     vector<string> choices;
     if (turn == 0){
@@ -122,7 +141,7 @@ void move_or_carry_Mal(Player &player, int playerNum, int malSelect, string malS
     }
 }
 
-void killMal(Map &gameMap, int killerPlayerNum, int row, int col){
+void killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int col){
     bool killFirst = false;
     bool killSecond = false;
     bool killThird = false;
@@ -149,18 +168,25 @@ void killMal(Map &gameMap, int killerPlayerNum, int row, int col){
         }
     }
 
+    if (!killFirst && !killSecond && !killThird){
+        return;
+    }
+
     cout << "You killed the opponent's mal number:";
 
     if (killFirst){
-        gameMap.removePlayerLocation(row, col, (killerPlayerNum + 1)%2, 1);
+        gameMap.UpdatePlayerLocation(row, col, 6, 0, (killerPlayerNum + 1)%2, 1);
+        opponent.setRowCol(1,6,0);
         cout << " 1";
     }
     if (killSecond){
-        gameMap.removePlayerLocation(row, col, (killerPlayerNum + 1)%2, 2);
+        gameMap.UpdatePlayerLocation(row, col, 6, 0, (killerPlayerNum + 1)%2, 2);
+        opponent.setRowCol(2,6,0);
         cout << " 2";
     }
     if (killThird){
-        gameMap.removePlayerLocation(row, col, (killerPlayerNum + 1)%2, 3);
+        gameMap.UpdatePlayerLocation(row, col, 6, 0, (killerPlayerNum + 1)%2, 3);
+        opponent.setRowCol(3,6,0);
         cout << " 3";
     }
 
