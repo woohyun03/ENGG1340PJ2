@@ -124,18 +124,27 @@ string getTicketName(int ticketNum){
 
 void move_or_carry_Mal(Player &player, int playerNum, int malSelect, string malSign, int TicketResult, Map &gameMap, int pRow, int pCol, int row, int col){
     if (malSign.length() == 2){
+        player.setPreviousRowCol(malSelect, pRow, pCol);
         player.moveMal(malSelect, TicketResult);
         gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, malSelect);
     } else if (malSign.length() == 3){
+        player.setPreviousRowCol(stoi(malSign.substr(1,1)), pRow, pCol);
         player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
         gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(1,1)));
+
+        player.setPreviousRowCol(stoi(malSign.substr(2,1)), pRow, pCol);
         player.moveMal(stoi(malSign.substr(2,1)), TicketResult);
         gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(2,1)));
     } else {
+        player.setPreviousRowCol(stoi(malSign.substr(1,1)), pRow, pCol);
         player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
         gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(1,1)));
+
+        player.setPreviousRowCol(stoi(malSign.substr(2,1)), pRow, pCol);
         player.moveMal(stoi(malSign.substr(2,1)), TicketResult);
         gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(2,1)));
+
+        player.setPreviousRowCol(stoi(malSign.substr(3,1)), pRow, pCol);
         player.moveMal(stoi(malSign.substr(3,1)), TicketResult);
         gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(3,1)));
     }
@@ -177,16 +186,19 @@ void killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int c
     if (killFirst){
         gameMap.UpdatePlayerLocation(row, col, 6, 0, (killerPlayerNum + 1)%2, 1);
         opponent.setRowCol(1,6,0);
+        opponent.set_cannot_finish(1);
         cout << " 1";
     }
     if (killSecond){
         gameMap.UpdatePlayerLocation(row, col, 6, 0, (killerPlayerNum + 1)%2, 2);
         opponent.setRowCol(2,6,0);
+        opponent.set_cannot_finish(2);
         cout << " 2";
     }
     if (killThird){
         gameMap.UpdatePlayerLocation(row, col, 6, 0, (killerPlayerNum + 1)%2, 3);
         opponent.setRowCol(3,6,0);
+        opponent.set_cannot_finish(3);
         cout << " 3";
     }
 
