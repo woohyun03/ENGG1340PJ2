@@ -89,7 +89,7 @@ int Player::getThirdCol() {
     return third.column;
 }
 
-void Player::moveMal(int malNum, int moveNum, Map &playerMap) {
+void Player::moveMal(int malNum, int moveNum) {
     if (malNum == 1){
         first.previousRow = first.row;
         first.previousColumn = first.column;
