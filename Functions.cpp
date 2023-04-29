@@ -148,8 +148,8 @@ void killMal(Map &gameMap, int killerPlayerNum, int row, int col){
     cout << "." << endl;
 }
 
-void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int previCol, int row, int col){
-    if (playerNum == 0, malNum == 1){
+void moveMalDisplay(Map &gameMap, string malSign, int previRow, int previCol, int row, int col){
+    if (malSign == "A1"){
         string arrA1[3][3] = {
             {"A", "1", "A"},
             {"1", " ", "1"},
@@ -158,7 +158,7 @@ void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int p
         gameMap.moveMal(previRow, previCol, row, col, arrA1);
     }
     
-    if (playerNum == 0, malNum == 2){
+    if (malSign == "A2"){
         string arrA2[3][3] = {
             {"A", "2", "A"},
             {"2", " ", "2"},
@@ -166,7 +166,7 @@ void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int p
             };
         gameMap.moveMal(previRow, previCol, row, col, arrA2);
     };
-   if (playerNum == 0, malNum == 3){
+   if (malSign == "A3"){
         string arrA3[3][3] = {
             {"A", "3", "A"},
             {"3", " ", "3"},
@@ -174,7 +174,7 @@ void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int p
             };
         gameMap.moveMal(previRow, previCol, row, col, arrA3);
     };
-   if (playerNum == 0, malNum == 12){
+   if (malSign == "A12"){
         string arrA12[3][3] = {
             {"A", "1", "2"},
             {"1", " ", "A"},
@@ -182,7 +182,7 @@ void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int p
             };
         gameMap.moveMal(previRow, previCol, row, col, arrA12);
     };
-   if (playerNum == 0, malNum = 23){
+   if (malSign == "A23"){
         string arrA23[3][3] = {
             {"A", "2", "3"},
             {"2", " ", "A"},
@@ -191,7 +191,7 @@ void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int p
         gameMap.moveMal(previRow, previCol, row, col, arrA23);
     };
 
-   if (playerNum == 0, malNum = 13){
+   if (malSign == "A13"){
         string arrA13[3][3] = {
             {"A", "1", "3"},
             {"1", " ", "A"},
@@ -199,7 +199,7 @@ void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int p
             };
         gameMap.moveMal(previRow, previCol, row, col, arrA13);
     };
-   if (playerNum == 0, malNum = 123){
+   if (malSign == "A123"){
         string arrA123[3][3] = {
             {"A", "1", "2"},
             {"3", " ", "3"},
@@ -209,7 +209,7 @@ void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int p
     };
 
 
-   if (playerNum == 1, malNum = 1){
+   if (malSign == "B1"){
         string arrB1[3][3] = {
             {"B", "1", "B"},
             {"1", " ", "1"},
@@ -218,7 +218,7 @@ void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int p
         gameMap.moveMal(previRow, previCol, row, col, arrB1);
     };
 
-   if (playerNum == 1, malNum = 2){
+   if (malSign == "B2"){
         string arrB2[3][3] = {
             {"B", "2", "B"},
             {"2", " ", "2"},
@@ -226,7 +226,7 @@ void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int p
             };
         gameMap.moveMal(previRow, previCol, row, col, arrB2);
     };
-   if (playerNum == 1, malNum = 3){
+   if (malSign == "B3"){
         string arrB3[3][3] = {
             {"B", "3", "B"},
             {"3", " ", "3"},
@@ -235,7 +235,7 @@ void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int p
         gameMap.moveMal(previRow, previCol, row, col, arrB3);
     };
 
-   if (playerNum == 1, malNum = 12){
+   if (malSign == "B12"){
         string arrB12[3][3] = {
             {"B", "1", "2"},
             {"1", " ", "B"},
@@ -244,7 +244,7 @@ void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int p
         gameMap.moveMal(previRow, previCol, row, col, arrB12);
     };
 
-   if (playerNum == 1, malNum = 23){
+   if (malSign == "B23"){
         string arrB23[3][3] = {
             {"B", "2", "3"},
             {"2", " ", "B"},
@@ -253,7 +253,7 @@ void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int p
         gameMap.moveMal(previRow, previCol, row, col, arrB23);
     };
 
-   if (playerNum == 1, malNum = 13){
+   if (malSign == "B13"){
         string arrB13[3][3] = {
             {"B", "1", "3"},
             {"1", " ", "B"},
@@ -262,7 +262,7 @@ void moveMalDisplay(Map &gameMap, int playerNum, int malNum, int previRow, int p
         gameMap.moveMal(previRow, previCol, row, col, arrB13);
     };
 
-   if (playerNum == 1, malNum = 123){
+   if (malSign == "B123"){
         string arrB123[3][3] = {
             {"B", "1", "2"},
             {"3", " ", "3"},
