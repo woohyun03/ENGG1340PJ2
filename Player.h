@@ -35,7 +35,9 @@ class Player {
     int getSecondCol();
     int getThirdRow();
     int getThirdCol();
+    Mal getMal(int malNum);
     void set_cannot_finish(int malNum);
+    bool win();
     void moveMal(int malNum, int moveNum);
     void newRowCol (Mal &playerMal, int &moveNum);
     void can_finish(Mal &playerMal);

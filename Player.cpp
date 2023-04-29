@@ -115,6 +115,17 @@ int Player::getThirdCol() {
     return third.column;
 }
 
+Mal Player::getMal(int malNum){
+    if (malNum == 1){
+        return first;
+    } else if (malNum == 2){
+        return second;
+    } else {
+        return third;
+    }
+}
+
+
 void Player::set_cannot_finish(int malNum){
     if (malNum == 1){
         first.can_finish = false;
@@ -122,6 +133,12 @@ void Player::set_cannot_finish(int malNum){
         second.can_finish = false;
     } else {
         third.can_finish = false;
+    }
+}
+
+bool Player::win(){
+    if (first.finished && second.finished && third.finished){
+        return true;
     }
 }
 
