@@ -45,6 +45,19 @@ int Player::getCol(int malNum){
     }
 }
 
+void Player::setRowCol(int malNum, int row, int col){
+    if (malNum == 1){
+        first.row = row;
+        first.column = col;
+    } else if (malNum == 2){
+        second.row = row;
+        second.column = col;
+    } else {
+        second.row = row;
+        second.column = col;
+    }
+}
+
 int Player::getPreviousRow(int malNum){
     if (malNum == 1){
         return first.previousRow;
@@ -63,30 +76,6 @@ int Player::getPreviousCol(int malNum){
     } else {
         return third.previousRow;
     }
-}
-
-int Player::getFirstRow() {
-    return first.row;
-}
-
-int Player::getFirstCol() {
-    return first.column;
-}
-
-int Player::getSecondRow() {
-    return second.row;
-}
-
-int Player::getSecondCol() {
-    return second.column;
-}
-
-int Player::getThirdRow() {
-    return third.row;
-}
-
-int Player::getThirdCol() {
-    return third.column;
 }
 
 void Player::moveMal(int malNum, int moveNum) {
