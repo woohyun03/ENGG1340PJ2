@@ -5,16 +5,16 @@ using namespace std;
 
 Player::Player() {
     name = "";
-    first = {6, 0, 6, 0, false, false};
-    second = {6, 0, 6, 0, false, false};
-    third = {6, 0, 6, 0, false, false};
+    first = {6, 0, 6, 0, false, false, false};
+    second = {6, 0, 6, 0, false, false, false};
+    third = {6, 0, 6, 0, false, false, false};
 }
 
 Player::Player(string name, int first1, int first2, int second1, int second2, int third1, int third2) {
     this->name = name;
-    first = {first1, first2, 6, 0, false, false};
-    second = {second1, second2, 6, 0, false, false};
-    third = {third1, third2, 6, 0, false, false};
+    first = {first1, first2, 6, 0, false, false, false};
+    second = {second1, second2, 6, 0, false, false, false};
+    third = {third1, third2, 6, 0, false, false, false};
 }
 
 string Player::getName() {

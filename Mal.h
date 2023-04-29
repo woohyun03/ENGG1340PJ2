@@ -8,6 +8,7 @@ struct Mal {
     int previousColumn;
     bool can_finish;
     bool finished;
+    bool carried;
 };
 
 #endif
