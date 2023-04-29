@@ -78,6 +78,30 @@ int Player::getPreviousCol(int malNum){
     }
 }
 
+int Player::getFirstRow() {
+    return first.row;
+}
+
+int Player::getFirstCol() {
+    return first.column;
+}
+
+int Player::getSecondRow() {
+    return second.row;
+}
+
+int Player::getSecondCol() {
+    return second.column;
+}
+
+int Player::getThirdRow() {
+    return third.row;
+}
+
+int Player::getThirdCol() {
+    return third.column;
+}
+
 void Player::moveMal(int malNum, int moveNum) {
     if (malNum == 1){
         first.previousRow = first.row;
