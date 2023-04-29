@@ -32,7 +32,7 @@ class Player {
     int getThirdRow();
     int getThirdCol();
     void moveMal(int malNum, int moveNum, Map &playerMap);
-    int* newRowCol (Mal &playerMal, int &moveNum);
+    void newRowCol (Mal &playerMal, int &moveNum);
     void can_finish(Mal &playerMal);
     void finish(Mal &playerMal, int &moveNum);
 };

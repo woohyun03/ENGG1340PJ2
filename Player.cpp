@@ -5,16 +5,16 @@ using namespace std;
 
 Player::Player() {
     name = "";
-    first = {6, 0, false, false};
-    second = {6, 0, false, false};
-    third = {6, 0, false, false};
+    first = {6, 0, 6, 0, false, false};
+    second = {6, 0, 6, 0, false, false};
+    third = {6, 0, 6, 0, false, false};
 }
 
 Player::Player(string name, int first1, int first2, int second1, int second2, int third1, int third2) {
     this->name = name;
-    first = {first1, first2, false, false};
-    second = {second1, second2, false, false};
-    third = {third1, third2, false, false};
+    first = {first1, first2, 6, 0, false, false};
+    second = {second1, second2, 6, 0, false, false};
+    third = {third1, third2, 6, 0, false, false};
 }
 
 string Player::getName() {
@@ -71,21 +71,21 @@ int Player::getThirdCol() {
 
 void Player::moveMal(int malNum, int moveNum, Map &playerMap) {
     if (malNum == 1){
-        int previRow = first.row;
-        int previCol = first.column;
-        int* newRC = newRowCol(first, moveNum);
+        first.previousRow = first.row;
+        first.previousColumn = first.column;
+        newRowCol(first, moveNum);
     } else if (malNum == 2){
-        int previRow = second.row;
-        int previCol = second.column;
-        int* newRC = newRowCol(second, moveNum);
+        second.previousRow = second.row;
+        second.previousColumn = second.column;
+        newRowCol(second, moveNum);
     } else if (malNum == 3){
-        int previRow = second.row;
-        int previCol = second.column;
-        int* newRC = newRowCol(second, moveNum);
+        third.previousRow = second.row;
+        third.previousColumn = second.column;
+        newRowCol(second, moveNum);
     }
 }
 
-int* Player::newRowCol (Mal &playerMal, int &moveNum){
+void Player::newRowCol (Mal &playerMal, int &moveNum){
     if (moveNum == -1){
         Back(playerMal);
     }
@@ -104,7 +104,6 @@ int* Player::newRowCol (Mal &playerMal, int &moveNum){
         }
     }
     int newRowCol[2] = {playerMal.row, playerMal.column};
-    return newRowCol;
 }
 
 void Player::only_six_positions_in_edges(Mal playerMal){
@@ -186,7 +185,7 @@ void Player::Back(Mal &playerMal){
 }
 
 void Player::can_finish(Mal &playerMal){
-    if (playerMal.row != 0 || playerMal.column != 0 ){
+    if (playerMal.row != 6 || playerMal.column != 0 ){
         playerMal.can_finish = true;
     }
 }
