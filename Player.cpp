@@ -70,11 +70,24 @@ int Player::getPreviousRow(int malNum){
 
 int Player::getPreviousCol(int malNum){
     if (malNum == 1){
-        return first.previousRow;
+        return first.previousColumn;
     } else if (malNum == 2){
-        return second.previousRow;
+        return second.previousColumn;
     } else {
-        return third.previousRow;
+        return third.previousColumn;
+    }
+}
+
+void Player::setPreviousRowCol(int malNum, int row, int col){
+    if (malNum == 1){
+        first.previousRow = row;
+        first.previousColumn = col;
+    } else if (malNum == 2){
+        second.previousRow = row;
+        second.previousColumn = col;
+    } else {
+        second.previousRow = row;
+        second.previousColumn = col;
     }
 }
 
@@ -100,6 +113,16 @@ int Player::getThirdRow() {
 
 int Player::getThirdCol() {
     return third.column;
+}
+
+void Player::set_cannot_finish(int malNum){
+    if (malNum == 1){
+        first.can_finish = false;
+    } else if (malNum == 2){
+        second.can_finish = false;
+    } else {
+        third.can_finish = false;
+    }
 }
 
 void Player::moveMal(int malNum, int moveNum) {

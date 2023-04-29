@@ -28,12 +28,14 @@ class Player {
     void setRowCol(int malNum, int row, int col);
     int getPreviousRow(int malNum);
     int getPreviousCol(int malNum);
+    void setPreviousRowCol(int malNum, int row, int col);
     int getFirstRow();
     int getFirstCol();
     int getSecondRow();
     int getSecondCol();
     int getThirdRow();
     int getThirdCol();
+    void set_cannot_finish(int malNum);
     void moveMal(int malNum, int moveNum);
     void newRowCol (Mal &playerMal, int &moveNum);
     void can_finish(Mal &playerMal);
