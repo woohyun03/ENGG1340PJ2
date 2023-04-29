@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <chrono>
+#include <thread>
 #include "Functions.h"
 #include "Map.h"
 #include "Player.h"
@@ -13,7 +15,7 @@ int main(){
     Player player1;
     Player player2;
     int counter = -1;
-    int turnShower;
+    int turn;
     int TicketResult;
     string input;
     int malSelect;
@@ -28,6 +30,14 @@ int main(){
 
     while (true) {
 
+        gameMap.printMap();
+
+        for (int i = 0; i < 50; i++) {
+            cout << "-";
+        }
+        cout << endl;
+
+
         counter = counter + 1;
         if (counter != -1){
             cout << "Continue the Game? ('q' for exit / press Enter if you want to continue): ";
@@ -40,30 +50,60 @@ int main(){
 
 
         if(counter % 2 == 0){
-            cout << "It is Player 1's turn";
-            turnShower = 0;
+            cout << "It is "<< player1.getName() << "'s turn";
+            turn = 0;
         }
         else{
-            cout << "It is Player 2's turn";
-            turnShower = 1;
+            cout << "It is "<< player2.getName() << "'s turn";
+            turn = 1;
         }
+        cout << endl;
 
-        vector<string> malVector = askMalMovement(turnShower, player1, player2);
+
+        cout << "Press Enter to roll the Yut (Get the ticket)";
+        cin >> input;
+        cout << "Your ticket is..." << endl;
+        for (int i = 0; i < 3; i++){
+            this_thread::sleep_for(chrono::seconds(1));
+            cout << "\r" << 3 - i << "..." << endl;
+        }
+        this_thread::sleep_for(chrono::seconds(1));
+
+        TicketResult = getTicket();
+        cout << getTicketName(TicketResult) << "!!!" << endl;
+
+
+        vector<string> malVector = askMalMovement(turn, player1, player2);
         cin >> malSelect;
 
-        if (turnShower == 0){
+        if (turn == 0){
             cout << "Current Position of " << malVector[malSelect] << " is" << gameMap.mapPlayerLocation_to_station(player1.getRow(malSelect),player1.getCol(malSelect)) << endl;
         } else {
             cout << "Current Position of " << malVector[malSelect] << " is" << gameMap.mapPlayerLocation_to_station(player2.getRow(malSelect),player2.getCol(malSelect)) << endl;
         }
 
-        TicketResult = getTicket();
-        cout << "Your ticket is..." << TicketResult << endl;
+        if (turn == 0){
+            player1.moveMal(malSelect, TicketResult);
+            gameMap.UpdatePlayerLocation(player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect),player1.getRow(malSelect), player1.getCol(malSelect), 0, malSelect);
+        } else {
+            player2.moveMal(malSelect, TicketResult);
+            gameMap.UpdatePlayerLocation(player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect),player2.getRow(malSelect), player2.getCol(malSelect), 0, malSelect);
+        }
 
-        //move mal and save other info (function to be added)
-        //display map (functions to be added)
+        this_thread::sleep_for(chrono::seconds(1));
+        cout << endl;
 
-        cout << "You have arrived to..." << /*place explantion functio << endl*/;
+        if (turn == 0){
+            cout << malVector[malSelect] << " will move to" << gameMap.mapPlayerLocation_to_station(player1.getRow(malSelect),player1.getCol(malSelect)) << endl;
+        } else {
+            cout << malVector[malSelect] << " will move to" << gameMap.mapPlayerLocation_to_station(player2.getRow(malSelect),player2.getCol(malSelect)) << endl;
+        }
+
+        this_thread::sleep_for(chrono::seconds(2));
+
+        gameMap.printMap();
+
+        cout << malVector[malSelect] << " have arrived to " << gameMap.mapPlayerLocation_to_station(player1.getRow(malSelect),player1.getCol(malSelect))<<endl;
 
         for(int i = 0, i < 5; ++i){
             if(currentPosition == PositionArray[i]){
@@ -82,6 +122,6 @@ int main(){
         }
         cout << "Your turn has ended, it is player " << turnShower << "'s turn" << /n << endl;
     }
-    cout << "Game Over! Player" << turnShower << "wins!!!" << endl;
+    cout << "Game Over! Player" << turn << "wins!!!" << endl;
     return 0;
 }
