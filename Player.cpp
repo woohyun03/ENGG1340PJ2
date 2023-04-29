@@ -45,6 +45,26 @@ int Player::getCol(int malNum){
     }
 }
 
+int Player::getPreviousRow(int malNum){
+    if (malNum == 1){
+        return first.previousRow;
+    } else if (malNum == 2){
+        return second.previousRow;
+    } else {
+        return third.previousRow;
+    }
+}
+
+int Player::getPreviousCol(int malNum){
+    if (malNum == 1){
+        return first.previousRow;
+    } else if (malNum == 2){
+        return second.previousRow;
+    } else {
+        return third.previousRow;
+    }
+}
+
 int Player::getFirstRow() {
     return first.row;
 }

@@ -25,6 +25,8 @@ class Player {
     void setName(string name);
     int getRow(int malNum);
     int getCol(int malNum);
+    int getPreviousRow(int malNum);
+    int getPreviousCol(int malNum);
     int getFirstRow();
     int getFirstCol();
     int getSecondRow();
