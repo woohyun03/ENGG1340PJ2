@@ -4,6 +4,8 @@
 struct Mal {
     int row;
     int column;
+    int previousRow;
+    int previousColumn;
     bool can_finish;
     bool finished;
 };

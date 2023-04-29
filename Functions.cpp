@@ -88,6 +88,21 @@ int getTicket(){
         return -1; //secret
 }
 
+string getTicketName(int ticketNum){
+    if (ticketNum == 1)
+        return "Diamond";
+    else if (ticketNum <= 2)
+        return "Platinum";
+    else if (ticketNum <= 6)
+        return "Gold";
+    else if (ticketNum <= 8)
+        return "Silver";
+    else if (ticketNum <= 12)
+        return "Bronze";
+    else if (ticketNum <= 16)
+        return "Secret";
+}
+
 void killMal(Map &gameMap, int killerPlayerNum, int row, int col){
     bool killFirst = false;
     bool killSecond = false;
