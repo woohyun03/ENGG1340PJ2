@@ -103,6 +103,25 @@ string getTicketName(int ticketNum){
         return "Secret";
 }
 
+void move_or_carry_Mal(Player &player, int playerNum, int malSelect, string malSign, int TicketResult, Map &gameMap, int pRow, int pCol, int row, int col){
+    if (malSign.length() == 2){
+        player.moveMal(malSelect, TicketResult);
+        gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, malSelect);
+    } else if (malSign.length() == 3){
+        player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
+        gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(1,1)));
+        player.moveMal(stoi(malSign.substr(2,1)), TicketResult);
+        gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(2,1)));
+    } else {
+        player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
+        gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(1,1)));
+        player.moveMal(stoi(malSign.substr(2,1)), TicketResult);
+        gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(2,1)));
+        player.moveMal(stoi(malSign.substr(3,1)), TicketResult);
+        gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(3,1)));
+    }
+}
+
 void killMal(Map &gameMap, int killerPlayerNum, int row, int col){
     bool killFirst = false;
     bool killSecond = false;
