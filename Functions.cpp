@@ -31,9 +31,34 @@ void save_game(string &filename, Map &gameMap, Player &player1, Player &player2,
     outFile << counter << endl;
 
     // Save gameMap, player1, and player2 data (you'll need to create the appropriate functions in the respective classes)
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLS; j++) {
+                outFile << gameMap.getStationColor(i, j) << " " << gameMap.getStationType(i, j) << " ";
+            }
+            outFile << endl;
+        }
 
-    outFile.close();
-}
+        // Saving player1 data
+        outFile << player1.getName() << " ";
+        for (int i = 0; i < NUM_MAL; i++) {
+            outFile << player1.getRow(i) << " " << player1.getCol(i) << " " << player1.getNumMalPassedStart(i) << " ";
+        }
+        outFile << endl;
+
+        // Saving player2 data
+        outFile << player2.getName() << " ";
+        for (int i = 0; i < NUM_MAL; i++) {
+            outFile << player2.getRow(i) << " " << player2.getCol(i) << " " << player2.getNumMalPassedStart(i) << " ";
+        }
+        outFile << endl;
+
+        // Saving counter
+        outFile << counter << endl;
+
+        outFile.close();
+        cout << "Game saved successfully." << endl
+        outFile.close();
+    //Need to be finished
 
 bool load_game(string &filename, Map &gameMap, Player &player1, Player &player2, int &counter) {
     ifstream inFile(filename);
@@ -52,10 +77,37 @@ bool load_game(string &filename, Map &gameMap, Player &player1, Player &player2,
     inFile >> counter;
 
     // Load gameMap, player1, and player2 data (you'll need to create the appropriate functions in the respective classes)
+        // Loading player1 data
+        string name;
+        inFile >> name;
+        player1.setName(name);
+        for (int i = 0; i < NUM_MAL; i++) {
+            int row, col, numMalPassedStart;
+            inFile >> row >> col >> numMalPassedStart;
+            player1.setRow(i, row);
+            player1.setCol(i, col);
+            player1.setNumMalPassedStart(i, numMalPassedStart);
+        }
 
-    inFile.close();
-    return true;
-}
+        // Loading player2 data
+        inFile >> name;
+        player2.setName(name);
+        for (int i = 0; i < NUM_MAL; i++) {
+            int row, col, numMalPassedStart;
+            inFile >> row >> col >> numMalPassedStart;
+            player2.setRow(i, row);
+            player2.setCol(i, col);
+            player2.setNumMalPassedStart(i, numMalPassedStart);
+        }
+
+        // Loading counter
+        inFile >> counter;
+
+        inFile.close();
+        cout << "Game loaded successfully." << endl;
+
+        inFile.close();
+        //Need to be finished
 
 int askWhichTicket(vector<int> &tickets){
     if (tickets.size() == 1){
