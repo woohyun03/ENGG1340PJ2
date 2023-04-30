@@ -63,6 +63,20 @@ bool Player::win(){
     }
 }
 
+void Player::check_Carried(){
+    Mals[0].carried = false;
+    Mals[1].carried = false;
+    Mals[2].carried = false;
+    for (int i = 0; i < 3; i++ ){
+        for (int j = i; j<3; j++){
+            if ((Mals[i].row !=6 || Mals[i].can_finish) && (Mals[i].column !=0 || Mals[i].can_finish) && Mals[i].row == Mals[j].row && Mals[i].column == Mals[j].column){
+                Mals[i].carried = true;
+                Mals[j].carried = true;
+            }
+        }
+    }
+}
+
 void Player::moveMal(int malNum, int moveNum) {
     Mals[malNum-1].previousRow = Mals[malNum-1].row;
     Mals[malNum-1].previousColumn = Mals[malNum-1].column;
