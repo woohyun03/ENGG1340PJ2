@@ -38,47 +38,64 @@ int askWhichTicket(vector<int> &tickets){
 
 vector<string> askMalMovement(int turn, Player one, Player two){
     vector<string> choices;
+    bool alreadyAdded = false;
+
     if (turn == 0){
-        if (one.getFirstRow() == one.getSecondRow() && one.getFirstCol() == one.getSecondCol() && 
-            one.getSecondRow() == one.getThirdRow() && one.getSecondCol() == one.getThirdCol()){
-            choices.push_back("A123");
-        } else {
-            if (one.getFirstRow() == one.getSecondRow() && one.getFirstCol() == one.getSecondCol()){
-                choices.push_back("A12");
-                choices.push_back("A3");
-            } else if (one.getFirstRow() == one.getThirdRow() && one.getFirstCol() == one.getThirdCol()){
-                choices.push_back("A13");
-                choices.push_back("A2");
-            } if (one.getSecondRow() == one.getThirdRow() && one.getSecondCol() == one.getThirdCol()){
-                choices.push_back("A1");
-                choices.push_back("A23");
+        for (int i = 1; i <= 3; i++) {
+            Mal currentMal = one.getMal(i);
+            
+            if (currentMal.finished) {
+                continue;
+            } else if (currentMal.carried) {
+                string prefix = "A" + to_string(i);
+                for (int j = i + 1; j <= 3; j++) {
+                    if (one.getMal(j).carried) {
+                        prefix += to_string(j);
+                    }
+                }
+                for (int j = 0; j < choices.size(); j ++){
+                    for (int a= 0; a < choices[j].length(); a++){
+                        if (choices[j].substr(a,1) == to_string(i)){
+                            alreadyAdded = true;
+                        }
+                    }
+                }
+                if (!alreadyAdded){
+                    choices.push_back(prefix);
+                }
             } else {
-                choices.push_back("A1");
-                choices.push_back("A2");
-                choices.push_back("A3");
+                choices.push_back("A" + to_string(i));
             }
         }
     } else {
-        if (one.getFirstRow() == one.getSecondRow() && one.getFirstCol() == one.getSecondCol() && 
-            one.getSecondRow() == one.getThirdRow() && one.getSecondCol() == one.getThirdCol()){
-            choices.push_back("B123");
-        } else {
-            if (one.getFirstRow() == one.getSecondRow() && one.getFirstCol() == one.getSecondCol()){
-                choices.push_back("B12");
-                choices.push_back("B3");
-            } else if (one.getFirstRow() == one.getThirdRow() && one.getFirstCol() == one.getThirdCol()){
-                choices.push_back("B13");
-                choices.push_back("B2");
-            } if (one.getSecondRow() == one.getThirdRow() && one.getSecondCol() == one.getThirdCol()){
-                choices.push_back("B1");
-                choices.push_back("B23");
+        for (int i = 1; i <= 3; i++) {
+            Mal currentMal = two.getMal(i);
+            
+            if (currentMal.finished) {
+                continue;
+            } else if (currentMal.carried) {
+                string prefix = "A" + to_string(i);
+                for (int j = i + 1; j <= 3; j++) {
+                    if (two.getMal(j).carried) {
+                        prefix += to_string(j);
+                    }
+                }
+                for (int j = 0; j < choices.size(); j ++){
+                    for (int a= 0; a < choices[j].length(); a++){
+                        if (choices[j].substr(a,1) == to_string(i)){
+                            alreadyAdded = true;
+                        }
+                    }
+                }
+                if (!alreadyAdded){
+                    choices.push_back(prefix);
+                }
             } else {
-                choices.push_back("B1");
-                choices.push_back("B2");
-                choices.push_back("B3");
+                choices.push_back("A" + to_string(i));
             }
         }
     }
+    
 
     if (choices.size() == 1){
         cout << "Which mal would you like to move?      " << "1. " << choices[0] << endl;
@@ -124,27 +141,21 @@ string getTicketName(int ticketNum){
 
 void move_or_carry_Mal(Player &player, int playerNum, int malSelect, string malSign, int TicketResult, Map &gameMap, int pRow, int pCol, int row, int col){
     if (malSign.length() == 2){
-        player.setPreviousRowCol(malSelect, pRow, pCol);
         player.moveMal(malSelect, TicketResult);
         gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, malSelect);
     } else if (malSign.length() == 3){
-        player.setPreviousRowCol(stoi(malSign.substr(1,1)), pRow, pCol);
         player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
         gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(1,1)));
 
-        player.setPreviousRowCol(stoi(malSign.substr(2,1)), pRow, pCol);
         player.moveMal(stoi(malSign.substr(2,1)), TicketResult);
         gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(2,1)));
     } else {
-        player.setPreviousRowCol(stoi(malSign.substr(1,1)), pRow, pCol);
         player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
         gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(1,1)));
 
-        player.setPreviousRowCol(stoi(malSign.substr(2,1)), pRow, pCol);
         player.moveMal(stoi(malSign.substr(2,1)), TicketResult);
         gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(2,1)));
 
-        player.setPreviousRowCol(stoi(malSign.substr(3,1)), pRow, pCol);
         player.moveMal(stoi(malSign.substr(3,1)), TicketResult);
         gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(3,1)));
     }
