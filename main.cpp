@@ -92,6 +92,12 @@ int main(){
         gameMap.printMap();
 
         while (tickets.size() != 0){
+            if (turn == 0){
+                player1.check_Carried();
+            } else {
+                player2.check_Carried();
+            }
+
             TicketResult = askWhichTicket(tickets);
             vector<string> malVector = askMalMovement(turn, player1, player2);
             cin >> malSelect;
@@ -106,11 +112,9 @@ int main(){
             cout << endl;
 
             if (turn == 0){
-                player1.check_Carried();
                 move_or_carry_Mal(player1, 0, malSelect, malVector[malSelect], TicketResult, gameMap, player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect), player1.getRow(malSelect), player1.getCol(malSelect));
                 moveMalDisplay(gameMap, malVector[malSelect], player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect),player1.getRow(malSelect), player1.getCol(malSelect));
             } else {
-                player1.check_Carried();
                 move_or_carry_Mal(player2, 1, malSelect, malVector[malSelect], TicketResult, gameMap, player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect), player2.getRow(malSelect), player2.getCol(malSelect));
                 moveMalDisplay(gameMap, malVector[malSelect], player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect),player2.getRow(malSelect), player2.getCol(malSelect));
             }
