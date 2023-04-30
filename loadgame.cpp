@@ -18,9 +18,8 @@ void loadGame(Map& gameMap, Player& player1, Player& player2, int& counter) {
         // Loading gameMap data
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
-                int color, type;
-                inFile >> color >> type;
-                gameMap.setStationColor(i, j, static_cast<Color>(color));
+                int type;
+                inFile >> type;
                 gameMap.setStationType(i, j, static_cast<StationType>(type));
             }
         }
