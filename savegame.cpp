@@ -18,7 +18,7 @@ void saveGame(Map gameMap, Player player1, Player player2, int counter) {
         // Saving gameMap data
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
-                outFile << gameMap.getStationColor(i, j) << " " << gameMap.getStationType(i, j) << " ";
+                outFile << gameMap.getStationType(i, j) << " ";
             }
             outFile << endl;
         }
