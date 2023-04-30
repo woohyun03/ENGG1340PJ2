@@ -24,5 +24,5 @@ void move_or_carry_Mal(Player &player, int playerNum, int malSelect, string malS
 void killMal(Map &gameMap, Player &opponent, int playerNum, int newRow, int newCol);
 void displayTicket(int moves);
 void moveMalDisplay(Map &gameMap, string malSign, int previRow, int previCol, int row, int col);
-
+void PrintExplain(int row, int col);
 #endif
