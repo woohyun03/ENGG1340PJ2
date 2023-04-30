@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
+#include <vector>
+#include <fstream>
 #include "Functions.h"
 #include "Map.h"
 #include "Player.h"
 #include "Station.h"
-#include <vector>
-#include <fstream>
 #define RESET "\033[0m"
 #define RED "\033[31m"
 #define GREEN "\033[32m"
@@ -76,7 +76,7 @@ bool load_game(string &filename, Map &gameMap, Player &player1, Player &player2,
     getline(inFile, name);
     player2.setName(name);
     inFile >> counter;
-
+    return true;
     // Load gameMap, player1, and player2 data (you'll need to create the appropriate functions in the respective classes)
     // Loading player1 data
     /*string name;
@@ -114,8 +114,9 @@ bool load_game(string &filename, Map &gameMap, Player &player1, Player &player2,
 int askWhichTicket(vector<int> &tickets){
     if (tickets.size() == 1){
         cout << "You got " << getTicketName(tickets[0]) << " ticket." << endl;
-        return tickets[0];
+        int ticket = tickets[0];
         tickets.clear();
+        return ticket;
     }
     int input = 0;
     cout << endl;
@@ -214,7 +215,7 @@ int getTicket(){
         return 2; //silver
     else if (randNum <= 12)
         return 1; //bronze
-    else if (randNum <= 16)
+    else
         return -1; //secret
 }
 
@@ -229,7 +230,7 @@ string getTicketName(int ticketNum){
         return "Silver";
     else if (ticketNum <= 12)
         return "Bronze";
-    else if (ticketNum <= 16)
+    else
         return "Secret";
 }
 
