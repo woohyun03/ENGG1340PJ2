@@ -9,9 +9,7 @@ using namespace std;
 class Player {
   private:
     string name;
-    Mal first;
-    Mal second;
-    Mal third;
+    vector<Mal> Mals;
     void only_six_positions_in_edges(Mal playerMal);
     void moveStraight(Mal &playerMal, int &moveNum);
     void corner_and_diagonal(Mal &playerMal, int &moveNum);
@@ -29,12 +27,6 @@ class Player {
     int getPreviousRow(int malNum);
     int getPreviousCol(int malNum);
     void setPreviousRowCol(int malNum, int row, int col);
-    int getFirstRow();
-    int getFirstCol();
-    int getSecondRow();
-    int getSecondCol();
-    int getThirdRow();
-    int getThirdCol();
     Mal getMal(int malNum);
     void set_cannot_finish(int malNum);
     bool win();

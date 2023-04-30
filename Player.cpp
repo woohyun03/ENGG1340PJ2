@@ -1,20 +1,17 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Player.h"
 using namespace std;
 
 Player::Player() {
     name = "";
-    first = {6, 0, 6, 0, false, false, false};
-    second = {6, 0, 6, 0, false, false, false};
-    third = {6, 0, 6, 0, false, false, false};
+    Mals = {{6, 0, 6, 0, false, false, false}, {6, 0, 6, 0, false, false, false}, {6, 0, 6, 0, false, false, false}};
 }
 
 Player::Player(string name, int first1, int first2, int second1, int second2, int third1, int third2) {
     this->name = name;
-    first = {first1, first2, 6, 0, false, false, false};
-    second = {second1, second2, 6, 0, false, false, false};
-    third = {third1, third2, 6, 0, false, false, false};
+    Mals = {{first1, first2, 6, 0, false, false, false}, {second1, second2, 6, 0, false, false, false}, {third1, third2, 6, 0, false, false, false}};
 }
 
 string Player::getName() {
@@ -26,136 +23,50 @@ void Player::setName(string name) {
 }
 
 int Player::getRow(int malNum){
-    if (malNum == 1){
-        return first.row;
-    } else if (malNum == 2){
-        return second.row;
-    } else {
-        return third.row;
-    }
+    return Mals[malNum-1].row;
 }
 
 int Player::getCol(int malNum){
-    if (malNum == 1){
-        return first.column;
-    } else if (malNum == 2){
-        return second.column;
-    } else {
-        return third.column;
-    }
+    return Mals[malNum-1].column;
 }
 
 void Player::setRowCol(int malNum, int row, int col){
-    if (malNum == 1){
-        first.row = row;
-        first.column = col;
-    } else if (malNum == 2){
-        second.row = row;
-        second.column = col;
-    } else {
-        second.row = row;
-        second.column = col;
-    }
+    Mals[malNum-1].row = row;
+    Mals[malNum-1].column = col;
 }
 
 int Player::getPreviousRow(int malNum){
-    if (malNum == 1){
-        return first.previousRow;
-    } else if (malNum == 2){
-        return second.previousRow;
-    } else {
-        return third.previousRow;
-    }
+    return Mals[malNum-1].previousRow;
 }
 
 int Player::getPreviousCol(int malNum){
-    if (malNum == 1){
-        return first.previousColumn;
-    } else if (malNum == 2){
-        return second.previousColumn;
-    } else {
-        return third.previousColumn;
-    }
+    return Mals[malNum-1].previousColumn;
 }
 
 void Player::setPreviousRowCol(int malNum, int row, int col){
-    if (malNum == 1){
-        first.previousRow = row;
-        first.previousColumn = col;
-    } else if (malNum == 2){
-        second.previousRow = row;
-        second.previousColumn = col;
-    } else {
-        second.previousRow = row;
-        second.previousColumn = col;
-    }
-}
-
-int Player::getFirstRow() {
-    return first.row;
-}
-
-int Player::getFirstCol() {
-    return first.column;
-}
-
-int Player::getSecondRow() {
-    return second.row;
-}
-
-int Player::getSecondCol() {
-    return second.column;
-}
-
-int Player::getThirdRow() {
-    return third.row;
-}
-
-int Player::getThirdCol() {
-    return third.column;
+    Mals[malNum-1].previousRow = row;
+    Mals[malNum-1].previousColumn = col;
 }
 
 Mal Player::getMal(int malNum){
-    if (malNum == 1){
-        return first;
-    } else if (malNum == 2){
-        return second;
-    } else {
-        return third;
-    }
+    return Mals[malNum-1];
 }
 
 
 void Player::set_cannot_finish(int malNum){
-    if (malNum == 1){
-        first.can_finish = false;
-    } else if (malNum == 2){
-        second.can_finish = false;
-    } else {
-        third.can_finish = false;
-    }
+    Mals[malNum-1].can_finish = false;
 }
 
 bool Player::win(){
-    if (first.finished && second.finished && third.finished){
+    if (Mals[0].finished && Mals[1].finished && Mals[2].finished){
         return true;
     }
 }
 
 void Player::moveMal(int malNum, int moveNum) {
-    if (malNum == 1){
-        first.previousRow = first.row;
-        first.previousColumn = first.column;
-        newRowCol(first, moveNum);
-    } else if (malNum == 2){
-        second.previousRow = second.row;
-        second.previousColumn = second.column;
-        newRowCol(second, moveNum);
-    } else if (malNum == 3){
-        third.previousRow = second.row;
-        third.previousColumn = second.column;
-        newRowCol(second, moveNum);
-    }
+    Mals[malNum-1].previousRow = Mals[malNum-1].row;
+    Mals[malNum-1].previousColumn = Mals[malNum-1].column;
+    newRowCol(Mals[malNum-1], moveNum);
 }
 
 void Player::newRowCol (Mal &playerMal, int &moveNum){
