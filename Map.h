@@ -2,14 +2,18 @@
 #define MAP_H
 #include <iostream>
 #include <string>
+#include <array>
+#include <map>
+#include <utility> 
 #include "Station.h"
+#include "MapChartDisplay.h"
 using namespace std;
 
 class Map {
 private:
     string mapChart[60][77];
     Station mapPlayerLocation[7][7]; 
-    array<int, 2> mapPlayerLocation_to_mapChart(int row, int col);
+    pair<int, int> mapPlayerLocation_to_mapChart(int row, int col);
 
 public:
     Map();
@@ -23,7 +27,7 @@ public:
     void removePlayerLocation(int row, int col, int playerNum, int malNum);
     void addPlayerLocation(int row, int col, int playerNum, int malNum);
     void UpdatePlayerLocation(int previRow, int previCol, int row, int col, int playerNum, int malNum);
-    string printMap();
+    void printMap();
     
 };
 
