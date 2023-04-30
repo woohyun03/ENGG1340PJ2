@@ -6,12 +6,22 @@ using namespace std;
 
 Player::Player() {
     name = "";
-    Mals = {{6, 0, 6, 0, false, false, false}, {6, 0, 6, 0, false, false, false}, {6, 0, 6, 0, false, false, false}};
+    Mal first = {6, 0, 6, 0, false, false, false};
+    Mal second = {6, 0, 6, 0, false, false, false};
+    Mal third = {6, 0, 6, 0, false, false, false};
+    Mals.push_back(first);
+    Mals.push_back(second);
+    Mals.push_back(third);
 }
 
 Player::Player(string name, int first1, int first2, int second1, int second2, int third1, int third2) {
     this->name = name;
-    Mals = {{first1, first2, 6, 0, false, false, false}, {second1, second2, 6, 0, false, false, false}, {third1, third2, 6, 0, false, false, false}};
+    Mal first = {first1, first2, 6, 0, false, false, false};
+    Mal second = {second1, second2, 6, 0, false, false, false};
+    Mal third = {third1, third2, 6, 0, false, false, false};
+    Mals.push_back(first);
+    Mals.push_back(second);
+    Mals.push_back(third);
 }
 
 string Player::getName() {
@@ -60,6 +70,8 @@ void Player::set_cannot_finish(int malNum){
 bool Player::win(){
     if (Mals[0].finished && Mals[1].finished && Mals[2].finished){
         return true;
+    } else {
+        return false;
     }
 }
 
