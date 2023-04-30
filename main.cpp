@@ -44,7 +44,7 @@ int main(){
             cout << "Continue the Game? ('q' for exit / 's' to save / 'l' to load / press Enter if you want to continue): ";
         }    
         cin >> input;
-        if (input == "q" || input == "Q") {
+        /*if (input == "q" || input == "Q") {
             cout << "Exit the Game." << endl;
             break;
         } else if (input == "s" || input == "S") {
@@ -62,7 +62,7 @@ int main(){
                 cout << "Failed to load the game state." << endl;
             }
             continue;
-        }
+        }*/
 
 
         if(counter % 2 == 0){
