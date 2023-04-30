@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Station.h"
 #include <vector>
+#include <fstream>
 #define RESET "\033[0m"
 #define RED "\033[31m"
 #define GREEN "\033[32m"
@@ -15,6 +16,46 @@
 #define GRAY "\033[37m"
 #define BROWN "\033[38;2;205;127;50m"
 using namespace std;
+
+void save_game(string &filename, Map &gameMap, Player &player1, Player &player2, int counter) {
+    ofstream outFile(filename);
+
+    if (!outFile.is_open()) {
+        cerr << "Error opening file for saving game state." << endl;
+        return;
+    }
+
+    // Save players' names and counter
+    outFile << player1.getName() << endl;
+    outFile << player2.getName() << endl;
+    outFile << counter << endl;
+
+    // Save gameMap, player1, and player2 data (you'll need to create the appropriate functions in the respective classes)
+
+    outFile.close();
+}
+
+bool load_game(string &filename, Map &gameMap, Player &player1, Player &player2, int &counter) {
+    ifstream inFile(filename);
+
+    if (!inFile.is_open()) {
+        cerr << "Error opening file for loading game state." << endl;
+        return false;
+    }
+
+    // Load players' names and counter
+    string name;
+    getline(inFile, name);
+    player1.setName(name);
+    getline(inFile, name);
+    player2.setName(name);
+    inFile >> counter;
+
+    // Load gameMap, player1, and player2 data (you'll need to create the appropriate functions in the respective classes)
+
+    inFile.close();
+    return true;
+}
 
 int askWhichTicket(vector<int> &tickets){
     if (tickets.size() == 1){

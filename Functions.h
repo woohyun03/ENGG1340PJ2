@@ -2,6 +2,7 @@
 #define FUNCTIONS_H
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "Map.h"
 #include "Player.h"
 #include "Station.h"
@@ -16,6 +17,8 @@
 #define BROWN "\033[38;2;205;127;50m"
 using namespace std;
 
+void save_game(string &filename, Map &gameMap, Player &player1, Player &player2, int counter);
+bool load_game(string &filename, Map &gameMap, Player &player1, Player &player2, int &counter);
 int askWhichTicket(vector<int> tickets);
 vector<string> askMalMovement(int turn, Player one, Player two);
 int getTicket();
