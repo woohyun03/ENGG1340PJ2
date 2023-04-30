@@ -42,6 +42,7 @@ int main(){
         counter = counter + 1;
         if (counter != -1){
             cout << "Continue the Game? ('q' for exit / 's' to save / 'l' to load / press Enter if you want to continue): ";
+        }    
         cin >> input;
         if (input == "q" || input == "Q") {
             cout << "Exit the Game." << endl;
