@@ -127,25 +127,17 @@ int main(){
 
             if (turn == 0){
                 move_or_carry_Mal(player1, 0, malSelect, malVector[malSelect], TicketResult, gameMap, player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect), player1.getRow(malSelect), player1.getCol(malSelect));
-                for (int i = 1; i< malVector[malSelect].length();i++){
-                    if(player1.getMal(stoi(malVector[malSelect].substr(i,1))).finished){
-                        gameMap.removeMal(player1.getRow(malSelect), player1.getCol(malSelect));
-                        break;
-                    } else {
-                        moveMalDisplay(gameMap, malVector[malSelect], player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect),player1.getRow(malSelect), player1.getCol(malSelect));
-                        break;
-                    }
+                if (player1.getMal(stoi(malVector[malSelect].substr(1,1))).finished){
+                    gameMap.removeMal(player1.getRow(malSelect), player1.getCol(malSelect));
+                } else {
+                    moveMalDisplay(gameMap, malVector[malSelect], player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect),player1.getRow(malSelect), player1.getCol(malSelect));
                 }
             } else {
                 move_or_carry_Mal(player2, 1, malSelect, malVector[malSelect], TicketResult, gameMap, player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect), player2.getRow(malSelect), player2.getCol(malSelect));
-                for (int i = 1; i< malVector[malSelect].length();i++){
-                    if(player2.getMal(stoi(malVector[malSelect].substr(i,1))).finished){
-                        gameMap.removeMal(player2.getRow(malSelect), player2.getCol(malSelect));
-                        break;
-                    } else {
-                        moveMalDisplay(gameMap, malVector[malSelect], player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect),player2.getRow(malSelect), player2.getCol(malSelect));
-                        break;
-                    }
+                if (player1.getMal(stoi(malVector[malSelect].substr(1,1))).finished){
+                    gameMap.removeMal(player2.getRow(malSelect), player2.getCol(malSelect));
+                } else {
+                    moveMalDisplay(gameMap, malVector[malSelect], player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect),player2.getRow(malSelect), player2.getCol(malSelect));
                 }
             }
 
