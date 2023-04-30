@@ -41,7 +41,7 @@ int main(){
 
         counter = counter + 1;
         if (counter != -1){
-            cout << "Continue the Game? ('q' for exit / 's' to save / 'l' to load / press Enter if you want to continue): ";
+            cout << "Continue the Game? ('q' for exit / 's' to save / 'l' to load / Type \"go\" if you want to continue): ";
         }    
         cin >> input;
         /*if (input == "q" || input == "Q") {
@@ -76,7 +76,7 @@ int main(){
         cout << endl;
 
 
-        cout << "Press Enter to roll the Yut (Get the ticket)";
+        cout << "Type \"r\" the Yut (Get the ticket)";
         cin >> input;
         cout << "Your ticket is..." << endl;
         for (int i = 0; i < 3; i++){
