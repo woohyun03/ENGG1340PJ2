@@ -4,7 +4,6 @@
 #include "Map.h"
 #include "Player.h"
 #include "Station.h"
-#include "CImg.h"
 #include <vector>
 #define RESET "\033[0m"
 #define RED "\033[31m"
@@ -466,180 +465,122 @@ int IndexInMapDisplay[29][2] =
         { 54, 72 }, //Admiralty
     };
 
-void PrintExplain(int row, int col)
-{
+void PrintExplain(int row, int col){
     if (row == 0 && col == 0)
     {
-        CImg<unsigned char> image("Kowloon.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Kowloon. There is a Kowloon Park, which is large park with gardens, lakes, and a swimming pool." << endl;
     }
     else if (row == 0 && col == 1)
     {
-        CImg<unsigned char> image("SymphonyOfLight.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Symphony of Lights. It is a light and sound show that illuminates the skyline every night." << endl;
     }
     else if (row == 0 && col == 2)
     {
-        CImg<unsigned char> image("MongKok.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Mong Kok. It is a bustling neighborhood with markets, street food, and nightlife." << endl;
     }
     else if (row == 0 && col == 4)
     {
-        CImg<unsigned char> image("LadiesMarket.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Ladies' Market. It is a street market in Mong Kok that sells clothes, accessories, and souvenirs." << endl;
     }
     else if (row == 0 && col == 5)
     {
-        CImg<unsigned char> image("Soho.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Soho. It is a neighborhood in Central with trendy bars and restaurants." << endl;
     }
     else if (row == 0 && col == 6)
     {
-        CImg<unsigned char> image("NorthPoint.jpeg");
-        cout << image << endl;
         cout << "You have arrived at North Point. It is a densely populated area that is known for its vibrant local atmosphere, with a mix of residential, commercial, and industrial spaces." << endl;
     }
     else if (row == 1 && col == 0)
     {
-        CImg<unsigned char> image("HongKongScienceMuseum.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Hong Kong Science Museum. It is a museum with interactive exhibits on science and technology." << endl;
     }
     else if (row == 1 && col == 1)
     {
-        CImg<unsigned char> image("WongTaiSin.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Wong Tai Sin Temple. It is a Taoist temple in Kowloon that is known for granting wishes." << endl;
     }
     else if (row == 1 && col == 5)
     {
-        CImg<unsigned char> image("HKstreetnightmarket.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Temple Street Night Market. It is a bustling night market in Yau Ma Tei that sells a variety of goods." << endl;
     }
     else if (row == 1 && col == 6)
     {
-        CImg<unsigned char> image("GoldenComputerArcade.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Golden Computer Arcade. It is a shopping center in Sham Shui Po that sells electronics and computer components." << endl;
     }
     else if (row == 2 && col == 0)
     {
-        CImg<unsigned char> image("HKmuseumofhistory.jpeg");
-        cout << image << endl;
+
         cout << "You have arrived at Hong Kong Museum of History. It is a museum that traces the history of Hong Kong." << endl;
     }
     else if (row == 2 && col == 2)
     {
-        CImg<unsigned char> image("Elementhall.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Elements Mall. It is a shopping mall in Kowloon with luxury brands and fine dining restaurants." << endl;
     }
     else if (row == 2 && col == 4)
     {
-        CImg<unsigned char> image("Promenade.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Tsim Sha Tsui Promenade. It is a waterfront promenade with stunning views of the harbor." << endl;
     }
     else if (row == 2 && col == 6)
     {
-        CImg<unsigned char> image("LanghamPlace.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Langham Place. It is a shopping mall in Mong Kok with a variety of stores and a cinema." << endl;
     }
     else if (row == 3 && col == 3)
     {
-        CImg<unsigned char> image("TsimShaTsui.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Tsim Sa Tsui. It is a popular tourist and shopping district located in the southern part of Kowloon Peninsula in Hong Kong." << endl;
     }
     else if (row == 4 && col == 0)
     {
-        CImg<unsigned char> image("HKmuseumofart.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Hong Kong Museum of Art. It is a museum showcasing Chinese art and culture." << endl;
     }
     else if (row == 4 && col == 2)
     {
-        CImg<unsigned char> image("clocktower.jpeg");
-        cout << image << endl;
         cout << "You have arrived at The Clock Tower. It is a historic landmark in Tsim Sha Tsui." << endl;
     }
     else if (row == 4 && col == 4)
     {
-        CImg<unsigned char> image("lankwaifong.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Lan Kwai Fong. It is a nightlife district in Central known for its bars and clubs." << endl;
     }
     else if (row == 4 && col == 6)
     {
-        CImg<unsigned char> image("AvenueOfStars.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Avenue of Stars. It is a promenade dedicated to Hong Kong's film industry." << endl;
     }
     else if (row == 5 && col == 0)
     {
-        CImg<unsigned char> image("repulsebay.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Repulse Bay. It is a beach with stunning views and plenty of water sports activities." << endl;
     }
     else if (row == 5 && col == 1)
     {
-        CImg<unsigned char> image("VictoriaPeak.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Victoria Peak. It is a popular tourist destination with a spectacular view of Hong Kong's skyline." << endl;
     }
     else if (row == 5 && col == 5)
     {
-        CImg<unsigned char> image("taikwun.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Tai Kwun. It is a heritage site that houses art galleries, restaurants, and shops." << endl;
     }
     else if (row == 5 && col == 6)
     {
-        CImg<unsigned char> image("Tai O.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Tai O. It is a fishing village on Lantau Island with traditional stilt houses and a peaceful atmosphere" << endl;
     }
     else if (row == 6 && col == 0)
     {
-        CImg<unsigned char> image("HKU.jpeg");
-        cout << image << endl;
         cout << "You have arrived at HKU. Located on Hong Kong Island, HKU has a beautiful campus that features a blend of modern and historic buildings, as well as green spaces and cultural landmarks." << endl;
     }
     else if (row == 6 && col == 1)
     {
-        CImg<unsigned char> image("hkdisneyland.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Hong Kong Disneyland. It is a theme park with attractions for all ages." << endl;
     }
     else if (row == 6 && col == 2)
     {
-        CImg<unsigned char> image("OceanPark.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Ocean Park. It is a marine-life theme park with thrilling rides and animal exhibits." << endl;
     }
     else if (row == 6 && col == 4)
     {
-        CImg<unsigned char> image("ManMo.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Man Mo Temple. It is a historic temple in Sheung Wan dedicated to the gods of literature and martial arts." << endl;
     }
     else if (row == 6 && col == 5)
     {
-        CImg<unsigned char> image("WesternMarket.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Western Market. It is a restored Edwardian-style building with shops selling souvenirs and handicrafts." << endl;
     }
     else if (row == 6 && col == 6)
     {
-        CImg<unsigned char> image("Admiralty.jpeg");
-        cout << image << endl;
         cout << "You have arrived at Admiralty. It is a major commercial and financial hub in Hong Kong, and is home to many important government buildings, including the Central Government Complex and the Legislative Council Complex." << endl;
     }
 }
