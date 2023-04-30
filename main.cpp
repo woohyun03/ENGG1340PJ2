@@ -106,9 +106,11 @@ int main(){
             cout << endl;
 
             if (turn == 0){
+                player1.check_Carried();
                 move_or_carry_Mal(player1, 0, malSelect, malVector[malSelect], TicketResult, gameMap, player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect), player1.getRow(malSelect), player1.getCol(malSelect));
                 moveMalDisplay(gameMap, malVector[malSelect], player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect),player1.getRow(malSelect), player1.getCol(malSelect));
             } else {
+                player1.check_Carried();
                 move_or_carry_Mal(player2, 1, malSelect, malVector[malSelect], TicketResult, gameMap, player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect), player2.getRow(malSelect), player2.getCol(malSelect));
                 moveMalDisplay(gameMap, malVector[malSelect], player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect),player2.getRow(malSelect), player2.getCol(malSelect));
             }
@@ -133,11 +135,11 @@ int main(){
         }
 
 
-        if(/*winning condition*/){
-            break
+        if(turn == 0 && player1.win()){
+            cout << "Game Over! Player 1 (" << player1.getName() << ") wins!!!" << endl;
+        } else if (player2.win()){
+            cout << "Game Over! Player 2 (" << player2.getName() << ") wins!!!" << endl;
         }
-        cout << "Your turn has ended, it is player " << turnShower << "'s turn" << /n << endl;
     }
-    cout << "Game Over! Player" << turn << "wins!!!" << endl;
     return 0;
 }
