@@ -41,12 +41,26 @@ int main(){
 
         counter = counter + 1;
         if (counter != -1){
-            cout << "Continue the Game? ('q' for exit / press Enter if you want to continue): ";
+            cout << "Continue the Game? ('q' for exit / 's' to save / 'l' to load / press Enter if you want to continue): ";
+        cin >> input;
+        if (input == "q" || input == "Q") {
+            cout << "Exit the Game." << endl;
+            break;
+        } else if (input == "s" || input == "S") {
+            cout << "Enter the filename to save the game state: ";
             cin >> input;
-            if (input == "q" || input == "Q") {
-                cout << "Exit the Game." << endl;
-                break;
+            save_game(input, gameMap, player1, player2, counter);
+            cout << "Game state saved." << endl;
+            continue;
+        } else if (input == "l" || input == "L") {
+            cout << "Enter the filename to load the game state: ";
+            cin >> input;
+            if (load_game(input, gameMap, player1, player2, counter)) {
+                cout << "Game state loaded." << endl;
+            } else {
+                cout << "Failed to load the game state." << endl;
             }
+            continue;
         }
 
 
