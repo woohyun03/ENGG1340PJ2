@@ -23,7 +23,7 @@ void typingEffect(string outputText){
     for (int i = 0; i < outputText.length(); i++) {
         char c = outputText[i];
         cout << c << flush;
-        this_thread::sleep_for(chrono::milliseconds(50));
+        this_thread::sleep_for(chrono::milliseconds(30));
     }
 }
 
