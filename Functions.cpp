@@ -125,8 +125,7 @@ int askWhichTicket(vector<int> &tickets){
         cout << i << ". " << getTicketName(tickets[i]) << "     ";
     }
     cout << endl;
-    cout << "Please choose the Ticket you want to use" << endl;
-    cout << "Type here: ";
+    cout << "Please choose the Ticket you want to use: ";
     cin >> input;
     while (input >= 1 || input <= tickets.size()-1){
         cout << "Invalid input. Please input a proper number for ticket use." << endl;
