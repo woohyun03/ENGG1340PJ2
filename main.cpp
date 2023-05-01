@@ -100,6 +100,7 @@ int main(){
         getline(cin, input);
 
         typingEffect("Your ticket is...");
+        cout << endl;
         for (int i = 0; i < 3; i++){
             this_thread::sleep_for(chrono::seconds(1));
             cout <<  3 - i << "..." << endl;
@@ -110,11 +111,12 @@ int main(){
             TicketResult = getTicket();
             tickets.push_back(TicketResult);
             cout << getTicketName(TicketResult) << "!!!" << endl;
+            this_thread::sleep_for(chrono::seconds(2));
             if (TicketResult < 4){
                 break;
             } else if (TicketResult >= 4){
                 cout << endl;
-                cout << "Wow!! You got " << getTicketName(TicketResult) << " ticket! You can roll the Yut one more Time! Press Enter to roll the Yut." << endl;
+                typingEffect("Wow!! You got " + getTicketName(TicketResult) + " ticket! You can roll the Yut one more Time! Press Enter to roll the Yut.");
                 getline(cin, input);
                 cout << "Your ticket is..." << endl;
                 for (int i = 0; i < 3; i++){
@@ -137,48 +139,46 @@ int main(){
             TicketResult = askWhichTicket(tickets);
             vector<string> malVector = askMalMovement(turn, player1, player2);
             cin >> malSelect;
-            while (malSelect != 0 && malSelect != 1 && malSelect != 2){
-                cout << "Invalid input. Please input a number from 0-2." << endl;
+            while (malSelect < 1 || malSelect > malVector.size()){
+                cout << "Invalid input. Please input appropriate" << endl;
                 cout << "Type here: ";
                 cin >> malSelect;
             }
             
 
             if (turn == 0){
-                cout << "Current Position of " << malVector[malSelect] << " is" << gameMap.mapPlayerLocation_to_station(player1.getRow(malSelect),player1.getCol(malSelect)) << endl;
+                cout << "Current Position of " << malVector[malSelect-1] << " is " << gameMap.mapPlayerLocation_to_station(player1.getRow(malSelect),player1.getCol(malSelect)) << endl;
             } else {
-                cout << "Current Position of " << malVector[malSelect] << " is" << gameMap.mapPlayerLocation_to_station(player2.getRow(malSelect),player2.getCol(malSelect)) << endl;
+                cout << "Current Position of " << malVector[malSelect-1] << " is " << gameMap.mapPlayerLocation_to_station(player2.getRow(malSelect),player2.getCol(malSelect)) << endl;
             }
 
             this_thread::sleep_for(chrono::seconds(1));
             cout << endl;
 
             if (turn == 0){
-                move_or_carry_Mal(player1, 0, malSelect, malVector[malSelect], TicketResult, gameMap, player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect), player1.getRow(malSelect), player1.getCol(malSelect));
-                if (player1.getMal(stoi(malVector[malSelect].substr(1,1))).finished){
+                move_or_carry_Mal(player1, 0, malSelect, malVector[malSelect-1], TicketResult, gameMap, player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect), player1.getRow(malSelect), player1.getCol(malSelect));
+                if (player1.getMal(stoi(malVector[malSelect-1].substr(1,1))).finished){
                     gameMap.removeMal(player1.getRow(malSelect), player1.getCol(malSelect));
                 } else {
-                    moveMalDisplay(gameMap, malVector[malSelect], player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect),player1.getRow(malSelect), player1.getCol(malSelect));
+                    moveMalDisplay(gameMap, malVector[malSelect-1], player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect),player1.getRow(malSelect), player1.getCol(malSelect));
                 }
             } else {
-                move_or_carry_Mal(player2, 1, malSelect, malVector[malSelect], TicketResult, gameMap, player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect), player2.getRow(malSelect), player2.getCol(malSelect));
-                if (player1.getMal(stoi(malVector[malSelect].substr(1,1))).finished){
+                move_or_carry_Mal(player2, 1, malSelect, malVector[malSelect-1], TicketResult, gameMap, player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect), player2.getRow(malSelect), player2.getCol(malSelect));
+                if (player1.getMal(stoi(malVector[malSelect-1].substr(1,1))).finished){
                     gameMap.removeMal(player2.getRow(malSelect), player2.getCol(malSelect));
                 } else {
-                    moveMalDisplay(gameMap, malVector[malSelect], player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect),player2.getRow(malSelect), player2.getCol(malSelect));
+                    moveMalDisplay(gameMap, malVector[malSelect-1], player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect),player2.getRow(malSelect), player2.getCol(malSelect));
                 }
             }
 
 
             if (turn == 0){
-                cout << malVector[malSelect] << " will move to" << gameMap.mapPlayerLocation_to_station(player1.getRow(malSelect),player1.getCol(malSelect)) << endl;
+                cout << malVector[malSelect-1] << " will move to " << gameMap.mapPlayerLocation_to_station(player1.getRow(malSelect),player1.getCol(malSelect)) << endl;
             } else {
-                cout << malVector[malSelect] << " will move to" << gameMap.mapPlayerLocation_to_station(player2.getRow(malSelect),player2.getCol(malSelect)) << endl;
+                cout << malVector[malSelect-1] << " will move to " << gameMap.mapPlayerLocation_to_station(player2.getRow(malSelect),player2.getCol(malSelect)) << endl;
             }
 
             this_thread::sleep_for(chrono::seconds(2));
-
-            gameMap.printMap();
             
             PrintExplain(player1.getRow(malSelect),player1.getCol(malSelect));
             if (turn == 0){
@@ -186,14 +186,19 @@ int main(){
             } else {
                 killMal(gameMap, player1, turn, player2.getRow(malSelect), player2.getCol(malSelect));
             }
+            
+            if(turn == 0 && player1.win()){
+                cout << "Game Over! Player 1 (" << player1.getName() << ") wins!!!" << endl;
+                return 0;
+            } else if (player2.win()){
+                cout << "Game Over! Player 2 (" << player2.getName() << ") wins!!!" << endl;
+                return 0;
+            }
+            typingEffect("Press Enter to Change the turn");
+            cin.ignore(); 
+            getline(cin, input);
         }
 
-
-        if(turn == 0 && player1.win()){
-            cout << "Game Over! Player 1 (" << player1.getName() << ") wins!!!" << endl;
-        } else if (player2.win()){
-            cout << "Game Over! Player 2 (" << player2.getName() << ") wins!!!" << endl;
-        }
     }
     return 0;
 }
