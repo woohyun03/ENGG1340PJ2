@@ -20,24 +20,44 @@ int main(){
     string input;
     int malSelect;
     vector<int> tickets;
-
-    cout << "Welcome to ... Korean Traditional Yut Game (MTR EDITION) !!!" << endl;
+    string outputText;
+    
+    for (int i = 0; i < 20; i++){
+        cout << endl;
+    }
+    typingEffect("Welcome to Korean Traditional Yut Game (MTR EDITION) !!!! ");
+    this_thread::sleep_for(chrono::seconds(1));
+    cout << endl;
+    typingEffect("Press Enter to Continue");
+    getline(cin, input);
 
     if (Get_Number_of_Saved_Games() >0){
-        cout << "You have " << Get_Number_of_Saved_Games() << " saved games." << endl;
+        typingEffect("You have " + to_string(Get_Number_of_Saved_Games()) + " saved games.");
+        cout << endl;
         loadGameNames();
-        cout << "Type the game you want to load." << endl;
+        typingEffect("Type the game you want to load.");
+        cout << endl;
         cin >> input;
         load_game(input, gameMap, player1, player2);
     } else {
-        cout << "There are no saved games. We will start a new game!" << endl;
-        cout << "Enter player 1's name: ";
+        typingEffect("There are no saved games. We will start a new game!");
+        cout << endl;
+        typingEffect("Press Enter to Start");
+        getline(cin, input);
+        typingEffect("Enter player 1's name: ");
         cin >> input;
         player1.setName(input);
-        cout << "Enter player 2's name: ";
+        typingEffect("Enter player 2's name: ");
         cin >> input;
         player2.setName(input);
     }
+
+    typingEffect("We will start game in...");
+    cout << endl;
+    for (int i = 0; i < 3; i++){
+            this_thread::sleep_for(chrono::seconds(1));
+            cout << "\r" << 3 - i << "..." << endl;
+        }
 
     while (true) {
 
@@ -49,7 +69,8 @@ int main(){
         cout << endl;
         
         if (counter != -1){
-            cout << "Continue the Game? ('q' for exit / 's' to save)" << endl;
+            typingEffect("Continue the Game? ('q' for exit / 's' to save)");
+            cout << endl;
             cin >> input;
             if (input == "q"){
                 cout << "Exit the Game." << endl;
@@ -64,19 +85,24 @@ int main(){
         counter = counter + 1;
 
         if(counter % 2 == 0){
-            cout << "It is "<< player1.getName() << "'s turn";
+            typingEffect("It is " + player1.getName() + "'s turn");
             turn = 0;
         }
         else{
-            cout << "It is "<< player2.getName() << "'s turn";
+            typingEffect("It is " + player2.getName() + "'s turn");
             turn = 1;
         }
         cout << endl;
+        cout << endl;
 
-        cout << "Your ticket is..." << endl;
+        typingEffect("Press Enter to roll the Yut (Get the Ticket)!!");
+        cin.ignore(); 
+        getline(cin, input);
+
+        typingEffect("Your ticket is...");
         for (int i = 0; i < 3; i++){
             this_thread::sleep_for(chrono::seconds(1));
-            cout << "\r" << 3 - i << "..." << endl;
+            cout <<  3 - i << "..." << endl;
         }
         this_thread::sleep_for(chrono::seconds(1));
 
@@ -86,10 +112,10 @@ int main(){
             cout << getTicketName(TicketResult) << "!!!" << endl;
             if (TicketResult < 4){
                 break;
-            }else if (TicketResult >= 4){
+            } else if (TicketResult >= 4){
                 cout << endl;
                 cout << "Wow!! You got " << getTicketName(TicketResult) << " ticket! You can roll the Yut one more Time! Press Enter to roll the Yut." << endl;
-                cin >> input;
+                getline(cin, input);
                 cout << "Your ticket is..." << endl;
                 for (int i = 0; i < 3; i++){
                     this_thread::sleep_for(chrono::seconds(1));
