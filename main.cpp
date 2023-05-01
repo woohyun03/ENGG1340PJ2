@@ -22,53 +22,45 @@ int main(){
     vector<int> tickets;
 
     cout << "Welcome to ... Korean Traditional Yut Game (MTR EDITION) !!!" << endl;
-    cout << "Enter player 1's name: ";
-    cin >> input;
-    player1.setName(input);
-    cout << "Enter player 2's name: ";
-    cin >> input;
-    player2.setName(input);
+
+    if (Get_Number_of_Saved_Games() >0){
+        cout << "You have " << Get_Number_of_Saved_Games() << " saved games." << endl;
+        cout << "Type the game you want to load." << endl;
+        cin >> input;
+        load_game(input, gameMap, player1, player2);
+    } else {
+        cout << "There are no saved games. We will start a new game!" << endl;
+        cout << "Enter player 1's name: ";
+        cin >> input;
+        player1.setName(input);
+        cout << "Enter player 2's name: ";
+        cin >> input;
+        player2.setName(input);
+    }
 
     while (true) {
 
         gameMap.printMap();
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 100; i++) {
             cout << "-";
         }
         cout << endl;
-
+        
+        if (counter != -1){
+            cout << "Continue the Game? ('q' for exit / 's' to save)" << endl;
+            cin >> input;
+            if (input == "q"){
+                cout << "Exit the Game." << endl;
+                break;
+            } else if(input == "s"){
+                cout << "Game Name : ";
+                cin >> input;
+                save_game(input, gameMap, player1, player2);
+            }
+        }
 
         counter = counter + 1;
-        if (counter != -1){
-            cout << "Continue the Game? ('q' for exit / 's' to save / 'l' to load / Type \"go\" if you want to continue): ";
-        }    
-        cin >> input;
-        while (input != "q" && input != "Q" && input != "s" && input != "S" && input != "l" && input != "L" && input != "go"){
-            cout << "Invalid input. Please input again." << endl;
-            cout << "Type here: ";
-            cin >> input;
-        }
-        /*if (input == "q" || input == "Q") {
-            cout << "Exit the Game." << endl;
-            break;
-        } else if (input == "s" || input == "S") {
-            cout << "Enter the filename to save the game state: ";
-            cin >> input;
-            save_game(input, gameMap, player1, player2, counter);
-            cout << "Game state saved." << endl;
-            continue;
-        } else if (input == "l" || input == "L") {
-            cout << "Enter the filename to load the game state: ";
-            cin >> input;
-            if (load_game(input, gameMap, player1, player2, counter)) {
-            cout << "Game state loaded." << endl;
-            } else {
-                cout << "Failed to load the game state." << endl;
-            }
-            continue;
-        */
-
 
         if(counter % 2 == 0){
             cout << "It is "<< player1.getName() << "'s turn";
