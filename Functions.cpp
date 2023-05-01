@@ -17,98 +17,145 @@
 #define BROWN "\033[38;2;205;127;50m"
 using namespace std;
 
-void save_game(string &filename, Map &gameMap, Player &player1, Player &player2, int counter) {
-    ofstream outFile(filename);
+void saveGameName(string filename){
+    ofstream outFile;
+    outFile.open("Games.txt", ios::app);
 
-    if (!outFile.is_open()) {
-        cerr << "Error opening file for saving game state." << endl;
+    if (outFile.fail()) {
+        cout << "Error opening file for saving game names." << endl;
+        return;
+    }
+
+    outFile << filename << endl;
+
+    outFile.close();
+    cout << "Game name saved successfully." << endl;
+}
+
+int Get_Number_of_Saved_Games(){
+    ifstream inFile;
+    inFile.open("Games.txt");
+
+    if (inFile.fail()) {
+        cout << "Error opening file for loading game names." << endl;
+        return 0;
+    }
+
+    int count = 0;
+    string line;
+
+    while (getline(inFile, line)) {
+        count++;
+    }
+
+    inFile.close();
+
+    return count;
+}
+
+void loadGameNames(){
+    ifstream inFile;
+    inFile.open("Games.txt");
+
+    if (inFile.fail()) {
+        cout << "Error opening file for loading game names." << endl;
+        return;
+    }
+
+    vector<string> gameNames;
+    string gameName;
+
+    while (getline(inFile, gameName)) {
+        gameNames.push_back(gameName);
+    }
+
+    inFile.close();
+
+    cout << "Saved Games:" << endl;
+    for (int i = 0; i < gameNames.size(); i++) {
+        cout << gameNames[i] << endl;
+    }
+}
+
+
+void save_game(string filename, Map gameMap, Player player1, Player player2) {
+    ofstream outFile;
+    outFile.open(filename.c_str());
+
+    if (outFile.fail()) {
+        cout << "Error opening file for saving game state." << endl;
         return;
     }
 
     // Save players' names and counter
     outFile << player1.getName() << endl;
     outFile << player2.getName() << endl;
-    outFile << counter << endl;
-
-    // Save gameMap, player1, and player2 data (you'll need to create the appropriate functions in the respective classes)
-    /*for (int i = 0; i < ROWS; i++) {
-        for (int j = 0; j < COLS; j++) {
-            outFile << gameMap.getStationColor(i, j) << " " << gameMap.getStationType(i, j) << " ";
-        }
-        outFile << endl;
-    }
 
     // Saving player1 data
-    outFile << player1.getName() << " ";
-    for (int i = 0; i < NUM_MAL; i++) {
-        outFile << player1.getRow(i) << " " << player1.getCol(i) << " " << player1.getNumMalPassedStart(i) << " ";
+    for (int i = 1; i <= 3; i++) {
+        outFile << i;
+        outFile << player1.getMal(i).row;
+        outFile << player1.getMal(i).column;
+        outFile << player1.getMal(i).can_finish;
+        outFile << player1.getMal(i).finished;
+        outFile << player1.getMal(i).carried << endl;
     }
-    outFile << endl;
+
 
     // Saving player2 data
-    outFile << player2.getName() << " ";
-    for (int i = 0; i < NUM_MAL; i++) {
-        outFile << player2.getRow(i) << " " << player2.getCol(i) << " " << player2.getNumMalPassedStart(i) << " ";
+    for (int i = 1; i <= 3; i++) {
+        outFile << i;
+        outFile << player2.getMal(i).row;
+        outFile << player2.getMal(i).column;
+        outFile << player2.getMal(i).can_finish;
+        outFile << player2.getMal(i).finished;
+        outFile << player2.getMal(i).carried << endl;
     }
-    outFile << endl;
-
-    // Saving counter
-    outFile << counter << endl;
-
+    
     outFile.close();
-    cout << "Game saved successfully." << endl
-    outFile.close();*/
+    cout << "Game saved successfully." << endl;
     //Need to be finished
 }
 
-bool load_game(string &filename, Map &gameMap, Player &player1, Player &player2, int &counter) {
-    ifstream inFile(filename);
+void load_game(string filename, Map &gameMap, Player &player1, Player &player2) {
+    ifstream inFile;
+    inFile.open(filename.c_str());
 
-    if (!inFile.is_open()) {
-        cerr << "Error opening file for loading game state." << endl;
-        return false;
+    if (inFile.fail()) {
+        cout << "Error opening file for loading game state." << endl;
+        return;
     }
 
     // Load players' names and counter
-    string name;
-    getline(inFile, name);
-    player1.setName(name);
-    getline(inFile, name);
-    player2.setName(name);
-    inFile >> counter;
-    return true;
-    // Load gameMap, player1, and player2 data (you'll need to create the appropriate functions in the respective classes)
-    // Loading player1 data
-    /*string name;
-    inFile >> name;
-    player1.setName(name);
-    for (int i = 0; i < NUM_MAL; i++) {
-        int row, col, numMalPassedStart;
-        inFile >> row >> col >> numMalPassedStart;
-        player1.setRow(i, row);
-        player1.setCol(i, col);
-        player1.setNumMalPassedStart(i, numMalPassedStart);
+    string player1Name, player2Name;
+    inFile >> player1Name >> player2Name;
+    player1.setName(player1Name);
+    player2.setName(player2Name);
+
+    int malNum, row, column;
+    bool can_finish, finished, carried;
+    // Load player1 data
+    for (int i = 1; i <= 3; i++) {
+        inFile >> malNum >> row >> column >> boolalpha >> can_finish >> boolalpha >> finished >> boolalpha >> carried;
+        player1.setMal(malNum, row, column, can_finish, finished, carried);
     }
 
-    // Loading player2 data
-    inFile >> name;
-    player2.setName(name);
-    for (int i = 0; i < NUM_MAL; i++) {
-        int row, col, numMalPassedStart;
-        inFile >> row >> col >> numMalPassedStart;
-        player2.setRow(i, row);
-        player2.setCol(i, col);
-        player2.setNumMalPassedStart(i, numMalPassedStart);
+    for (int i = 1; i<=3; i++){
+        gameMap.addPlayerLocation(player1.getMal(i).row, player1.getMal(i).row, 0, i);
     }
 
-    // Loading counter
-    inFile >> counter;
+
+    // Load player2 data
+    for (int i = 1; i <= 3; i++) {
+        inFile >> malNum >> row >> column >> boolalpha >> can_finish >> boolalpha >> finished >> boolalpha >> carried;
+        player2.setMal(malNum, row, column, can_finish, finished, carried);
+    }
+     for (int i = 1; i<=3; i++){
+        gameMap.addPlayerLocation(player2.getMal(i).row, player2.getMal(i).row, 0, i);
+    }
 
     inFile.close();
     cout << "Game loaded successfully." << endl;
-
-    inFile.close();*/
-    //Need to be finished
 }
 
 int askWhichTicket(vector<int> &tickets){
