@@ -44,8 +44,9 @@ int main(){
             cout << "Continue the Game? ('q' for exit / 's' to save / 'l' to load / Type \"go\" if you want to continue): ";
         }    
         cin >> input;
-        while (input != "q" || input != "q" || input != "s" || input != "S" || input != "l" || input != "L"){
-            cout << "Invalid input. Please Try Again." << endl;
+        while (input != "q" && input != "Q" && input != "s" && input != "S" && input != "l" && input != "L" && input != "go"){
+            cout << "Invalid input. Please input again." << endl;
+            cout << "Type here: ";
             cin >> input;
         }
         /*if (input == "q" || input == "Q") {
@@ -117,8 +118,9 @@ int main(){
             TicketResult = askWhichTicket(tickets);
             vector<string> malVector = askMalMovement(turn, player1, player2);
             cin >> malSelect;
-            while (malSelect != 0 || malSelect != 1 || malSelect != 2){
-                cout << "Invalid input. Please select from 0-2" << endl;
+            while (malSelect != 0 && malSelect != 1 && malSelect != 2){
+                cout << "Invalid input. Please input a number from 0-2." << endl;
+                cout << "Type here: ";
                 cin >> malSelect;
             }
             
