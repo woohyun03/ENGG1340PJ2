@@ -11,7 +11,7 @@ class Player {
   private:
     string name;
     vector<Mal> Mals;
-    void only_six_positions_in_edges(Mal playerMal);
+    void only_six_positions_in_edges(Mal &playerMal);
     void moveStraight(Mal &playerMal, int &moveNum);
     void corner_and_diagonal(Mal &playerMal, int &moveNum);
     void center(Mal &playerMal, int &moveNum);

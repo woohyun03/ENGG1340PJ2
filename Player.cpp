@@ -123,7 +123,7 @@ void Player::newRowCol (Mal &playerMal, int &moveNum){
     int newRowCol[2] = {playerMal.row, playerMal.column};
 }
 
-void Player::only_six_positions_in_edges(Mal playerMal){
+void Player::only_six_positions_in_edges(Mal &playerMal){
     if (playerMal.row == 6 && playerMal.column == 3){
         playerMal.column += 1;
     } else if (playerMal.row == 3 && playerMal.column == 0){
