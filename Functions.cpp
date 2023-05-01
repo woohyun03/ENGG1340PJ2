@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <chrono>
+#include <thread>
 #include "Functions.h"
 #include "Map.h"
 #include "Player.h"
@@ -16,6 +18,14 @@
 #define GRAY "\033[37m"
 #define BROWN "\033[38;2;205;127;50m"
 using namespace std;
+
+void typingEffect(string outputText){
+    for (int i = 0; i < outputText.length(); i++) {
+        char c = outputText[i];
+        cout << c << flush;
+        this_thread::sleep_for(chrono::milliseconds(50));
+    }
+}
 
 void saveGameName(string filename){
     ofstream outFile;

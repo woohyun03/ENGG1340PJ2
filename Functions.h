@@ -4,6 +4,8 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <chrono>
+#include <thread>
 #include "Map.h"
 #include "Player.h"
 #include "Station.h"
@@ -18,6 +20,7 @@
 #define BROWN "\033[38;2;205;127;50m"
 using namespace std;
 
+void typingEffect(string outputText);
 void saveGameName(string filename);
 int Get_Number_of_Saved_Games();
 void loadGameNames();
