@@ -283,15 +283,15 @@ int getTicket(){
 }
 
 string getTicketName(int ticketNum){
-    if (ticketNum == 1)
+    if (ticketNum == 5)
         return "Diamond";
-    else if (ticketNum <= 2)
+    else if (ticketNum == 4)
         return "Platinum";
-    else if (ticketNum <= 6)
+    else if (ticketNum == 3)
         return "Gold";
-    else if (ticketNum <= 8)
+    else if (ticketNum == 2)
         return "Silver";
-    else if (ticketNum <= 12)
+    else if (ticketNum == 1)
         return "Bronze";
     else
         return "Secret";
