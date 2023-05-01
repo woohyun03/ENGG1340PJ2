@@ -25,6 +25,7 @@ int main(){
 
     if (Get_Number_of_Saved_Games() >0){
         cout << "You have " << Get_Number_of_Saved_Games() << " saved games." << endl;
+        loadGameNames();
         cout << "Type the game you want to load." << endl;
         cin >> input;
         load_game(input, gameMap, player1, player2);
