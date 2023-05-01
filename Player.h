@@ -29,6 +29,7 @@ class Player {
     int getPreviousCol(int malNum);
     void setPreviousRowCol(int malNum, int row, int col);
     Mal getMal(int malNum);
+    void Player::setMal(int malNum, int row, int col, bool can_finish, bool finished, bool carried);
     void set_cannot_finish(int malNum);
     bool win();
     void check_Carried();

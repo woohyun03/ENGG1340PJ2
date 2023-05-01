@@ -62,6 +62,9 @@ Mal Player::getMal(int malNum){
     return Mals[malNum-1];
 }
 
+void Player::setMal(int malNum, int row, int col, bool can_finish, bool finished, bool carried){
+    Mals[malNum-1] = {row, col, 6, 0, can_finish, finished, carried};
+}
 
 void Player::set_cannot_finish(int malNum){
     Mals[malNum-1].can_finish = false;
