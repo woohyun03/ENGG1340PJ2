@@ -183,14 +183,29 @@ void Player::center(Mal &playerMal, int &moveNum){
 }
 
 void Player::Back(Mal &playerMal){
-    if (playerMal.row == 6 && 0 < playerMal.column){
+    if (playerMal.row == 3 && playerMal.column == 3){
+        if (playerMal.previousRow == 2){
+            playerMal.row -= 1;
+            playerMal.column += 1;
+        } else if (playerMal.previousRow == 4){
+            playerMal.row += 1;
+            playerMal.column += 1;
+        }
+    } else if (playerMal.row == 0 && playerMal.column == 0){
+        if (playerMal.previousRow == 0){
+            playerMal.column += 1;
+        } else if (playerMal.previousRow == 1){
+            playerMal.row += 1;
+            playerMal.column += 1;
+        }
+    } else if (playerMal.row == 6 && 0 < playerMal.column){
         playerMal.column -=1;
     } else if (playerMal.column == 6 && 6 > playerMal.row){
         playerMal.row +=1;
     } else if (playerMal.row == 0 && playerMal.column < 6){
         playerMal.column += 1;
-    } else if (playerMal.column == 0 && playerMal.row){
-
+    } else if (playerMal.column == 0 && playerMal.row > 0){
+        playerMal.row -= 1;
     }
 }
 
