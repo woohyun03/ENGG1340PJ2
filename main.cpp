@@ -44,6 +44,10 @@ int main(){
             cout << "Continue the Game? ('q' for exit / 's' to save / 'l' to load / Type \"go\" if you want to continue): ";
         }    
         cin >> input;
+        while (input != "q" || input != "q" || input != "s" || input != "S" || input != "l" || input != "L"){
+            cout << "Invalid input. Please Try Again." << endl;
+            cin >> input;
+        }
         /*if (input == "q" || input == "Q") {
             cout << "Exit the Game." << endl;
             break;
@@ -57,12 +61,12 @@ int main(){
             cout << "Enter the filename to load the game state: ";
             cin >> input;
             if (load_game(input, gameMap, player1, player2, counter)) {
-                cout << "Game state loaded." << endl;
+            cout << "Game state loaded." << endl;
             } else {
                 cout << "Failed to load the game state." << endl;
             }
             continue;
-        }*/
+        */
 
 
         if(counter % 2 == 0){
@@ -75,9 +79,6 @@ int main(){
         }
         cout << endl;
 
-
-        cout << "Type \"r\" the Yut (Get the ticket)";
-        cin >> input;
         cout << "Your ticket is..." << endl;
         for (int i = 0; i < 3; i++){
             this_thread::sleep_for(chrono::seconds(1));
@@ -116,6 +117,11 @@ int main(){
             TicketResult = askWhichTicket(tickets);
             vector<string> malVector = askMalMovement(turn, player1, player2);
             cin >> malSelect;
+            while (malSelect != 0 || malSelect != 1 || malSelect != 2){
+                cout << "Invalid input. Please select from 0-2" << endl;
+                cin >> malSelect;
+            }
+            
 
             if (turn == 0){
                 cout << "Current Position of " << malVector[malSelect] << " is" << gameMap.mapPlayerLocation_to_station(player1.getRow(malSelect),player1.getCol(malSelect)) << endl;
