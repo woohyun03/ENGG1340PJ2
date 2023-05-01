@@ -569,7 +569,6 @@ void PrintExplain(int row, int col){
     }
     else if (row == 2 && col == 0)
     {
-
         cout << "You have arrived at Hong Kong Museum of History. It is a museum that traces the history of Hong Kong." << endl;
     }
     else if (row == 2 && col == 2)
