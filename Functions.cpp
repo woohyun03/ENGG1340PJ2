@@ -81,10 +81,11 @@ void loadGameNames(){
 
     inFile.close();
 
-    cout << "Saved Games:" << endl;
+    cout << "Saved Games: ";
     for (int i = 0; i < gameNames.size(); i++) {
-        cout << gameNames[i] << endl;
+        cout << gameNames[i] << "   ";
     }
+    cout << endl;
 }
 
 
