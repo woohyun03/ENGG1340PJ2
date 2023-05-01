@@ -26,6 +26,7 @@ Map::Map() {
     mapPlayerLocation[6][0].Playertwo_second = true;
     mapPlayerLocation[6][0].Playerone_third = true;
 
+    string external_map[60][77];
     for (int i = 0; i < 60; i++){
         for (int j = 0; j< 77; j++){
             mapChart[i][j] = external_map[i][j];
