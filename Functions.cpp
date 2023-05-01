@@ -180,12 +180,12 @@ int askWhichTicket(vector<int> &tickets){
     cout << endl;
     cout << "You got " << tickets.size() << " moves." << endl;
     for (int i = 0; i < tickets.size(); i++){
-        cout << i << ". " << getTicketName(tickets[i]) << "     ";
+        cout << i + 1 << ". " << getTicketName(tickets[i]) << "     ";
     }
     cout << endl;
     cout << "Please choose the Ticket you want to use: ";
     cin >> input;
-    while (input >= 1 || input <= tickets.size()-1){
+    while (input < 1 || input > tickets.size()){
         cout << "Invalid input. Please input a proper number for ticket use." << endl;
         cout << "Type here: ";
         cin >> input;
@@ -232,7 +232,7 @@ vector<string> askMalMovement(int turn, Player one, Player two){
             if (currentMal.finished) {
                 continue;
             } else if (currentMal.carried) {
-                string prefix = "A" + to_string(i);
+                string prefix = "B" + to_string(i);
                 for (int j = i + 1; j <= 3; j++) {
                     if (two.getMal(j).carried) {
                         prefix += to_string(j);
@@ -249,7 +249,7 @@ vector<string> askMalMovement(int turn, Player one, Player two){
                     choices.push_back(prefix);
                 }
             } else {
-                choices.push_back("A" + to_string(i));
+                choices.push_back("B" + to_string(i));
             }
         }
     }
@@ -270,16 +270,17 @@ int getTicket(){
     int randNum = rand() % 16 + 1;
     if (randNum == 1)
         return 5; //diamond
-    else if (randNum <= 2)
+    else if (randNum == 2)
         return 4; //platinum
     else if (randNum <= 6)
         return 3; //gold
-    else if (randNum <= 8)
-        return 2; //silver
     else if (randNum <= 12)
+        return 2; //silver
+    else if (randNum <= 16)
+        if ((rand() % 4 + 1) == 1)
+            return -1; //secret
         return 1; //bronze
-    else
-        return -1; //secret
+    return 0;
 }
 
 string getTicketName(int ticketNum){
