@@ -49,7 +49,7 @@ int main(){
         cin >> input;
         int loadfailed = 0;
         load_game(input, gameMap, player1, player2, loadfailed);
-        if (loadfailed = 1){
+        if (loadfailed == 1){
             typingEffect("Failed to load game. We will start a new game.");
             cout << endl;
             typingEffect("Press Enter to Start");
@@ -90,12 +90,6 @@ int main(){
 
 
     while (true) {
-        //When the game is over, the program automatically ends 
-        if (checkwin == 1){
-            typingEffect("Game is over. Finished game will not be saved");
-            typingEffect("Thank you for playing. See you in the next game!!!");
-            break; 
-        }
         //Printing map to show the game status    
         gameMap.printMap();       
 
@@ -261,6 +255,13 @@ int main(){
                 break;
             }
 
+        }
+
+        //When the game is over, the program automatically ends 
+        if (checkwin == 1){
+            typingEffect("Game is over. Finished game will not be saved");
+            typingEffect("Thank you for playing. See you in the next game!!!");
+            break; 
         }
         
         //If the game is not over, change the turn   
