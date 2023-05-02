@@ -340,7 +340,7 @@ void move_or_carry_Mal(Player &player, int playerNum, int malSelect, string malS
 }
 
 //Check if the mal is killing opponent's mal. If yes, opponent's mal will go back to the starting point
-void killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int col){
+bool killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int col){
     bool killFirst = false;
     bool killSecond = false;
     bool killThird = false;
@@ -368,7 +368,7 @@ void killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int c
     }
 
     if (!killFirst && !killSecond && !killThird){
-        return;
+        return false;
     }
 
     cout << RED << "You killed the opponent's mal number:";
@@ -393,6 +393,7 @@ void killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int c
     }
 
     cout << "." << endl;
+    return true;
 }
 
 //Shows the new position of moved mal aesthetically

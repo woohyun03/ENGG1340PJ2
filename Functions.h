@@ -33,7 +33,7 @@ vector<string> askMalMovement(int turn, Player one, Player two);
 int getTicket();
 string getTicketName(int ticketNum);
 void move_or_carry_Mal(Player &player, int playerNum, int malSelect, string malSign, int TicketResult, Map &gameMap, int pRow, int pCol);
-void killMal(Map &gameMap, Player &opponent, int playerNum, int newRow, int newCol);
+bool killMal(Map &gameMap, Player &opponent, int playerNum, int newRow, int newCol);
 void displayTicket(int moves);
 void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, int previCol, int row, int col);
 void PrintExplain(int row, int col);
