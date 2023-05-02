@@ -163,19 +163,19 @@ void Player::moveStraight(Mal &playerMal, int &moveNum){
             moveNum -= 1;
             only_six_positions_in_edges(playerMal);
         }
-    } else if (playerMal.column == 6){
+    } if (playerMal.column == 6){
         while (playerMal.row != 0 && moveNum != 0){
             playerMal.row -= 1;
             moveNum -= 1;
             only_six_positions_in_edges(playerMal);
         }
-    } else if (playerMal.row == 0){
+    } if (playerMal.row == 0){
         while (playerMal.column != 0 && moveNum != 0){
             playerMal.column -= 1;
             moveNum -= 1;
             only_six_positions_in_edges(playerMal);
         }
-    } else if (playerMal.column == 0){
+    } if (playerMal.column == 0){
         while (playerMal.row !=6 && moveNum != 0){
             playerMal.row += 1;
             moveNum -= 1;
