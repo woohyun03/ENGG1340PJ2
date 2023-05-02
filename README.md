@@ -49,7 +49,7 @@
 ## Components
 
 ### Main.cpp
->부가 설명
+> Running the game and supporting file input and output
 
 |Name|Type|Type|
 |:-:|:-:|:-:|
@@ -64,7 +64,7 @@
 |malVector|vector<string>|Stores the list of Mal names to be displayed|
 
 ### Functions.cpp
->부가설명
+> various functions that we used to run the game
 
 |Name|Type|Type|Parameter|
 |:-:|:-:|:-:|:-:|
@@ -80,45 +80,16 @@
 |player1|Player|Represents| avs|
 
 
-### Mal (Model)
->보드위에서 움직이는 Mal Class, 포인터를 활용하여 잡기,합치기 구현.
+### Map.cpp
+> This code defines a `Map` class that manages a board game map, handling player locations, mapping between different coordinate systems, and updating the game board's visual representation.
 
-|이름|접근자|Type|설명|Parameter|비고|
-|:-:|:-:|:-:|:-:|:-:|:-:|
-|team|private|int|팀|  |val|
-|number|private|int|말 번호|-|val|
-|y|private|int|말판에서 y축 좌표| |val|
-|x|private|int|말판에서 x축 좌표| |val|
-|isChild|private|bool|자식 유무, 있다면 true| |val|
-|life|private|bool|생존여부, 마지막 위치에 도착하면 false| |val|
-|child_point|private|*Mal|자식 연결 포인터| |val|
-|getNum|public|int|말 번호 반환|int|method|
-|getTeam|public|int|팀 반환|int|method|
-|getY|public|int| |y 축 반환|method|
-|getX|public|int| |x 축 반환|method|
-|getChild_Cnt|public|int|연결된 자식 말 갯수 반환| |method|
-|getIsChild|public|bool|자식 유무 반환| |method|
-|getlife|public|bool|생존 유무 반환| |method|
-|getPointChild|public|*Mal|자식말 포인터 반환| |method|
-|setTeam|public|void|팀 입력 / int input| |method|
-|setPos|public|void|위치 입력|int inputY, int inputX|method|
-|setIsChild|public|void|자식 유무 입력|bool input|method|
-|setLife|public|void|생존 여부 입력|bool input|method|
-|setChild|public|void|자식이 될 말 입력|Mal *input|method|
-|setNum|public|void|말번호 입력|int input|method|
-
-
-### Board (Model)
-> 보드 Class.
-
-|이름|접근자|Type|설명|Parameter|비고|
-|:-:|:-:|:-:|:-:|:-:|:-:|
-|bp|private|Board_Piece[11][11]|Board_Piece class 를 11 * 11 배열로 만든것| |val|
-|getBoardPiece|public|&Board_Piece|각 위치에 맞는 Board_Piece 주소값 반환 |int y , int x|method|
-|getMovePoint|public|pair<int, int>|말의 상황별 이동위치 반환 |int y ,int x, int yut_num|method|
-|init_Piece|public|void|팀| Board 초기화 |method|
-|endPoint_Init|public|void|말이 마지막 위치 도달하면 Board_Piece 초기화 |Mal* point_mal|method|
-
+|Name|Type|Type|
+|:-:|:-:|:-:|
+|TicketResult|int|Stores the result of the ticket roll|
+|input|string|Stores user input|
+|malSelect|int|Stores the selected Mal index|
+|tickets|vector<int>|Stores the remaining tickets|
+|malVector|vector<string>|Stores the list of Mal names to be displayed|
 
 ### The Coding Requirements
 >보조설명
