@@ -134,7 +134,7 @@ void Map::addMal(int row, int col, string mal[3][3]){
 
     for (int i = rowCol.first; i < rowCol.first+3; i++){
         for (int j = rowCol.second; j < rowCol.second+3; j++){
-            mapChart[i][j] = mal[i][j];
+            mapChart[i][j] = mal[i-rowCol.first][j-rowCol.second];
         }
     }
 }
