@@ -111,7 +111,7 @@ int main(){
                 cout << "Game Name : ";
                 cin >> input;
                 save_game(input, gameMap, player1, player2);
-                cout << "Game saved. Game will be continued..." << endl;
+                cout << "Game will be continued..." << endl;
                 cout << endl;
                 cout << endl;
                 cout << endl;
