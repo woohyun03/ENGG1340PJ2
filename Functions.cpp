@@ -1,3 +1,4 @@
+//For aesthetic purpose, and including libraries and other files
 #include <iostream>
 #include <string>
 #include <vector>
@@ -18,8 +19,8 @@
 #define GRAY "\033[37m"
 #define BROWN "\033[38;2;205;127;50m"
 using namespace std;
-//For aesthetic purpose, and including libraries and other files
 
+//For aesthetic purpose
 void typingEffect(string outputText){
     for (int i = 0; i < outputText.length(); i++) {
         char c = outputText[i];
@@ -27,8 +28,8 @@ void typingEffect(string outputText){
         this_thread::sleep_for(chrono::milliseconds(30));
     }
 }
-//For aesthetic purpose
 
+//Saving the name of the game into a file
 void saveGameName(string filename){
     ofstream outFile;
     outFile.open("Games.txt", ios::app);
@@ -43,8 +44,8 @@ void saveGameName(string filename){
     outFile.close();
     cout << "Game name saved successfully." << endl;
 }
-//Saving the name of the game into a file
 
+//Getting the number of saved games to check if a player saved the game previously
 int Get_Number_of_Saved_Games(){
     ifstream inFile;
     inFile.open("Games.txt");
@@ -65,8 +66,8 @@ int Get_Number_of_Saved_Games(){
 
     return count;
 }
-//Getting the number of saved games to check if a player saved the game previously
 
+//Showing the name of the games saved previously. Error shown when unable to laod the names
 void loadGameNames(){
     ifstream inFile;
     inFile.open("Games.txt");
@@ -91,9 +92,8 @@ void loadGameNames(){
     }
     cout << endl;
 }
-//Showing the name of the games saved previously. Error shown when unable to laod the names
 
-
+//Game saving function. It saves each player's positions of the mals
 void save_game(string filename, Map gameMap, Player player1, Player player2) {
     ofstream outFile;
     outFile.open(filename.c_str());
@@ -132,8 +132,8 @@ void save_game(string filename, Map gameMap, Player player1, Player player2) {
     cout << "Game saved successfully." << endl;
     //Need to be finished
 }
-//Game saving function. It saves each player's positions of the mals
 
+//Bringing a saved game. If it fails to bring, new game will start
 void load_game(string filename, Map &gameMap, Player &player1, Player &player2, int &loadfailed) {
     ifstream inFile;
     inFile.open(filename.c_str());
@@ -175,8 +175,8 @@ void load_game(string filename, Map &gameMap, Player &player1, Player &player2, 
     inFile.close();
     cout << "Game loaded successfully." << endl;
 }
-//Bringing a saved game. If it fails to bring, new game will start
 
+//Asking player which ticket he or she will use. Invalid input is also provided
 int askWhichTicket(vector<int> &tickets){
     if (tickets.size() == 1){
         cout << "You got " << getTicketName(tickets[0]) << " ticket." << endl;
@@ -201,8 +201,8 @@ int askWhichTicket(vector<int> &tickets){
     tickets.erase(tickets.begin() + input);
     return input;
 }
-//Asking player which ticket he or she will use. Invalid input is also provided
 
+//Asking which mal to use to a player. Mals inn special conditions like being carried will not be provided as an option
 vector<string> askMalMovement(int turn, Player one, Player two){
     vector<string> choices;
     bool alreadyAdded = false;
@@ -273,9 +273,8 @@ vector<string> askMalMovement(int turn, Player one, Player two){
     }
     return choices;
 }
-//Asking which mal to use to a player. Mals inn special conditions like being carried will not be provided as an option
 
-
+//Randomly getting ticket function. Probability of each ticket is different
 int getTicket(){
     int randNum = rand() % 16 + 1;
     if (randNum == 1)
@@ -292,8 +291,8 @@ int getTicket(){
         return 1; //bronze
     return 0;
 }
-//Randomly getting ticket function. Probability of each ticket is different
 
+//Defining the type of ticket depending on the randomly generated number
 string getTicketName(int ticketNum){
     if (ticketNum == 5)
         return "Diamond";
@@ -308,8 +307,8 @@ string getTicketName(int ticketNum){
     else
         return "Secret";
 }
-//Defining the type of ticket depending on the randomly generated number
 
+//Check if the mal is being carried
 void move_or_carry_Mal(Player &player, int playerNum, int malSelect, string malSign, int TicketResult, Map &gameMap, int pRow, int pCol, int row, int col){
     if (malSign.length() == 2){
         player.moveMal(malSelect, TicketResult);
@@ -331,8 +330,8 @@ void move_or_carry_Mal(Player &player, int playerNum, int malSelect, string malS
         gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(3,1)));
     }
 }
-//Check if the mal is being carried
 
+//Check if the mal is killing opponent's mal. If yes, opponent's mal will go back to the starting point
 void killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int col){
     bool killFirst = false;
     bool killSecond = false;
@@ -387,8 +386,8 @@ void killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int c
 
     cout << "." << endl;
 }
-//Check if the mal is killing opponent's mal. If yes, opponent's mal will go back to the starting point
 
+//Shows the new position of moved mal aesthetically
 void moveMalDisplay(Map &gameMap, string malSign, int previRow, int previCol, int row, int col){
     if (malSign == "A1"){
         string arrA1[3][3] = {
@@ -514,8 +513,8 @@ void moveMalDisplay(Map &gameMap, string malSign, int previRow, int previCol, in
 
 
 }
-//Shows the new position of moved mal
 
+//Shows the ticket aesthetically
 void displayTicket(int moves){
     if (moves == 4)
     {
@@ -604,8 +603,8 @@ void displayTicket(int moves){
     }
 
 }
-//Shows the ticket aesthetically
 
+//Provides an information about the location in the map where the mal has arrived
 void PrintExplain(int row, int col){
     if (row == 0 && col == 0)
     {
@@ -724,4 +723,3 @@ void PrintExplain(int row, int col){
         cout << "You have arrived at Admiralty. It is a major commercial and financial hub in Hong Kong, and is home to many important government buildings, including the Central Government Complex and the Legislative Council Complex." << endl;
     }
 }
-//Provides an information about the location in the map where the mal has arrived
