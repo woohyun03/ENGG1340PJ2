@@ -530,6 +530,7 @@ void displayTicket(int moves){
         cout << CYAN << "│         │\n";
         cout << CYAN << "│ x     x │\n";
         cout << CYAN << "└─────────┘\n\n";
+        cout << endl;
     }
     
     else if (moves == 3)
@@ -603,6 +604,7 @@ void displayTicket(int moves){
         cout << MAGENTA <<  "└─────────┘\n\n";
     }
 
+    cout << RESET << endl;
 }
 
 //Provides an information about the location in the map where the mal has arrived
