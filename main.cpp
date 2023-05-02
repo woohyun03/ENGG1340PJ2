@@ -84,8 +84,7 @@ int main(){
         this_thread::sleep_for(chrono::seconds(1));
         cout << "\r" << 3 - i << "..." << endl;
     }
-
-
+    this_thread::sleep_for(chrono::seconds(1));  
 
 
     while (true) {
@@ -224,14 +223,14 @@ int main(){
                 if (player1.getMal(stoi(malVector[malSelect-1].substr(1,1))).finished){
                     gameMap.removeMal(player1.getRow(malSelect), player1.getCol(malSelect));
                 } else {
-                    moveMalDisplay(gameMap, malVector[malSelect-1], player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect),player1.getRow(malSelect), player1.getCol(malSelect));
+                    moveMalDisplay(gameMap, player1, malVector[malSelect-1], player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect),player1.getRow(malSelect), player1.getCol(malSelect));
                 }
             } else if (turn == 1) {
                 move_or_carry_Mal(player2, 1, malSelect, malVector[malSelect-1], TicketResult, gameMap, player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect));
                 if (player1.getMal(stoi(malVector[malSelect-1].substr(1,1))).finished){
                     gameMap.removeMal(player2.getRow(malSelect), player2.getCol(malSelect));
                 } else {
-                    moveMalDisplay(gameMap, malVector[malSelect-1], player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect),player2.getRow(malSelect), player2.getCol(malSelect));
+                    moveMalDisplay(gameMap, player2, malVector[malSelect-1], player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect),player2.getRow(malSelect), player2.getCol(malSelect));
                 }
             }
 
