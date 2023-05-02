@@ -204,7 +204,46 @@ void Map::UpdatePlayerLocation(int previRow, int previCol, int row, int col, int
 void Map::printMap(){
     for (int i=0;i<60;i++) {
         for (int j=0;j<77;j++) {
-            cout << mapChart[i][j];
+            if (mapChart[i][j] == "A" && mapChart[i-1][j] == " " && mapChart[i][j-1] == " ")
+                cout << RED << mapChart[i][j];
+            else if (mapChart[i][j-1] == "A" && mapChart[i-1][j-1] == " " && mapChart[i][j-2] == " ")
+                cout << RED << mapChart[i][j];
+            else if (mapChart[i][j-2] == "A" && mapChart[i-1][j-2] == " " && mapChart[i][j-2] == " ")
+                cout << RED << mapChart[i][j];
+            else if (mapChart[i-1][j] == "A" && mapChart[i-2][j] == " " && mapChart[i-1][j-1] == " ")
+                cout << RED << mapChart[i][j];
+            else if (mapChart[i-1][j-1] == "A" && mapChart[i-2][j-1] == " " && mapChart[i-1][j-2] == " ")
+                cout << RED << mapChart[i][j];
+            else if (mapChart[i-1][j-2] == "A" && mapChart[i-2][j-2] == " " && mapChart[i-1][j-2] == " ")
+                cout << RED << mapChart[i][j];
+            else if (mapChart[i-2][j] == "A" && mapChart[i-3][j] == " " && mapChart[i-2][j-1] == " ")
+                cout << RED << mapChart[i][j];
+            else if (mapChart[i-2][j-1] == "A" && mapChart[i-3][j-1] == " " && mapChart[i-2][j-2] == " ")
+                cout << RED << mapChart[i][j];
+            else if (mapChart[i-2][j-2] == "A" && mapChart[i-3][j-2] == " " && mapChart[i-2][j-2] == " ")
+                cout << RED << mapChart[i][j];
+            
+            
+            else if (mapChart[i][j] == "B" && mapChart[i-1][j] == " " && mapChart[i][j-1] == " ")
+                cout << BLUE << mapChart[i][j];
+            else if (mapChart[i][j-1] == "B" && mapChart[i-1][j-1] == " " && mapChart[i][j-2] == " ")
+                cout << BLUE << mapChart[i][j];
+            else if (mapChart[i][j-2] == "B" && mapChart[i-1][j-2] == " " && mapChart[i][j-3] == " ")
+                cout << BLUE << mapChart[i][j];
+            else if (mapChart[i-1][j] == "B" && mapChart[i-2][j] == " " && mapChart[i-1][j-1] == " ")
+                cout << BLUE << mapChart[i][j];
+            else if (mapChart[i-1][j-1] == "B" && mapChart[i-1][j-1] == " " && mapChart[i-1][j-2] == " ")
+                cout << BLUE << mapChart[i][j];
+            else if (mapChart[i-1][j-2] == "B" && mapChart[i-1][j-2] == " " && mapChart[i-1][j-3] == " ")
+                cout << BLUE << mapChart[i][j];
+            else if (mapChart[i-2][j] == "B" && mapChart[i-3][j] == " " && mapChart[i-2][j-1] == " ")
+                cout << BLUE << mapChart[i][j];
+            else if (mapChart[i-2][j-1] == "B" && mapChart[i-3][j-1] == " " && mapChart[i-2][j-2] == " ")
+                cout << BLUE << mapChart[i][j];
+            else if (mapChart[i-2][j-2] == "B" && mapChart[i-3][j-2] == " " && mapChart[i-2][j-3] == " ")
+                cout << BLUE << mapChart[i][j];
+            else cout << mapChart[i][j];
+
         }
         cout << "" << endl;
     }
