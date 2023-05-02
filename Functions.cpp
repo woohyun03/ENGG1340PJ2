@@ -193,13 +193,14 @@ int askWhichTicket(vector<int> &tickets){
     cout << endl;
     cout << "Please choose the Ticket you want to use: ";
     cin >> input;
-    while (input < 1 || input > tickets.size()){
+    /*while (input < 1 || input > tickets.size()){
         cout << "Invalid input. Please input a proper number for ticket use." << endl;
         cout << "Type here: ";
         cin >> input;
-    }
-    tickets.erase(tickets.begin() + input);
-    return input;
+    }*/
+    int ticket = tickets[input-1];
+    tickets.erase(tickets.begin() + (input-1));
+    return ticket;
 }
 
 //Asking which mal to use to a player. Mals inn special conditions like being carried will not be provided as an option
@@ -309,25 +310,25 @@ string getTicketName(int ticketNum){
 }
 
 //Check if the mal is being carried
-void move_or_carry_Mal(Player &player, int playerNum, int malSelect, string malSign, int TicketResult, Map &gameMap, int pRow, int pCol, int row, int col){
+void move_or_carry_Mal(Player &player, int playerNum, int malSelect, string malSign, int TicketResult, Map &gameMap, int pRow, int pCol){
     if (malSign.length() == 2){
         player.moveMal(malSelect, TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, malSelect);
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(malSelect), player.getCol(malSelect), playerNum, malSelect);
     } else if (malSign.length() == 3){
         player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(1,1)));
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(malSelect), player.getCol(malSelect), playerNum, stoi(malSign.substr(1,1)));
 
         player.moveMal(stoi(malSign.substr(2,1)), TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(2,1)));
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(malSelect), player.getCol(malSelect), playerNum, stoi(malSign.substr(2,1)));
     } else {
         player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(1,1)));
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(malSelect), player.getCol(malSelect), playerNum, stoi(malSign.substr(1,1)));
 
         player.moveMal(stoi(malSign.substr(2,1)), TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(2,1)));
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(malSelect), player.getCol(malSelect), playerNum, stoi(malSign.substr(2,1)));
 
         player.moveMal(stoi(malSign.substr(3,1)), TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(3,1)));
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(malSelect), player.getCol(malSelect), playerNum, stoi(malSign.substr(3,1)));
     }
 }
 
