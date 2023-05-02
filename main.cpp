@@ -35,10 +35,18 @@ int main(){
     
     //Welcoming ASCII art
     WelcomeText();
+    this_thread::sleep_for(chrono::seconds(1));
     
     //For aesthetic purpose
     typingEffect("Welcome to Korean Traditional Yut Game (MTR EDITION) !!!! ");
     this_thread::sleep_for(chrono::seconds(1));
+    cout << endl;
+    typingEffect("Press Enter to Continue and read the rule");
+    getline(cin, input);
+
+    //Rule Explaing
+    cout << endl;
+    gameRuleText();
     cout << endl;
     typingEffect("Press Enter to Continue");
     getline(cin, input);
