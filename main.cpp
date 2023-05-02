@@ -1,3 +1,4 @@
+//Including libraries and other files
 #include <iostream>
 #include <string>
 #include <vector>
@@ -9,9 +10,11 @@
 #include "Station.h"
 #include "Mal.h"
 using namespace std;
-//Including libraries and other files
+
+//Comments in this file explains the general flow of the game play.
 
 int main(){
+    //Defining types of variables used for the game play
     Map gameMap;
     Player player1;
     Player player2;
@@ -23,20 +26,20 @@ int main(){
     int malSelect;
     vector<int> tickets;
     string outputText;
-    //Defining types of variables used for the game play
     
+     //For aesthetic purpose
     for (int i = 0; i < 20; i++){
         cout << endl;
     }
-    //For aesthetic purpose
     
+    //For aesthetic purpose
     typingEffect("Welcome to Korean Traditional Yut Game (MTR EDITION) !!!! ");
     this_thread::sleep_for(chrono::seconds(1));
     cout << endl;
     typingEffect("Press Enter to Continue");
     getline(cin, input);
-    //For aesthetic purpose
 
+    //If there are saved games, the system asks the player which game to load. If unsuccessful or no saved games, create a new game to play
     if (Get_Number_of_Saved_Games() >0){
         typingEffect("You have " + to_string(Get_Number_of_Saved_Games()) + " saved games.");
         cout << endl;
@@ -70,32 +73,31 @@ int main(){
         cin >> input;
         player2.setName(input);
     }
-    //If there are saved games, the system asks the player which game to load. If unsuccessful or no saved games, create a new game to play
-
+    
+    //For aesthetic purpose
     typingEffect("We will start game in...");
     cout << endl;
     for (int i = 0; i < 3; i++){
             this_thread::sleep_for(chrono::seconds(1));
             cout << "\r" << 3 - i << "..." << endl;
         }
-    //For aesthetic purpose
 
-    while (true) {        
+    while (true) {
+        //When the game is over, the program automatically ends 
         if (checkwin == 1){
             typingEffect("Game is over. Finished game will not be saved");
             typingEffect("Thank you for playing. See you in the next game!!!");
-            break;
-        //When the game is over, the program automatically ends     
-            
-        gameMap.printMap();
-        //Printing map to show the game status
+            break;  
+        //Printing map to show the game status    
+        gameMap.printMap();       
 
+        //For aesthetic purpose
         for (int i = 0; i < 100; i++) {
             cout << "-";
         }
         cout << endl;
-        //For aesthetic purpose
         
+        //Asks the player to continue or save the game when turn changes. Does not process until the player enters a valid input. Game will still continue after saving
         if (counter != -1){
             typingEffect("Continue the Game? ('q' for exit / 's' to save)");
             cout << endl;
@@ -118,11 +120,11 @@ int main(){
                 cout << endl;
             }
         }
-        //Asks the player to continue or save the game when turn changes. Does not process until the player enters a valid input. Game will still continue after saving
-
-        counter = counter + 1;
+        
         //Able to track which player's turn
+        counter = counter + 1;
 
+        //Showing who's turn using counter
         if(counter % 2 == 0){
             typingEffect("It is " + player1.getName() + "'s turn");
             turn = 0;
@@ -133,13 +135,13 @@ int main(){
         }
         cout << endl;
         cout << endl;
-        //Showing who's turn using counter
-
+        
+        //For aesthetic purpose
         typingEffect("Press Enter to roll the Yut (Get the Ticket)!!");
         cin.ignore(); 
         getline(cin, input);
+        
         //For aesthetic purpose
-
         typingEffect("Your ticket is...");
         cout << endl;
         for (int i = 0; i < 3; i++){
@@ -147,17 +149,17 @@ int main(){
             cout <<  3 - i << "..." << endl;
         }
         this_thread::sleep_for(chrono::seconds(1));
-        //For aesthetic purpose
 
         while (true){
+            //Saves the tickets that players have gained until now
             TicketResult = getTicket();
             tickets.push_back(TicketResult);
-            //Saves the tickets that players have gained until now
             
+             //Shows which ticket the player gained
             cout << getTicketName(TicketResult) << "!!!" << endl;
             this_thread::sleep_for(chrono::seconds(2));
-            //Shows which ticket the player gained
             
+            //Showing player that he or she is able to roll the Yut once more (get ticket once more) as the player picked a special ticket
             if (TicketResult < 4){
                 break;
             } else if (TicketResult >= 4){
@@ -171,20 +173,20 @@ int main(){
                 }
                 this_thread::sleep_for(chrono::seconds(1));            
             } 
-            //Showing player that he or she is able to roll the Yut once more (get ticket once more) as the player picked a special ticket
         }
-
-        gameMap.printMap();
+        
         //Showing game status during the game
+        gameMap.printMap();
 
         while (tickets.size() != 0){
+            //Check if the player's mal is being carried, depending on which player's turn it is
             if (turn == 0){
                 player1.check_Carried();
             } else if (turn == 1) {
                 player2.check_Carried();
             }
-            //Check if the player's mal is being carried, depending on which player's turn it is
-
+            
+            //Asking which ticket to use and which mal to move to a player. Asks until the player types a correct input
             TicketResult = askWhichTicket(tickets);
             vector<string> malVector = askMalMovement(turn, player1, player2);
             cin >> malSelect;
@@ -193,19 +195,17 @@ int main(){
                 cout << "Type here: ";
                 cin >> malSelect;
             }
-            //Asking which ticket to use and which mal to move to a player. Asks until the player types a correct input
             
-
+            //Showing the location of the mal selected by the player before the movement
             if (turn == 0){
                 cout << "Current Position of " << malVector[malSelect-1] << " is " << gameMap.mapPlayerLocation_to_station(player1.getRow(malSelect),player1.getCol(malSelect)) << endl;
             } else if (turn == 1) {
                 cout << "Current Position of " << malVector[malSelect-1] << " is " << gameMap.mapPlayerLocation_to_station(player2.getRow(malSelect),player2.getCol(malSelect)) << endl;
             }
-
             this_thread::sleep_for(chrono::seconds(1));
             cout << endl;
-            //Showing the location of the mal selected by the player before the movement
 
+            //Save the location of the selected mal after the movement, display some features of the game (ticket, map ..etc)
             if (turn == 0){
                 move_or_carry_Mal(player1, 0, malSelect, malVector[malSelect-1], TicketResult, gameMap, player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect), player1.getRow(malSelect), player1.getCol(malSelect));
                 if (player1.getMal(stoi(malVector[malSelect-1].substr(1,1))).finished){
@@ -221,25 +221,24 @@ int main(){
                     moveMalDisplay(gameMap, malVector[malSelect-1], player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect),player2.getRow(malSelect), player2.getCol(malSelect));
                 }
             }
-            //Save the location of the selected mal after the movement, display some features of the game (ticket, map ..etc)
 
-
+            //Showing the new position of the selected mal
             if (turn == 0){
                 cout << malVector[malSelect-1] << " will move to " << gameMap.mapPlayerLocation_to_station(player1.getRow(malSelect),player1.getCol(malSelect)) << endl;
             } else if (turn == 1) {
                 cout << malVector[malSelect-1] << " will move to " << gameMap.mapPlayerLocation_to_station(player2.getRow(malSelect),player2.getCol(malSelect)) << endl;
             }
             this_thread::sleep_for(chrono::seconds(2));
-            //Showing the new position of the selected mal
-            
+
+            //Explaining the location that the mal arrived, and check if the moved mal killed any opponent's mal
             PrintExplain(player1.getRow(malSelect),player1.getCol(malSelect));
             if (turn == 0){
                 killMal(gameMap, player2, turn, player1.getRow(malSelect), player1.getCol(malSelect));
             } else if (turn == 1) {
                 killMal(gameMap, player1, turn, player2.getRow(malSelect), player2.getCol(malSelect));
             }
-            //Explaining the location that the mal arrived, and check if the moved mal killed any opponent's mal
             
+            //Check if the game is over or not. If the game is over, change the "checkwin" variable to know if the game has ended or not
             if(turn == 0 && player1.win()){
                 cout << "Game Over! Player 1 (" << player1.getName() << ") wins!!!" << endl;
                 checkwin = 1;
@@ -249,15 +248,13 @@ int main(){
                 checkwin = 1;
                 break;
             }
-            //Check if the game is over or not. If the game is over, change the "checkwin" variable to know if the game has ended or not
             
+            //If the game is not over, change the turn   
             typingEffect("Press Enter to Change the turn");
             cin.ignore(); 
             getline(cin, input);
-            break;
-            //If the game is not over, change the turn            
+            break;         
         }
-
     }
     return 0;
 }
