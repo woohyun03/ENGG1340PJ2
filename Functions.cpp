@@ -195,11 +195,11 @@ int askWhichTicket(vector<int> &tickets){
     cout << endl;
     cout << "Please choose the Ticket you want to use: ";
     cin >> input;
-    /*while (input < 1 || input > tickets.size()){
+    while (input < 1 || input > tickets.size()){
         cout << "Invalid input. Please input a proper number for ticket use." << endl;
         cout << "Type here: ";
         cin >> input;
-    }*/
+    }
     int ticket = tickets[input-1];
     tickets.erase(tickets.begin() + (input-1));
     return ticket;
@@ -367,25 +367,25 @@ void killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int c
         return;
     }
 
-    cout << "You killed the opponent's mal number:";
+    cout << RED << "You killed the opponent's mal number:";
 
     if (killFirst){
         gameMap.UpdatePlayerLocation(row, col, 6, 0, (killerPlayerNum + 1)%2, 1);
         opponent.setRowCol(1,6,0);
         opponent.set_cannot_finish(1);
-        cout << " 1";
+        cout << RED << " 1";
     }
     if (killSecond){
         gameMap.UpdatePlayerLocation(row, col, 6, 0, (killerPlayerNum + 1)%2, 2);
         opponent.setRowCol(2,6,0);
         opponent.set_cannot_finish(2);
-        cout << " 2";
+        cout << RED << " 2";
     }
     if (killThird){
         gameMap.UpdatePlayerLocation(row, col, 6, 0, (killerPlayerNum + 1)%2, 3);
         opponent.setRowCol(3,6,0);
         opponent.set_cannot_finish(3);
-        cout << " 3";
+        cout << RED << " 3";
     }
 
     cout << "." << endl;
