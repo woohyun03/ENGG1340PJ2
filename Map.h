@@ -24,7 +24,7 @@ public:
     void addMal(int row, int col, string mal[3][3]);  // Method to add Mal to the map at a given row and column
     void moveMal(int previRow, int previCol, int row, int col, string mal[3][3]); // Method to move Mal from one location to another
     void movePlayerLocation(int previRow, int previCol, int row, int col); // Method to move player location from one place to another
-    void removePlayerLocation(int row, int col, int playerNum, int malNum); // Method to remove player location from the map
+    void removePlayerLocation(int row, int col, int playerNum); // Method to remove player location from the map
     void addPlayerLocation(int row, int col, int playerNum, int malNum); // Method to add player location to the map
     void UpdatePlayerLocation(int previRow, int previCol, int row, int col, int playerNum, int malNum); // Method to update player location on the map
     void printMap(); // Method to print the map

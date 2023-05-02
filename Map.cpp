@@ -161,23 +161,15 @@ void Map::moveMal(int previRow, int previCol, int row, int col, string mal[3][3]
 
 // Removes a player's mal token from the specified location in the mapPlayerLocation array
 // Input: row and column where the mal token should be removed, player number (0 or 1), and mal number (1, 2, or 3)
-void Map::removePlayerLocation(int row, int col, int playerNum, int malNum){
+void Map::removePlayerLocation(int row, int col, int playerNum){
     if (playerNum == 0){
-        if (malNum == 1){
-            mapPlayerLocation[row][col].Playerone_first = false;
-        } else if(malNum == 2){
-            mapPlayerLocation[row][col].Playerone_second = false;
-        } else if (malNum ==3){
-            mapPlayerLocation[row][col].Playerone_third = false;
-        }
+        mapPlayerLocation[row][col].Playerone_first = false;
+        mapPlayerLocation[row][col].Playerone_second = false;
+        mapPlayerLocation[row][col].Playerone_third = false;
     } else if (playerNum == 1){
-        if (malNum == 1){
-            mapPlayerLocation[row][col].Playertwo_first = false;
-        } else if(malNum == 2){
-            mapPlayerLocation[row][col].Playertwo_second = false;
-        } else if (malNum ==3){
-            mapPlayerLocation[row][col].Playertwo_third = false;
-        }
+        mapPlayerLocation[row][col].Playertwo_first = false;
+        mapPlayerLocation[row][col].Playertwo_second = false;
+        mapPlayerLocation[row][col].Playertwo_third = false;
     }
 }
 
@@ -205,7 +197,7 @@ void Map::addPlayerLocation(int row, int col, int playerNum, int malNum){
 // Updates a player's mal token location in the mapPlayerLocation array
 // Input: previous row and column, new row and column, player number (0 or 1), and mal number (1, 2, or 3)
 void Map::UpdatePlayerLocation(int previRow, int previCol, int row, int col, int playerNum, int malNum) {
-    removePlayerLocation(previRow, previCol, playerNum, malNum);
+    removePlayerLocation(previRow, previCol, playerNum);
     addPlayerLocation(row, col, playerNum, malNum);
 }
 // Prints the map chart to the console
