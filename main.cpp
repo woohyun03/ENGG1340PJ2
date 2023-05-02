@@ -81,10 +81,9 @@ int main(){
     typingEffect("We will start game in...");
     cout << endl;
     for (int i = 0; i < 3; i++){
-            this_thread::sleep_for(chrono::seconds(1));
-            cout << "\r" << 3 - i << "..." << endl;
+        this_thread::sleep_for(chrono::seconds(1));
+        cout << "\r" << 3 - i << "..." << endl;
     }
-
 
 
 
@@ -101,10 +100,13 @@ int main(){
         
         //Asks the player to continue or save the game when turn changes. Does not process until the player enters a valid input. Game will still continue after saving
         if (counter != -1){
-            typingEffect("Continue the Game? ('q' for exit / 's' to save)");
+            typingEffect("Continue the Game? ('q' for exit / 's' to save / Press Enter to continue)");
             cout << endl;
-            cin >> input;
-            while (input != "q" && input != "s"){
+            if (!input.empty()){
+            cin.ignore(); 
+            }
+            getline(cin, input);
+            while (input != "q" && input != "s" && !input.empty()){
                 cout << "Invalid input. Please enter a valid character 'q' or 's'." << endl;
                 cout << "Type here: ";
                 cin >> input;
@@ -120,6 +122,7 @@ int main(){
                 cout << endl;
                 cout << endl;
                 cout << endl;
+                break;
             }
         }
         
@@ -140,7 +143,9 @@ int main(){
         
         //For aesthetic purpose
         typingEffect("Press Enter to roll the Yut (Get the Ticket)!!");
-        cin.ignore(); 
+        if (!input.empty()){
+            cin.ignore();   
+        }
         getline(cin, input);
         
         //For aesthetic purpose
@@ -214,14 +219,14 @@ int main(){
 
             //Save the location of the selected mal after the movement, display some features of the game (ticket, map ..etc)
             if (turn == 0){
-                move_or_carry_Mal(player1, 0, malSelect, malVector[malSelect-1], TicketResult, gameMap, player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect), player1.getRow(malSelect), player1.getCol(malSelect));
+                move_or_carry_Mal(player1, 0, malSelect, malVector[malSelect-1], TicketResult, gameMap, player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect));
                 if (player1.getMal(stoi(malVector[malSelect-1].substr(1,1))).finished){
                     gameMap.removeMal(player1.getRow(malSelect), player1.getCol(malSelect));
                 } else {
                     moveMalDisplay(gameMap, malVector[malSelect-1], player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect),player1.getRow(malSelect), player1.getCol(malSelect));
                 }
             } else if (turn == 1) {
-                move_or_carry_Mal(player2, 1, malSelect, malVector[malSelect-1], TicketResult, gameMap, player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect), player2.getRow(malSelect), player2.getCol(malSelect));
+                move_or_carry_Mal(player2, 1, malSelect, malVector[malSelect-1], TicketResult, gameMap, player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect));
                 if (player1.getMal(stoi(malVector[malSelect-1].substr(1,1))).finished){
                     gameMap.removeMal(player2.getRow(malSelect), player2.getCol(malSelect));
                 } else {
@@ -238,7 +243,13 @@ int main(){
             this_thread::sleep_for(chrono::seconds(2));
 
             //Explaining the location that the mal arrived, and check if the moved mal killed any opponent's mal
-            PrintExplain(player1.getRow(malSelect),player1.getCol(malSelect));
+            
+            if (turn == 0){
+                PrintExplain(player1.getRow(malSelect),player1.getCol(malSelect));
+            } else if (turn == 1) {
+                PrintExplain(player2.getRow(malSelect),player2.getCol(malSelect));
+            }
+            
             if (turn == 0){
                 killMal(gameMap, player2, turn, player1.getRow(malSelect), player1.getCol(malSelect));
             } else if (turn == 1) {
@@ -263,12 +274,10 @@ int main(){
             typingEffect("Thank you for playing. See you in the next game!!!");
             break; 
         }
-        
         //If the game is not over, change the turn   
         typingEffect("Press Enter to Change the turn");
         cin.ignore(); 
         getline(cin, input);
-        break;  
     }
     return 0;
 }
