@@ -64,7 +64,7 @@ void gameRuleText(){
             "then you can throw \"yut\" one more time and make the opponent's mal move back to the starting point. "
             "In a similar situation, when one mal can be positioned on the same spot as another mal, the two mals need "
             "to move together until they pass the finish line or are caught by the opponent's mal. Moreover, there "
-            "is a certain path that the \"Mal\" must follow on the board." << std::endl;
+            "is a certain path that the \"Mal\" must follow on the board." << endl;
 
 }
 
