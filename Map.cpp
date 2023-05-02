@@ -8,6 +8,7 @@
 #include "MapChartDisplay.h"
 using namespace std;
 
+// Default constructor: initializes the player's locations on the map
 Map::Map() {
     for (int i = 0; i < 7; i++) {
         for (int j = 0; j < 7; j++) {
@@ -32,7 +33,8 @@ Map::Map() {
         }
     }
 }
-
+// Constructor with parameter: initializes the map with provided player locations
+// Input: a 7x7 array of Station objects representing the player's locations
 Map::Map(Station mapPlayerLocation[7][7]) {
     for (int i = 0; i < 7; i++) {
         for (int j = 0; j < 7; j++) {
@@ -41,10 +43,15 @@ Map::Map(Station mapPlayerLocation[7][7]) {
     }
 }
 
+// Returns the Station object at the specified row and column in the map
+// Input: row and column of the desired Station object
+// Output: the Station object at the specified row and column
 Station Map::getPlayerLocation(int row, int col){
     return mapPlayerLocation[row][col];
 }
-
+// Converts a map player location to its corresponding station name
+// Input: row and column of the player location
+// Output: the corresponding station name as a string
 string Map::mapPlayerLocation_to_station(int row, int col){
     typedef pair<int, int> rowCol;
     map< rowCol, string > rowColMatch;
@@ -82,6 +89,9 @@ string Map::mapPlayerLocation_to_station(int row, int col){
 
 }
 
+// Converts a map player location to its corresponding map chart location
+// Input: row and column of the player location
+// Output: a pair of integers representing the corresponding map chart location
 pair<int, int> Map::mapPlayerLocation_to_mapChart(int row, int col){
     typedef pair<int, int> rowCol;
     typedef pair<int, int> resultRowCol;
@@ -119,6 +129,8 @@ pair<int, int> Map::mapPlayerLocation_to_mapChart(int row, int col){
     return rowColMatch[make_pair(row,col)];
 }
 
+// Removes a mal token from the specified row and column in the map chart
+// Input: row and column where the mal token should be removed
 void Map::removeMal(int row, int col){
     pair<int, int> rowCol = mapPlayerLocation_to_mapChart(row,col);
 
@@ -129,6 +141,8 @@ void Map::removeMal(int row, int col){
     }
 }
 
+// Adds a mal token to the specified row and column in the map chart
+// Input: row and column where the mal token should be added, and a 3x3 string array representing the mal token
 void Map::addMal(int row, int col, string mal[3][3]){
     pair<int, int> rowCol = mapPlayerLocation_to_mapChart(row,col);
 
@@ -138,12 +152,15 @@ void Map::addMal(int row, int col, string mal[3][3]){
         }
     }
 }
-
+// Moves a mal token from a previous location to a new location in the map chart
+// Input: previous row and column, new row and column, and a 3x3 string array representing the mal token
 void Map::moveMal(int previRow, int previCol, int row, int col, string mal[3][3]) {
     removeMal(previRow, previCol);
     addMal(row, col, mal);
 }
 
+// Removes a player's mal token from the specified location in the mapPlayerLocation array
+// Input: row and column where the mal token should be removed, player number (0 or 1), and mal number (1, 2, or 3)
 void Map::removePlayerLocation(int row, int col, int playerNum, int malNum){
     if (playerNum == 0){
         if (malNum == 1){
@@ -164,6 +181,8 @@ void Map::removePlayerLocation(int row, int col, int playerNum, int malNum){
     }
 }
 
+// Adds a player's mal token to the specified location in the mapPlayerLocation array
+// Input: row and column where the mal token should be added, player number (0 or 1), and mal number (1, 2, or 3)
 void Map::addPlayerLocation(int row, int col, int playerNum, int malNum){
     if (playerNum == 0){
         if (malNum == 1){
@@ -183,12 +202,13 @@ void Map::addPlayerLocation(int row, int col, int playerNum, int malNum){
         }
     }
 }
-
+// Updates a player's mal token location in the mapPlayerLocation array
+// Input: previous row and column, new row and column, player number (0 or 1), and mal number (1, 2, or 3)
 void Map::UpdatePlayerLocation(int previRow, int previCol, int row, int col, int playerNum, int malNum) {
     removePlayerLocation(previRow, previCol, playerNum, malNum);
     addPlayerLocation(row, col, playerNum, malNum);
 }
-
+// Prints the map chart to the console
 void Map::printMap(){
     for (int i=0;i<60;i++) {
         for (int j=0;j<77;j++) {
