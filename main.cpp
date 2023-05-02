@@ -60,7 +60,8 @@ int main(){
             typingEffect("Enter player 2's name: ");
             cin >> input;
             player2.setName(input);
-            loadfailed = 0;            
+            loadfailed = 0;   
+        }
     } else {
         typingEffect("There are no saved games. We will start a new game!");
         cout << endl;
@@ -74,20 +75,27 @@ int main(){
         player2.setName(input);
     }
     
+
+
     //For aesthetic purpose
     typingEffect("We will start game in...");
     cout << endl;
     for (int i = 0; i < 3; i++){
             this_thread::sleep_for(chrono::seconds(1));
             cout << "\r" << 3 - i << "..." << endl;
-        }
+    }
+
+
+
+
 
     while (true) {
         //When the game is over, the program automatically ends 
         if (checkwin == 1){
             typingEffect("Game is over. Finished game will not be saved");
             typingEffect("Thank you for playing. See you in the next game!!!");
-            break;  
+            break; 
+        }
         //Printing map to show the game status    
         gameMap.printMap();       
 
@@ -150,6 +158,8 @@ int main(){
         }
         this_thread::sleep_for(chrono::seconds(1));
 
+
+
         while (true){
             //Saves the tickets that players have gained until now
             TicketResult = getTicket();
@@ -175,6 +185,9 @@ int main(){
             } 
         }
         
+
+
+
         //Showing game status during the game
         gameMap.printMap();
 
@@ -237,7 +250,6 @@ int main(){
             } else if (turn == 1) {
                 killMal(gameMap, player1, turn, player2.getRow(malSelect), player2.getCol(malSelect));
             }
-            
             //Check if the game is over or not. If the game is over, change the "checkwin" variable to know if the game has ended or not
             if(turn == 0 && player1.win()){
                 cout << "Game Over! Player 1 (" << player1.getName() << ") wins!!!" << endl;
@@ -248,13 +260,14 @@ int main(){
                 checkwin = 1;
                 break;
             }
-            
-            //If the game is not over, change the turn   
-            typingEffect("Press Enter to Change the turn");
-            cin.ignore(); 
-            getline(cin, input);
-            break;         
+
         }
+        
+        //If the game is not over, change the turn   
+        typingEffect("Press Enter to Change the turn");
+        cin.ignore(); 
+        getline(cin, input);
+        break;  
     }
     return 0;
 }
