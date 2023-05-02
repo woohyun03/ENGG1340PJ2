@@ -7,6 +7,8 @@
 #include <thread>
 #include <cstdlib>
 #include <ctime>
+#include <list>
+#include <algorithm>
 #include "Functions.h"
 #include "Map.h"
 #include "Player.h"
@@ -24,11 +26,13 @@ using namespace std;
 
 //For aesthetic purpose
 void typingEffect(string outputText){
+    cout << "\033[1m"; 
     for (int i = 0; i < outputText.length(); i++) {
         char c = outputText[i];
         cout << c << flush;
-        this_thread::sleep_for(chrono::milliseconds(30));
+        this_thread::sleep_for(chrono::milliseconds(20));
     }
+    cout << "\033[0m";
 }
 
 //Saving the name of the game into a file
@@ -392,7 +396,21 @@ void killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int c
 }
 
 //Shows the new position of moved mal aesthetically
-void moveMalDisplay(Map &gameMap, string malSign, int previRow, int previCol, int row, int col){
+void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, int previCol, int row, int col){
+    vector<int> malNums;
+    for (int i = 1; i < malSign.length(); i++){
+        malNums.push_back(stoi(malSign.substr(i,1)));
+    }
+
+    for (int i = 0; i< malNums.size(); i++){
+        auto NumExist = find(malNums.begin(), malNums.end(), malNums[i]);
+        if (NumExist != malNums.end()){
+            continue;
+        } else if ( player.getMal(malNums[0]).row == player.getMal(malNums[i]).row && player.getMal(malNums[0]).column == player.getMal(malNums[i]).column){
+            malSign += to_string(i);
+        }
+    }
+
     if (malSign == "A1"){
         string arrA1[3][3] = {
             {"A", "1", "A"},
