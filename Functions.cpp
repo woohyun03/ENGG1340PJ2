@@ -68,7 +68,7 @@ void loadGameNames(){
     inFile.open("Games.txt");
 
     if (inFile.fail()) {
-        cout << "Error opening file for loading game names." << endl;
+        cout << "Error while opening file for loading game names." << endl;
         return;
     }
 
@@ -128,12 +128,13 @@ void save_game(string filename, Map gameMap, Player player1, Player player2) {
     //Need to be finished
 }
 
-void load_game(string filename, Map &gameMap, Player &player1, Player &player2) {
+void load_game(string filename, Map &gameMap, Player &player1, Player &player2, int &loadfailed) {
     ifstream inFile;
     inFile.open(filename.c_str());
 
     if (inFile.fail()) {
-        cout << "Error opening file for loading game state." << endl;
+        cout << "Invalid input or Error in opening file." << endl;
+        loadfailed = 1;
         return;
     }
 
