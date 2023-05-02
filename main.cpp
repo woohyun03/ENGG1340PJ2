@@ -251,9 +251,69 @@ int main(){
             }
             
             if (turn == 0){
-                killMal(gameMap, player2, turn, player1.getRow(malSelect), player1.getCol(malSelect));
+                if (killMal(gameMap, player2, turn, player1.getRow(malSelect), player1.getCol(malSelect))){
+                    typingEffect("Wow!! You got killed the opponent's mal. You can roll the Yut one more Time! Press Enter to roll the Yut.");
+                    if (!input.empty()){
+                        cin.ignore();   
+                    }
+                    getline(cin, input);
+                    while (true){
+                        //Saves the tickets that players have gained until now
+                        TicketResult = getTicket();
+                        tickets.push_back(TicketResult);
+                        
+                        //Shows which ticket the player gained
+                        cout << getTicketName(TicketResult) << "!!!" << endl;
+                        this_thread::sleep_for(chrono::seconds(2));
+                        
+                        //Showing player that he or she is able to roll the Yut once more (get ticket once more) as the player picked a special ticket
+                        if (TicketResult < 4){
+                            break;
+                        } else if (TicketResult >= 4){
+                            cout << endl;
+                            typingEffect("Wow!! You got " + getTicketName(TicketResult) + " ticket! You can roll the Yut one more Time! Press Enter to roll the Yut.");
+                            getline(cin, input);
+                            cout << "Your ticket is..." << endl;
+                            for (int i = 0; i < 3; i++){
+                                this_thread::sleep_for(chrono::seconds(1));
+                                cout << "\r" << 3 - i << "..." << endl;
+                            }
+                            this_thread::sleep_for(chrono::seconds(1));            
+                        } 
+                    }
+                }
             } else if (turn == 1) {
-                killMal(gameMap, player1, turn, player2.getRow(malSelect), player2.getCol(malSelect));
+                if (killMal(gameMap, player1, turn, player2.getRow(malSelect), player2.getCol(malSelect))){
+                    typingEffect("Wow!! You got killed the opponent's mal. You can roll the Yut one more Time! Press Enter to roll the Yut.");
+                    if (!input.empty()){
+                        cin.ignore();   
+                    }
+                    getline(cin, input);
+                    while (true){
+                        //Saves the tickets that players have gained until now
+                        TicketResult = getTicket();
+                        tickets.push_back(TicketResult);
+                        
+                        //Shows which ticket the player gained
+                        cout << getTicketName(TicketResult) << "!!!" << endl;
+                        this_thread::sleep_for(chrono::seconds(2));
+                        
+                        //Showing player that he or she is able to roll the Yut once more (get ticket once more) as the player picked a special ticket
+                        if (TicketResult < 4){
+                            break;
+                        } else if (TicketResult >= 4){
+                            cout << endl;
+                            typingEffect("Wow!! You got " + getTicketName(TicketResult) + " ticket! You can roll the Yut one more Time! Press Enter to roll the Yut.");
+                            getline(cin, input);
+                            cout << "Your ticket is..." << endl;
+                            for (int i = 0; i < 3; i++){
+                                this_thread::sleep_for(chrono::seconds(1));
+                                cout << "\r" << 3 - i << "..." << endl;
+                            }
+                            this_thread::sleep_for(chrono::seconds(1));            
+                        } 
+                    }
+                }
             }
             //Check if the game is over or not. If the game is over, change the "checkwin" variable to know if the game has ended or not
             if(turn == 0 && player1.win()){
