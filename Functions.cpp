@@ -437,7 +437,7 @@ bool killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int c
         cout << RED << " 3";
     }
 
-    cout << "." << endl;
+    cout << "." << RESET << endl;
     return true;
 }
 
