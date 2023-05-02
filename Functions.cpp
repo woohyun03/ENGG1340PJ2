@@ -5,6 +5,8 @@
 #include <fstream>
 #include <chrono>
 #include <thread>
+#include <cstdlib>
+#include <ctime>
 #include "Functions.h"
 #include "Map.h"
 #include "Player.h"
@@ -277,6 +279,7 @@ vector<string> askMalMovement(int turn, Player one, Player two){
 
 //Randomly getting ticket function. Probability of each ticket is different
 int getTicket(){
+    srand(time(NULL));
     int randNum = rand() % 16 + 1;
     if (randNum == 1)
         return 5; //diamond
