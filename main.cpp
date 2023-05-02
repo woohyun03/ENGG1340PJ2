@@ -265,11 +265,15 @@ int main(){
             if (turn == 0){
                 if (killMal(gameMap, player2, turn, player1.getRow(malSelect), player1.getCol(malSelect))){
                     typingEffect("Wow!! You got killed the opponent's mal. You can roll the Yut one more Time! Press Enter to roll the Yut.");
-                    if (!input.empty()){
-                        cin.ignore();   
-                    }
                     getline(cin, input);
                     while (true){
+                        typingEffect("Your ticket is...");
+                        cout << endl;
+                        for (int i = 0; i < 3; i++){
+                            this_thread::sleep_for(chrono::seconds(1));
+                            cout <<  3 - i << "..." << endl;
+                        }
+                        this_thread::sleep_for(chrono::seconds(1));
                         //Saves the tickets that players have gained until now
                         TicketResult = getTicket();
                         tickets.push_back(TicketResult);
@@ -297,11 +301,15 @@ int main(){
             } else if (turn == 1) {
                 if (killMal(gameMap, player1, turn, player2.getRow(malSelect), player2.getCol(malSelect))){
                     typingEffect("Wow!! You got killed the opponent's mal. You can roll the Yut one more Time! Press Enter to roll the Yut.");
-                    if (!input.empty()){
-                        cin.ignore();   
-                    }
                     getline(cin, input);
                     while (true){
+                        typingEffect("Your ticket is...");
+                        cout << endl;
+                        for (int i = 0; i < 3; i++){
+                            this_thread::sleep_for(chrono::seconds(1));
+                            cout <<  3 - i << "..." << endl;
+                        }
+                        this_thread::sleep_for(chrono::seconds(1));
                         //Saves the tickets that players have gained until now
                         TicketResult = getTicket();
                         tickets.push_back(TicketResult);
