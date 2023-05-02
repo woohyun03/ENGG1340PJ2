@@ -117,40 +117,6 @@ pair<int, int> Map::mapPlayerLocation_to_mapChart(int row, int col){
     rowColMatch.insert(make_pair(make_pair(0,6), make_pair(2,72))); //North Point
 
     return rowColMatch[make_pair(row,col)];
-
-    /*int IndexInMapDisplay[29][2] =
-    
-    {
-        { 2, 2 }, //Kowloon
-        { 2, 16 }, //Symphony of Lights
-        { 2, 30 }, //Mong Kok
-        { 2, 44 },//Ladies' Market
-        { 2, 58 },//Soho
-        { 2, 72 },//North Point
-        { 10, 14 }, //Wong Tai Sin
-        { 10, 60 }, //Night Market
-        { 12, 2 }, //HKSM
-        { 12, 72 }, //Golden Computer Arcade
-        { 19, 26 }, //Elements Mall 
-        { 19, 48 }, //Promenade
-        { 23, 2 }, //HKMOH
-        { 23, 72 }, //Langham Place
-        { 28, 37 }, //Tsim Sa Tsui
-        { 33, 2 }, //HKMOA
-        { 33, 72 }, //Avenue of Stars
-        { 37, 26 }, //Clock Tower
-        { 37, 48 }, //Lan Kwai Fong
-        { 44, 2 }, //Repluse Bay
-        { 44, 72 }, //Tai O
-        { 46, 14 }, //Victoria Peak
-        { 46, 60 }, //Tai Kwun
-        { 54, 2 }, //HKU
-        { 54, 16 }, //Disneyland
-        { 54, 30 }, //Ocean Park
-        { 54, 44 }, //Man Mo
-        { 54, 58 }, //Western Market
-        { 54, 72 }, //Admiralty 
-    };*/
 }
 
 void Map::removeMal(int row, int col){
