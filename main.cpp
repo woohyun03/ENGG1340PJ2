@@ -32,13 +32,17 @@ int main(){
         cout << endl;
     }
     
+    
+    //Welcoming ASCII art
+    WelcomeText();
+    
     //For aesthetic purpose
     typingEffect("Welcome to Korean Traditional Yut Game (MTR EDITION) !!!! ");
     this_thread::sleep_for(chrono::seconds(1));
     cout << endl;
     typingEffect("Press Enter to Continue");
     getline(cin, input);
-
+    
     //If there are saved games, the system asks the player which game to load. If unsuccessful or no saved games, create a new game to play
     if (Get_Number_of_Saved_Games() >0){
         typingEffect("You have " + to_string(Get_Number_of_Saved_Games()) + " saved games.");
