@@ -44,27 +44,27 @@ void WelcomeText(){
 
 void gameRuleText(){
     cout << "Yutnori is a traditional Korean board game that has been played for hundreds of years. "
-                "It is a game that involves strategy, luck, and skill. The game is played on a square board "
-                "that has four corners and a center point. Each player has three game pieces, which are called "
-                "“Mal”. They move around the board in a clockwise direction. The goal of the game is to be "
-                "the first player to move all of their game pieces from their starting point to the finish "
-                "line in the center of the board.\n\n";
+            "It is a game that involves strategy, luck, and skill. The game is played on a square board "
+            "that has four corners and a center point. Each player has three game pieces, which are called "
+            "\"Mal\". They move around the board in a clockwise direction. The goal of the game is to be "
+            "the first player to move all of their game pieces from their starting point to the finish "
+            "line in the center of the board.\n\n";
 
     cout << "To start the game, each player takes turns rolling four sticks called yut, in this game it is called "
-                "“Ticket”, since the game's theme is “Train.” The number of “x” in the display represents the number of "
-                "possible moves. There are six possible outcomes of a yut roll, which correspond to the six different types of moves:\n"
-                "1. Bronze Ticket: Move one space\n"
-                "2. Silver Ticket: Move two spaces.\n"
-                "3. Gold Ticket: Move three spaces.\n"
-                "4. Platinum Ticket: Move four spaces and roll again.\n"
-                "5. Diamond Ticket: Move five spaces and roll again.\n"
-                "6. Secret Ticket: Move one space backward.\n\n";
+            "\"Ticket\", since the game's theme is \"Train.\" The number of \"x\" in the display represents the number of "
+            "possible moves. There are six possible outcomes of a yut roll, which correspond to the six different types of moves:\n"
+            "1. Bronze Ticket: Move one space\n"
+            "2. Silver Ticket: Move two spaces.\n"
+            "3. Gold Ticket: Move three spaces.\n"
+            "4. Platinum Ticket: Move four spaces and roll again.\n"
+            "5. Diamond Ticket: Move five spaces and roll again.\n"
+            "6. Secret Ticket: Move one space backward.\n\n";
 
     cout << "There are some special rules in this game. If you can move to the same position with the opponent's mal, "
-                "then you can throw “yut” one more time and make the opponent's mal move back to the starting point. "
-                "In a similar situation, when one mal can be positioned on the same spot as another mal, the two mals need "
-                "to move together until they pass the finish line or are caught by the opponent's mal. Moreover, there "
-                "is a certain path that the “Mal” must follow on the board." << std::endl;
+            "then you can throw \"yut\" one more time and make the opponent's mal move back to the starting point. "
+            "In a similar situation, when one mal can be positioned on the same spot as another mal, the two mals need "
+            "to move together until they pass the finish line or are caught by the opponent's mal. Moreover, there "
+            "is a certain path that the \"Mal\" must follow on the board." << std::endl;
 
 }
 
