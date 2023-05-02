@@ -6,6 +6,8 @@
 #include "Map.h"
 #include "Station.h"
 #include "MapChartDisplay.h"
+#define RED "\033[31m"
+#define BLUE "\033[34m"
 using namespace std;
 
 // Default constructor: initializes the player's locations on the map
