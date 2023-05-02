@@ -18,6 +18,7 @@
 #define GRAY "\033[37m"
 #define BROWN "\033[38;2;205;127;50m"
 using namespace std;
+//For aesthetic purpose, and including libraries and other files
 
 void typingEffect(string outputText){
     for (int i = 0; i < outputText.length(); i++) {
@@ -26,6 +27,7 @@ void typingEffect(string outputText){
         this_thread::sleep_for(chrono::milliseconds(30));
     }
 }
+//For aesthetic purpose
 
 void saveGameName(string filename){
     ofstream outFile;
@@ -41,6 +43,7 @@ void saveGameName(string filename){
     outFile.close();
     cout << "Game name saved successfully." << endl;
 }
+//Saving the name of the game into a file
 
 int Get_Number_of_Saved_Games(){
     ifstream inFile;
@@ -62,6 +65,7 @@ int Get_Number_of_Saved_Games(){
 
     return count;
 }
+//Getting the number of saved games to check if a player saved the game previously
 
 void loadGameNames(){
     ifstream inFile;
@@ -87,6 +91,7 @@ void loadGameNames(){
     }
     cout << endl;
 }
+//Showing the name of the games saved previously. Error shown when unable to laod the names
 
 
 void save_game(string filename, Map gameMap, Player player1, Player player2) {
@@ -127,6 +132,7 @@ void save_game(string filename, Map gameMap, Player player1, Player player2) {
     cout << "Game saved successfully." << endl;
     //Need to be finished
 }
+//Game saving function. It saves each player's positions of the mals
 
 void load_game(string filename, Map &gameMap, Player &player1, Player &player2, int &loadfailed) {
     ifstream inFile;
@@ -169,6 +175,7 @@ void load_game(string filename, Map &gameMap, Player &player1, Player &player2, 
     inFile.close();
     cout << "Game loaded successfully." << endl;
 }
+//Bringing a saved game. If it fails to bring, new game will start
 
 int askWhichTicket(vector<int> &tickets){
     if (tickets.size() == 1){
@@ -194,6 +201,7 @@ int askWhichTicket(vector<int> &tickets){
     tickets.erase(tickets.begin() + input);
     return input;
 }
+//Asking player which ticket he or she will use. Invalid input is also provided
 
 vector<string> askMalMovement(int turn, Player one, Player two){
     vector<string> choices;
@@ -265,6 +273,7 @@ vector<string> askMalMovement(int turn, Player one, Player two){
     }
     return choices;
 }
+//Asking which mal to use to a player. Mals inn special conditions like being carried will not be provided as an option
 
 
 int getTicket(){
@@ -283,6 +292,7 @@ int getTicket(){
         return 1; //bronze
     return 0;
 }
+//Randomly getting ticket function. Probability of each ticket is different
 
 string getTicketName(int ticketNum){
     if (ticketNum == 5)
@@ -298,6 +308,7 @@ string getTicketName(int ticketNum){
     else
         return "Secret";
 }
+//Defining the type of ticket depending on the randomly generated number
 
 void move_or_carry_Mal(Player &player, int playerNum, int malSelect, string malSign, int TicketResult, Map &gameMap, int pRow, int pCol, int row, int col){
     if (malSign.length() == 2){
@@ -320,6 +331,7 @@ void move_or_carry_Mal(Player &player, int playerNum, int malSelect, string malS
         gameMap.UpdatePlayerLocation(pRow, pCol, row, col, playerNum, stoi(malSign.substr(3,1)));
     }
 }
+//Check if the mal is being carried
 
 void killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int col){
     bool killFirst = false;
@@ -375,6 +387,7 @@ void killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int c
 
     cout << "." << endl;
 }
+//Check if the mal is killing opponent's mal. If yes, opponent's mal will go back to the starting point
 
 void moveMalDisplay(Map &gameMap, string malSign, int previRow, int previCol, int row, int col){
     if (malSign == "A1"){
@@ -501,6 +514,7 @@ void moveMalDisplay(Map &gameMap, string malSign, int previRow, int previCol, in
 
 
 }
+//Shows the new position of moved mal
 
 void displayTicket(int moves){
     if (moves == 4)
@@ -590,6 +604,7 @@ void displayTicket(int moves){
     }
 
 }
+//Shows the ticket aesthetically
 
 void PrintExplain(int row, int col){
     if (row == 0 && col == 0)
@@ -709,3 +724,4 @@ void PrintExplain(int row, int col){
         cout << "You have arrived at Admiralty. It is a major commercial and financial hub in Hong Kong, and is home to many important government buildings, including the Central Government Complex and the Legislative Council Complex." << endl;
     }
 }
+//Provides an information about the location in the map where the mal has arrived
