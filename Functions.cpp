@@ -24,6 +24,25 @@
 #define BROWN "\033[38;2;205;127;50m"
 using namespace std;
 
+//Welcoming players with ASCII art
+void WelcomeText(){
+    cout << "\033[1m";
+    cout<<RED<<" _    _        _                                       _   "<<endl;       
+    cout<<RED<<"| |  | |      | |                                     | |  "<<endl;       
+    cout<<YELLOW<<"| |  | |  ___ | |  ___   ___   _ __ ___    ___        | |_   ___  "<<endl;
+    cout<<YELLOW<<"| |/\\| | / _ \\| | / __| / _ \\ | '_ ` _ \\  / _ \\       | __| / _ \\ "<<endl;
+    cout<<GREEN<<"\\  /\\  /|  __/| || (__ | (_) || | | | | ||  __/       | |_ | (_) |"<<endl;
+    cout<<GREEN<<" \\/  \\/  \\___||_| \\___| \\___/ |_| |_| |_| \\___|        \\__| \\___/ "<<endl;
+    cout<<CYAN<<" __   __ _   _  _____  _____   ___  ___  ___ _____  _  _ "<<endl;
+    cout<<CYAN<<" \\ \\ / /| | | ||_   _||  __ \\ / _ \\ |  \\/  ||  ___|| || |"<<endl;
+    cout<<BLUE<<"  \\ V / | | | |  | |  | |  \\// /_\\ \\| .  . || |__  | || |"<<endl;
+    cout<<BLUE<<"   \\ /  | | | |  | |  | | __ |  _  || |\\/| ||  __| | || |"<<endl;
+    cout<<MAGENTA<<"   | |  | |_| |  | |  | |_\\ \\| | | || |  | || |___ |_||_|"<<endl;
+    cout<<MAGENTA<<"   \\_/   \\___/   \\_/   \\____/\\_| |_/\\_|  |_/\\____/ (_)(_)"<<endl;
+    cout << "\033[0m";
+}
+
+
 //For aesthetic purpose
 void typingEffect(string outputText){
     cout << "\033[1m"; 
