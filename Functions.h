@@ -22,6 +22,8 @@
 #define BROWN "\033[38;2;205;127;50m"
 using namespace std;
 
+void WelcomeText();
+void gameRuleText();
 void typingEffect(string outputText);
 void saveGameName(string filename);
 int Get_Number_of_Saved_Games();
