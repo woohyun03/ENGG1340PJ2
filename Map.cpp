@@ -106,8 +106,8 @@ pair<int, int> Map::mapPlayerLocation_to_mapChart(int row, int col){
     rowColMatch.insert(make_pair(make_pair(6,5), make_pair(54,58))); //Western Market
     rowColMatch.insert(make_pair(make_pair(6,6), make_pair(54,72))); //Admiralty
     rowColMatch.insert(make_pair(make_pair(5,0), make_pair(44,2))); //Repulse Bay
-    rowColMatch.insert(make_pair(make_pair(5,1), make_pair(44,14))); //Victoria Park
-    rowColMatch.insert(make_pair(make_pair(5,5), make_pair(44,60))); //Tai Kwun
+    rowColMatch.insert(make_pair(make_pair(5,1), make_pair(46,14))); //Victoria Park
+    rowColMatch.insert(make_pair(make_pair(5,5), make_pair(46,60))); //Tai Kwun
     rowColMatch.insert(make_pair(make_pair(5,6), make_pair(44,72))); //Tai O
     rowColMatch.insert(make_pair(make_pair(4,0), make_pair(33,2))); //HKMOA
     rowColMatch.insert(make_pair(make_pair(4,2), make_pair(37,26))); //Clock Tower
