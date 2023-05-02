@@ -200,6 +200,7 @@ int main(){
             
             //Asking which ticket to use and which mal to move to a player. Asks until the player types a correct input
             TicketResult = askWhichTicket(tickets);
+            displayTicket(TicketResult);
             vector<string> malVector = askMalMovement(turn, player1, player2);
             cin >> malSelect;
             while (malSelect < 1 || malSelect > malVector.size()){
