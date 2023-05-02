@@ -25,7 +25,7 @@ void saveGameName(string filename);
 int Get_Number_of_Saved_Games();
 void loadGameNames();
 void save_game(string filename, Map gameMap, Player player1, Player player2);
-void load_game(string filename, Map &gameMap, Player &player1, Player &player2);
+void load_game(string filename, Map &gameMap, Player &player1, Player &player2, int &loadfailed);
 int askWhichTicket(vector<int> &tickets);
 vector<string> askMalMovement(int turn, Player one, Player two);
 int getTicket();
