@@ -38,7 +38,20 @@ int main(){
         typingEffect("Type the game you want to load.");
         cout << endl;
         cin >> input;
-        load_game(input, gameMap, player1, player2);
+        int loadfailed = 0;
+        load_game(input, gameMap, player1, player2, loadfailed);
+        if (loadfailed = 1){
+            typingEffect("Failed to load game. We will start a new game.");
+            cout << endl;
+            typingEffect("Press Enter to Start");
+            getline(cin, input);
+            typingEffect("Enter player 1's name: ");
+            cin >> input;
+            player1.setName(input);
+            typingEffect("Enter player 2's name: ");
+            cin >> input;
+            player2.setName(input);
+            loadfailed = 0;
     } else {
         typingEffect("There are no saved games. We will start a new game!");
         cout << endl;
@@ -72,6 +85,11 @@ int main(){
             typingEffect("Continue the Game? ('q' for exit / 's' to save)");
             cout << endl;
             cin >> input;
+            while (input != "q" && input != "s"){
+                cout << "Invalid input. Please enter a valid character 'q' or 's'." << endl;
+                cout << "Type here: ";
+                cin >> input;
+            }
             if (input == "q"){
                 cout << "Exit the Game." << endl;
                 break;
@@ -140,7 +158,7 @@ int main(){
             vector<string> malVector = askMalMovement(turn, player1, player2);
             cin >> malSelect;
             while (malSelect < 1 || malSelect > malVector.size()){
-                cout << "Invalid input. Please input appropriate" << endl;
+                cout << "Invalid input. Please input an appropriate mal number 1-3" << endl;
                 cout << "Type here: ";
                 cin >> malSelect;
             }
