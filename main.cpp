@@ -32,40 +32,21 @@ int main(){
         cout << endl;
     }
     // South Korea flag ASCII art
-    cout << "      *************" << endl;
-    cout << "   ********************" << endl;
-    cout << " *************************" << endl;
-    cout << "***************************" << endl;
-    cout << "***************************" << endl;
-    cout << " *************************" << endl;
-    cout << "   ********************" << endl;
-    cout << "      *************" << endl;
-    cout << "           **" << endl;
-    cout << "           **" << endl;
-    cout << "           **" << endl;
-    cout << "           **" << endl;
-    cout << "           **" << endl;
-    cout << "           **" << endl;
-    cout << "           **" << endl;
-
-    // Hong Kong flag ASCII art
-    cout << endl; // add a blank line to separate the flags
-    cout << "      ****************" << endl;
-    cout << "   ********************" << endl;
-    cout << " ************************" << endl;
-    cout << "*************************" << endl;
-    cout << "*************************" << endl;
-    cout << " ************************" << endl;
-    cout << "   ********************" << endl;
-    cout << "      ****************" << endl;
-    cout << "           **" << endl;
-    cout << "           **" << endl;
-    cout << "           **" << endl;
-    cout << "           **" << endl;
-    cout << "           **" << endl;
-    cout << "           **" << endl;
-    cout << "           **" << endl;
-    
+    cout << "       *******
+    cout << "    *           *
+    cout << "  *               *
+    cout << " *    *      *     *
+    cout << "  *               *
+    cout << "    *   *****   *
+    cout << "       *     *
+    cout << "         ***
+    cout << "          *
+    cout << "     ***********
+    cout << "          *
+    cout << "          *
+    cout << "        *****
+    cout << "       *     *
+    cout << "      *       *
     
     //Welcoming ASCII art
     WelcomeText();
