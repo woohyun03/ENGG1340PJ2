@@ -468,11 +468,6 @@ string carriedMalNums(Player &player, string malSign){
 
 //Shows the new position of moved mal aesthetically
 void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, int previCol, int row, int col){
-    cout << malSign;
-    cout << previRow;
-    cout << previCol;
-    cout << row;
-    cout << col;
     if (malSign == "A1"){
         string arrA1[3][3] = {
             {"A", "1", "A"},
