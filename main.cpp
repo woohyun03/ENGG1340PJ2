@@ -31,18 +31,6 @@ int main(){
     for (int i = 0; i < 20; i++){
         cout << endl;
     }
-    // For aesthetic purpose
-    cout << "   _______________________________________________________________"<< endl;
-    cout << "  /  "<< endl;
-    cout << " /__________                                                  ________"<< endl;
-    cout << "|           |"<< endl;
-    cout << "| *     *   |      *       *   * * * *   * * * *              ________"<< endl;
-    cout << "|  *****    |      * *   * *      *      *    *"<< endl;
-    cout << "|    *      |      *   *   *      *      * * *                ________"<< endl;
-    cout << "|    *      |      *       *      *      *    *"<< endl;
-    cout << "|  *****    |                                                 ________"<< endl;
-    cout << "| *     *   |"<< endl;
-    cout << "\__________________________________________________________________"<< endl;
     
     //Welcoming ASCII art
     WelcomeText();
