@@ -37,6 +37,7 @@ string getTicketName(int ticketNum);
 void move_or_carry_Mal(Player &player, int playerNum, int malSelect, string malSign, int TicketResult, Map &gameMap, int pRow, int pCol);
 bool killMal(Map &gameMap, Player &opponent, int playerNum, int newRow, int newCol);
 void displayTicket(int moves);
+string carriedMalNums(Player &player, string malSign);
 void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, int previCol, int row, int col);
 void PrintExplain(int row, int col);
 #endif

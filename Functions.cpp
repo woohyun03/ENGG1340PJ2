@@ -246,8 +246,6 @@ int askWhichTicket(vector<int> &tickets){
     cin >> input;
     while (input < 1 || input > tickets.size()){
         cout << "Invalid input. Please input a proper number for ticket use." << endl;
-        cout << "Type here: ";
-        cin.ignore();
         cin >> input;
     }
     int ticket = tickets[input-1];
@@ -262,6 +260,7 @@ vector<string> askMalMovement(int turn, Player one, Player two){
 
     if (turn == 0){
         for (int i = 1; i <= 3; i++) {
+            bool alreadyAdded = false;
             Mal currentMal = one.getMal(i);
             
             if (currentMal.finished) {
@@ -289,6 +288,7 @@ vector<string> askMalMovement(int turn, Player one, Player two){
         }
     } else {
         for (int i = 1; i <= 3; i++) {
+            bool alreadyAdded = false;
             Mal currentMal = two.getMal(i);
             
             if (currentMal.finished) {
@@ -440,6 +440,28 @@ bool killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int c
 
     cout << "." << RESET << endl;
     return true;
+}
+
+string carriedMalNums(Player &player, string malSign){
+    int malNum = stoi(malSign.substr(1,1));
+    for (int i = 1; i <= 3; i++){
+        if (player.getMal(malNum).row == player.getMal(i).row &&  player.getMal(malNum).column == player.getMal(i).column && malNum != i && player.getMal(i).can_finish){
+            malSign += to_string(i);
+        }
+    }
+    vector<int> malNums;
+    for (int i = 1; i< malSign.length(); i++){
+        malNums.push_back(stoi(malSign.substr(i,1)));
+    }
+    sort(malNums.begin(), malNums.end());
+    string numString;
+    for (int i = 0; i < malNums.size(); i++){
+        numString += to_string(malNums[i]);
+    }
+
+    malSign = malSign.substr(0,1) + numString;
+
+    return malSign;
 }
 
 //Shows the new position of moved mal aesthetically
