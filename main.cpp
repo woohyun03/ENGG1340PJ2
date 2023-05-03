@@ -176,6 +176,7 @@ int main(){
             
              //Shows which ticket the player gained
             cout << getTicketName(TicketResult) << "!!!" << endl;
+            displayTicket(TicketResult);
             this_thread::sleep_for(chrono::seconds(2));
             if (turn == 0){
                 if (player1.no_Mal_on_Map() && TicketResult == -1){
@@ -287,10 +288,10 @@ int main(){
             
             if (turn == 0){
                 if (killMal(gameMap, player2, turn, player1.getRow(malSelect), player1.getCol(malSelect))){
-                    typingEffect("Wow!! You killed the opponent's mal. You can roll the Yut one more Time! Press Enter to roll the Yut.\n");
+                    typingEffect("Wow!! You killed the opponent's mal. You can roll the Yut one more Time! Press Enter to roll the Yut.");
                     cout << endl;
-                    this_thread::sleep_for(chrono::seconds(1));
-                    cout << endl;
+                    string spaceInput;
+                    getline(cin, spaceInput);
                     while (true){
                         gameMap.printMap();
                         typingEffect("Your ticket is...");
@@ -305,6 +306,7 @@ int main(){
                         
                         //Shows which ticket the player gained
                         cout << getTicketName(TicketResult) << "!!!" << endl;
+                        displayTicket(TicketResult);
                         this_thread::sleep_for(chrono::seconds(2));
                         
                         //Showing player that he or she is able to roll the Yut once more (get ticket once more) as the player picked a special ticket
@@ -313,7 +315,8 @@ int main(){
                         } else if (TicketResult >= 4){
                             cout << endl;
                             typingEffect("Wow!! You got " + getTicketName(TicketResult) + " ticket! You can roll the Yut one more Time! Press Enter to roll the Yut.");
-                            getline(cin, input);
+                            string spaceInput;
+                            getline(cin, spaceInput);
                             cout << "Your ticket is..." << endl;
                             for (int i = 0; i < 3; i++){
                                 cout << "\r" << 3 - i << "..." << endl;
@@ -324,10 +327,10 @@ int main(){
                 }
             } else if (turn == 1) {
                 if (killMal(gameMap, player1, turn, player2.getRow(malSelect), player2.getCol(malSelect))){
-                    typingEffect("Wow!! You killed the opponent's mal. You can roll the Yut one more Time!");
+                    typingEffect("Wow!! You killed the opponent's mal. You can roll the Yut one more Time! Press Enter to roll the Yut.");
                     cout << endl;
-                    this_thread::sleep_for(chrono::seconds(1));
-                    cout << endl;
+                    string spaceInput;
+                    getline(cin, spaceInput);
                     while (true){
                         gameMap.printMap();
                         typingEffect("Your ticket is...");
@@ -342,6 +345,7 @@ int main(){
                         
                         //Shows which ticket the player gained
                         cout << getTicketName(TicketResult) << "!!!" << endl;
+                        displayTicket(TicketResult);
                         this_thread::sleep_for(chrono::seconds(2));
                         
                         //Showing player that he or she is able to roll the Yut once more (get ticket once more) as the player picked a special ticket
@@ -350,7 +354,8 @@ int main(){
                         } else if (TicketResult >= 4){
                             cout << endl;
                             typingEffect("Wow!! You got " + getTicketName(TicketResult) + " ticket! You can roll the Yut one more Time! Press Enter to roll the Yut.");
-                            getline(cin, input);
+                            string malinput;
+                            getline(cin, spaceInput);
                             cout << "Your ticket is..." << endl;
                             for (int i = 0; i < 3; i++){
                                 cout << "\r" << 3 - i << "..." << endl;
