@@ -92,26 +92,18 @@
 |malVector|vector<string>|Stores the list of Mal names to be displayed|
 
 ### The Coding Requirements
->보조설명
+>Coding requirement demonstration
 
 |Requirenment name|Code|Explanation|
 |:-:|:-:|:-:|
-|abc|abc|abc|
-|abc|abc|abc|
-|abc|abc|abc|
-|abc|abc|abc|
-|abc|abc|abc|
-|abc|abc|abc|
-|abc|abc|abc|
-|abc|abc|abc|
-|abc|abc|abc|
-
+|Generation of random game sets or events| <img src= "https://user-images.githubusercontent.com/125568011/235907659-8400837f-6e08-4ad7-a468-c2c3dc0ca04e.png" width = "500px">|The getTicket() function simulates a random distribution of tickets with different rarity levels by generating a random integer and using conditional statements to determine the ticket type, with probabilities skewed towards more common types.|
+|Data structures for storing game status|<img src= "https://user-images.githubusercontent.com/125568011/235909056-39aedd6a-aa30-4b67-84d3-e44bdbd8376a.png" width = "500px">|This code initializes a Player object with a name and three Mals, represented as a custom data structure, storing their initial positions and game states in a vector called Mals.|
+|Dynamic memory management|<img src= "https://user-images.githubusercontent.com/125568011/235911029-5ba1024a-b11c-4a47-8085-e65ea2f1a16d.png" width = "500px">| This code reads game names from a file into a vector of strings, dynamically resizing the vector as needed to accommodate the names, and then prints the saved game names to the console.|
+|File input/output (e.g., for loading/saving game status)|<img src= "https://user-images.githubusercontent.com/125568011/235911571-ff747506-4078-4a04-b062-52692ef5f630.png" width = "500px">|This code appends a given filename to the "Games.txt" file, using file output operations to save game names persistently, while handling potential file opening errors.|
+|Program codes in multiple files|<img src= "" width = "500px">| Our group have divided our code to multiple files in terms of their purposes.|
+|Proper indentation and naming styles|<img src= "https://user-images.githubusercontent.com/125568011/235912686-bb9e2895-c413-4753-a56a-ff7033f4a146.png" width = "500px">| We have done proper indentation and naming styles for functions, so the names represent their function in the code.|
+|In-code documentation|<img src= "https://user-images.githubusercontent.com/125568011/235913947-d72d9b1b-585f-4fe3-874c-09cb4e10e31a.png" width = "500px">| we have explained each code to help readers to understand the code.|
 
 
 ### How to Compile and Run
 > makegame
-
- 
-|Requirenment name|Code|Explanation|
-|:-:|:-:|:-:|
-|Generation of random game sets or events| <img src= "https://user-images.githubusercontent.com/125568011/235907659-8400837f-6e08-4ad7-a468-c2c3dc0ca04e.png" width = "500px">|abc|
