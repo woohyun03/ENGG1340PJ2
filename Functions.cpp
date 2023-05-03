@@ -21,7 +21,7 @@
 #define MAGENTA "\033[35m"
 #define CYAN "\033[36m"
 #define GRAY "\033[37m"
-#define BROWN "\033[38;2;165;42;42m"
+#define BROWN "\033[0;33m"
 using namespace std;
 
 //Welcoming players with ASCII art
