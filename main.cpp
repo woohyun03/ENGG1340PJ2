@@ -31,22 +31,22 @@ int main(){
     for (int i = 0; i < 20; i++){
         cout << endl;
     }
-    // South Korea flag ASCII art
-    cout << "       *******
-    cout << "    *           *
-    cout << "  *               *
-    cout << " *    *      *     *
-    cout << "  *               *
-    cout << "    *   *****   *
-    cout << "       *     *
-    cout << "         ***
-    cout << "          *
-    cout << "     ***********
-    cout << "          *
-    cout << "          *
-    cout << "        *****
-    cout << "       *     *
-    cout << "      *       *
+    // For aesthetic purpose
+    cout << "       *******" << endl;
+    cout << "    *           *" << endl;
+    cout << "  *               *"<< endl;
+    cout << " *    *      *     *"<< endl;
+    cout << "  *               *"<< endl;
+    cout << "    *   *****   *"<< endl;
+    cout << "       *     *"<< endl;
+    cout << "         ***"<< endl;
+    cout << "          *"<< endl;
+    cout << "     ***********"<< endl;
+    cout << "          *"<< endl;
+    cout << "          *"<< endl;
+    cout << "        *****"<< endl;
+    cout << "       *     *"<< endl;
+    cout << "      *       *" << endl;
     
     //Welcoming ASCII art
     WelcomeText();
