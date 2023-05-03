@@ -34,7 +34,7 @@ int askWhichTicket(vector<int> &tickets);
 vector<string> askMalMovement(int turn, Player one, Player two);
 int getTicket();
 string getTicketName(int ticketNum);
-void move_or_carry_Mal(Player &player, int playerNum, int malSelect, string malSign, int TicketResult, Map &gameMap, int pRow, int pCol);
+void move_or_carry_Mal(Player &player, int playerNum, string malSign, int TicketResult, Map &gameMap, int pRow, int pCol);
 bool killMal(Map &gameMap, Player &opponent, int playerNum, int newRow, int newCol);
 void displayTicket(int moves);
 string carriedMalNums(Player &player, string malSign);
