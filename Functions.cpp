@@ -454,11 +454,13 @@ string carriedMalNums(Player &player, string malSign){
         malNums.push_back(stoi(malSign.substr(i,1)));
     }
     sort(malNums.begin(), malNums.end());
+    vector<int>::iterator duplicate = unique(malNums.begin(), malNums.end());
+    malNums.erase(duplicate, malNums.end());
     string numString;
     for (int i = 0; i < malNums.size(); i++){
         numString += to_string(malNums[i]);
     }
-
+    
     malSign = malSign.substr(0,1) + numString;
 
     return malSign;
@@ -466,6 +468,11 @@ string carriedMalNums(Player &player, string malSign){
 
 //Shows the new position of moved mal aesthetically
 void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, int previCol, int row, int col){
+    cout << malSign;
+    cout << previRow;
+    cout << previCol;
+    cout << row;
+    cout << col;
     if (malSign == "A1"){
         string arrA1[3][3] = {
             {"A", "1", "A"},
