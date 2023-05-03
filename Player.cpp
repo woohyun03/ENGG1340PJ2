@@ -142,7 +142,9 @@ void Player::newRowCol (Mal &playerMal, int &moveNum){
     while (moveNum > 0){
         if (playerMal.can_finish){
             finish(playerMal, moveNum);
-            break;
+            if (playerMal.finished){
+                break;
+            }
         }
         if (playerMal.row == playerMal.column && playerMal.row == 3){
             center(playerMal, moveNum);
