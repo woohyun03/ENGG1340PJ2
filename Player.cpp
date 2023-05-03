@@ -111,6 +111,12 @@ void Player::check_Carried(){
             }
         }
     }
+    /*cout << Mals[0].can_finish;
+    cout << Mals[1].can_finish;
+    cout << Mals[2].can_finish;
+    cout << Mals[0].carried;
+    cout << Mals[1].carried;
+    cout << Mals[2].carried;*/
 }
 
 bool Player::no_Mal_on_Map(){
@@ -129,12 +135,14 @@ void Player::moveMal(int malNum, int moveNum) {
 
 //Function for new col and row with number of moving
 void Player::newRowCol (Mal &playerMal, int &moveNum){
+    can_finish(playerMal);
     if (moveNum == -1){
         Back(playerMal);
     }
     while (moveNum > 0){
         if (playerMal.can_finish){
             finish(playerMal, moveNum);
+            break;
         }
         if (playerMal.row == playerMal.column && playerMal.row == 3){
             center(playerMal, moveNum);
@@ -244,6 +252,12 @@ void Player::Back(Mal &playerMal){
         playerMal.column += 1;
     } else if (playerMal.column == 0 && playerMal.row > 0){
         playerMal.row -= 1;
+    } else if (playerMal.row == playerMal.column){
+        playerMal.row += 1;
+        playerMal.column += 1;
+    } else if (playerMal.row + playerMal.column == 6){
+        playerMal.row -= 1;
+        playerMal.column += 1;
     }
 }
 
