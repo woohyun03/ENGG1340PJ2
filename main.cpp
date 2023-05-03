@@ -93,10 +93,9 @@ int main(){
     typingEffect("We will start game in...");
     cout << endl;
     for (int i = 0; i < 3; i++){
-        this_thread::sleep_for(chrono::seconds(1));
         cout << "\r" << 3 - i << "..." << endl;
+        this_thread::sleep_for(chrono::seconds(1));
     }
-    this_thread::sleep_for(chrono::seconds(1));  
 
 
     while (true) {
@@ -163,10 +162,9 @@ int main(){
         typingEffect("Your ticket is...");
         cout << endl;
         for (int i = 0; i < 3; i++){
-            this_thread::sleep_for(chrono::seconds(1));
             cout <<  3 - i << "..." << endl;
+            this_thread::sleep_for(chrono::seconds(1));
         }
-        this_thread::sleep_for(chrono::seconds(1));
 
 
 
@@ -178,6 +176,9 @@ int main(){
              //Shows which ticket the player gained
             cout << getTicketName(TicketResult) << "!!!" << endl;
             this_thread::sleep_for(chrono::seconds(2));
+            if ( (counter == 0 || counter == 1) && TicketResult == -1){
+                break;
+            }
             
             //Showing player that he or she is able to roll the Yut once more (get ticket once more) as the player picked a special ticket
             if (TicketResult < 4){
@@ -188,20 +189,25 @@ int main(){
                 getline(cin, input);
                 cout << "Your ticket is..." << endl;
                 for (int i = 0; i < 3; i++){
-                    this_thread::sleep_for(chrono::seconds(1));
                     cout << "\r" << 3 - i << "..." << endl;
-                }
-                this_thread::sleep_for(chrono::seconds(1));            
+                    this_thread::sleep_for(chrono::seconds(1));
+                }       
             } 
+        }
+        if ( (counter == 0 || counter == 1) && TicketResult == -1){
+            cout << "You do not have any Mal to move backward!" << endl;
+            this_thread::sleep_for(chrono::seconds(2));
+            break;
         }
         
 
 
 
-        //Showing game status during the game
-        gameMap.printMap();
-
         while (tickets.size() != 0){
+            //Showing game status during the game
+            gameMap.printMap();
+
+
             //Check if the player's mal is being carried, depending on which player's turn it is
             if (turn == 0){
                 player1.check_Carried();
@@ -231,14 +237,14 @@ int main(){
 
             //Save the location of the selected mal after the movement, display some features of the game (ticket, map ..etc)
             if (turn == 0){
-                move_or_carry_Mal(player1, 0, malSelect, malVector[malSelect-1], TicketResult, gameMap, player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect));
+                move_or_carry_Mal(player1, 0, malSelect, malVector[malSelect-1], TicketResult, gameMap, player1.getRow(malSelect), player1.getCol(malSelect));
                 if (player1.getMal(stoi(malVector[malSelect-1].substr(1,1))).finished){
                     gameMap.removeMal(player1.getRow(malSelect), player1.getCol(malSelect));
                 } else {
                     moveMalDisplay(gameMap, player1, malVector[malSelect-1], player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect),player1.getRow(malSelect), player1.getCol(malSelect));
                 }
             } else if (turn == 1) {
-                move_or_carry_Mal(player2, 1, malSelect, malVector[malSelect-1], TicketResult, gameMap, player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect));
+                move_or_carry_Mal(player2, 1, malSelect, malVector[malSelect-1], TicketResult, gameMap, player2.getRow(malSelect), player2.getCol(malSelect));
                 if (player1.getMal(stoi(malVector[malSelect-1].substr(1,1))).finished){
                     gameMap.removeMal(player2.getRow(malSelect), player2.getCol(malSelect));
                 } else {
@@ -264,16 +270,18 @@ int main(){
             
             if (turn == 0){
                 if (killMal(gameMap, player2, turn, player1.getRow(malSelect), player1.getCol(malSelect))){
-                    typingEffect("Wow!! You got killed the opponent's mal. You can roll the Yut one more Time! Press Enter to roll the Yut.");
-                    getline(cin, input);
+                    typingEffect("Wow!! You killed the opponent's mal. You can roll the Yut one more Time! Press Enter to roll the Yut.\n");
+                    cout << endl;
+                    getchar();
+                    cout << endl;
                     while (true){
+                        gameMap.printMap();
                         typingEffect("Your ticket is...");
                         cout << endl;
                         for (int i = 0; i < 3; i++){
-                            this_thread::sleep_for(chrono::seconds(1));
                             cout <<  3 - i << "..." << endl;
+                            this_thread::sleep_for(chrono::seconds(1));
                         }
-                        this_thread::sleep_for(chrono::seconds(1));
                         //Saves the tickets that players have gained until now
                         TicketResult = getTicket();
                         tickets.push_back(TicketResult);
@@ -291,25 +299,26 @@ int main(){
                             getline(cin, input);
                             cout << "Your ticket is..." << endl;
                             for (int i = 0; i < 3; i++){
-                                this_thread::sleep_for(chrono::seconds(1));
                                 cout << "\r" << 3 - i << "..." << endl;
-                            }
-                            this_thread::sleep_for(chrono::seconds(1));            
+                                this_thread::sleep_for(chrono::seconds(1));
+                            }         
                         } 
                     }
                 }
             } else if (turn == 1) {
                 if (killMal(gameMap, player1, turn, player2.getRow(malSelect), player2.getCol(malSelect))){
-                    typingEffect("Wow!! You got killed the opponent's mal. You can roll the Yut one more Time! Press Enter to roll the Yut.");
-                    getline(cin, input);
+                    typingEffect("Wow!! You killed the opponent's mal. You can roll the Yut one more Time! Press Enter to roll the Yut.");
+                    cout << endl;
+                    getchar();
+                    cout << endl;
                     while (true){
+                        gameMap.printMap();
                         typingEffect("Your ticket is...");
                         cout << endl;
                         for (int i = 0; i < 3; i++){
-                            this_thread::sleep_for(chrono::seconds(1));
                             cout <<  3 - i << "..." << endl;
+                            this_thread::sleep_for(chrono::seconds(1));
                         }
-                        this_thread::sleep_for(chrono::seconds(1));
                         //Saves the tickets that players have gained until now
                         TicketResult = getTicket();
                         tickets.push_back(TicketResult);
@@ -327,10 +336,9 @@ int main(){
                             getline(cin, input);
                             cout << "Your ticket is..." << endl;
                             for (int i = 0; i < 3; i++){
-                                this_thread::sleep_for(chrono::seconds(1));
                                 cout << "\r" << 3 - i << "..." << endl;
-                            }
-                            this_thread::sleep_for(chrono::seconds(1));            
+                                this_thread::sleep_for(chrono::seconds(1));
+                            }         
                         } 
                     }
                 }
