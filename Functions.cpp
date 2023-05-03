@@ -26,6 +26,17 @@ using namespace std;
 
 //Welcoming players with ASCII art
 void WelcomeText(){
+    cout << RED<<"   _______________________________________________________________"<< endl;
+    cout << RED<<"  /  "<< endl;
+    cout << RED<<" /__________"                                              cout<<MAGENTA"________"
+    cout << RED<<"|          |"<< endl;
+    cout << RED<<"| *     *  |      *       *   * * * *   * * * *"          cout<<MAGENTA"________"
+    cout << RED<<"|  *****   |      * *   * *      *      *    *"<< endl;
+    cout << RED<<"|    *     |      *   *   *      *      * * *"             cout<<MAGENTA"________"
+    cout << RED<<"|    *     |      *       *      *      *    *"<< endl;
+    cout << RED<<"|  *****   |".                                            cout<<MAGENTA"________"
+    cout << RED<<"| *     *  |"<< endl;
+    cout << RED<<"|__________|_______________________________________________________"<< endl;
     cout << "\033[1m";
     cout<<RED<<" _    _        _                                       _   "<<endl;       
     cout<<RED<<"| |  | |      | |                                     | |  "<<endl;       
