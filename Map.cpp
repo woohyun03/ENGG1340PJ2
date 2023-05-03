@@ -237,7 +237,7 @@ void Map::printMap(){
                 cout << BLUE << mapChart[i][j] << RESET;
             else if (mapChart[i-1][j-1] == "B" && mapChart[i-1][j-1] == " " && mapChart[i-1][j-2] == " ")
                 cout << BLUE << mapChart[i][j] << RESET;
-            else if (mapChart[i-1][j-2] == "B" && mapChart[i-1][j-2] == " " && mapChart[i-1][j-3] == " ")
+            else if (mapChart[i-1][j-2] == "B" && mapChart[i-2][j-2] == " " && mapChart[i-1][j-3] == " ")
                 cout << BLUE << mapChart[i][j] << RESET;
             else if (mapChart[i-2][j] == "B" && mapChart[i-3][j] == " " && mapChart[i-2][j-1] == " ")
                 cout << BLUE << mapChart[i][j] << RESET;
