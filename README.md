@@ -114,4 +114,4 @@
  
 |Requirenment name|Code|Explanation|
 |:-:|:-:|:-:|
-|Generation of random game sets or events| <img src= https://user-images.githubusercontent.com/125568011/235907659-8400837f-6e08-4ad7-a468-c2c3dc0ca04e.png" width = "500px">|abc|
+|Generation of random game sets or events| <img src= "https://user-images.githubusercontent.com/125568011/235907659-8400837f-6e08-4ad7-a468-c2c3dc0ca04e.png" width = "500px">|abc|
