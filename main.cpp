@@ -119,6 +119,7 @@ int main(){
             while (input != "q" && input != "s" && !input.empty()){
                 cout << "Invalid input. Please enter a valid character 'q' or 's'." << endl;
                 cout << "Type here: ";
+                cin.ignore(); 
                 cin >> input;
             }
             if (input == "q"){
@@ -238,6 +239,7 @@ int main(){
             while (malSelect < 1 || malSelect > malVector.size()){
                 cout << "Invalid input. Please input an appropriate mal number 1-3" << endl;
                 cout << "Type here: ";
+                cin.ignore(); 
                 cin >> malSelect;
             }
             

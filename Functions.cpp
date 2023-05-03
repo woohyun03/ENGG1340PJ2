@@ -247,6 +247,7 @@ int askWhichTicket(vector<int> &tickets){
     while (input < 1 || input > tickets.size()){
         cout << "Invalid input. Please input a proper number for ticket use." << endl;
         cout << "Type here: ";
+        cin.ignore();
         cin >> input;
     }
     int ticket = tickets[input-1];
