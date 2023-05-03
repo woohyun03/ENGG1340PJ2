@@ -33,6 +33,7 @@ class Player {
     void set_cannot_finish(int malNum); // Function when unable to finish
     bool win(); //Function for distinguishing end of game
     void check_Carried(); //Function for checking carried mals
+    bool no_Mal_on_Map(); //Function for chekcing if there are any mals on the game map
     void moveMal(int malNum, int moveNum); //Function for moving mal
     void newRowCol (Mal &playerMal, int &moveNum); //Function for setting new location of mal after moving
     void can_finish(Mal &playerMal); //Function when able to finish

@@ -113,6 +113,13 @@ void Player::check_Carried(){
     }
 }
 
+bool Player::no_Mal_on_Map(){
+    if ( Mals[0].row == Mals[1].row && Mals[1].row && Mals[2].row && Mals[2].row == 6 && Mals[0].column == Mals[1].column && Mals[1].column && Mals[2].column && Mals[2].column == 0 ){
+        return true;
+    } 
+    return false;
+}
+
 // Function for moving mal.
 void Player::moveMal(int malNum, int moveNum) {
     Mals[malNum-1].previousRow = Mals[malNum-1].row;
