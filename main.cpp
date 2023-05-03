@@ -244,56 +244,69 @@ int main(){
                 cin.ignore(); 
                 cin >> malSelect;
             }
-            
+            int Num_in_malSign = stoi(malVector[malSelect-1].substr(1,1));
+
             //Showing the location of the mal selected by the player before the movement
             if (turn == 0){
-                cout << "Current Position of " << malVector[malSelect-1] << " is " << gameMap.mapPlayerLocation_to_station(player1.getRow(malSelect),player1.getCol(malSelect)) << endl;
+                cout << "Current Position of " << malVector[malSelect-1] << " is " << gameMap.mapPlayerLocation_to_station(player1.getRow(Num_in_malSign),player1.getCol(Num_in_malSign)) << endl;
             } else if (turn == 1) {
-                cout << "Current Position of " << malVector[malSelect-1] << " is " << gameMap.mapPlayerLocation_to_station(player2.getRow(malSelect),player2.getCol(malSelect)) << endl;
+                cout << "Current Position of " << malVector[malSelect-1] << " is " << gameMap.mapPlayerLocation_to_station(player2.getRow(Num_in_malSign),player2.getCol(Num_in_malSign)) << endl;
             }
             this_thread::sleep_for(chrono::seconds(1));
             cout << endl;
 
             //Save the location of the selected mal after the movement, display some features of the game (ticket, map ..etc)
+            
             if (turn == 0){
-                move_or_carry_Mal(player1, 0, malSelect, malVector[malSelect-1], TicketResult, gameMap, player1.getRow(malSelect), player1.getCol(malSelect));
+                move_or_carry_Mal(player1, 0, malVector[malSelect-1], TicketResult, gameMap, player1.getRow(Num_in_malSign), player1.getCol(Num_in_malSign));
+                if (turn == 0){
+                    player1.check_Carried();
+                } else if (turn == 1) {
+                    player2.check_Carried();
+                }
                 if (player1.getMal(stoi(malVector[malSelect-1].substr(1,1))).finished){
-                    gameMap.removeMal(player1.getRow(malSelect), player1.getCol(malSelect));
+                    gameMap.removeMal(player1.getRow(Num_in_malSign), player1.getCol(Num_in_malSign));
                 } else {
-                    moveMalDisplay(gameMap, player1, malVector[malSelect-1], player1.getPreviousRow(malSelect), player1.getPreviousCol(malSelect),player1.getRow(malSelect), player1.getCol(malSelect));
+                    moveMalDisplay(gameMap, player1, carriedMalNums(player1, malVector[malSelect-1]), player1.getPreviousRow(Num_in_malSign), player1.getPreviousCol(Num_in_malSign),player1.getRow(Num_in_malSign), player1.getCol(Num_in_malSign));
                 }
             } else if (turn == 1) {
-                move_or_carry_Mal(player2, 1, malSelect, malVector[malSelect-1], TicketResult, gameMap, player2.getRow(malSelect), player2.getCol(malSelect));
+                move_or_carry_Mal(player2, 1, malVector[malSelect-1], TicketResult, gameMap, player2.getRow(Num_in_malSign), player2.getCol(Num_in_malSign));
+                if (turn == 0){
+                    player1.check_Carried();
+                } else if (turn == 1) {
+                    player2.check_Carried();
+                }
                 if (player1.getMal(stoi(malVector[malSelect-1].substr(1,1))).finished){
-                    gameMap.removeMal(player2.getRow(malSelect), player2.getCol(malSelect));
+                    gameMap.removeMal(player2.getRow(Num_in_malSign), player2.getCol(Num_in_malSign));
                 } else {
-                    moveMalDisplay(gameMap, player2, malVector[malSelect-1], player2.getPreviousRow(malSelect), player2.getPreviousCol(malSelect),player2.getRow(malSelect), player2.getCol(malSelect));
+                    moveMalDisplay(gameMap, player2, carriedMalNums(player2, malVector[malSelect-1]), player2.getPreviousRow(Num_in_malSign), player2.getPreviousCol(Num_in_malSign),player2.getRow(Num_in_malSign), player2.getCol(Num_in_malSign));
                 }
             }
 
             //Showing the new position of the selected mal
             if (turn == 0){
-                cout << malVector[malSelect-1] << " will move to " << gameMap.mapPlayerLocation_to_station(player1.getRow(malSelect),player1.getCol(malSelect)) << endl;
+                cout << malVector[malSelect-1] << " will move to " << gameMap.mapPlayerLocation_to_station(player1.getRow(Num_in_malSign),player1.getCol(Num_in_malSign)) << endl;
             } else if (turn == 1) {
-                cout << malVector[malSelect-1] << " will move to " << gameMap.mapPlayerLocation_to_station(player2.getRow(malSelect),player2.getCol(malSelect)) << endl;
+                cout << malVector[malSelect-1] << " will move to " << gameMap.mapPlayerLocation_to_station(player2.getRow(Num_in_malSign),player2.getCol(Num_in_malSign)) << endl;
             }
             this_thread::sleep_for(chrono::seconds(2));
 
             //Explaining the location that the mal arrived, and check if the moved mal killed any opponent's mal       
             if (turn == 0){
-                PrintExplain(player1.getRow(malSelect),player1.getCol(malSelect));
+                PrintExplain(player1.getRow(Num_in_malSign),player1.getCol(Num_in_malSign));
             } else if (turn == 1) {
-                PrintExplain(player2.getRow(malSelect),player2.getCol(malSelect));
+                PrintExplain(player2.getRow(Num_in_malSign),player2.getCol(Num_in_malSign));
             }
             
             if (turn == 0){
-                if (killMal(gameMap, player2, turn, player1.getRow(malSelect), player1.getCol(malSelect))){
-                    typingEffect("Wow!! You killed the opponent's mal. You can roll the Yut one more Time!");
+                if (killMal(gameMap, player2, turn, player1.getRow(Num_in_malSign), player1.getCol(Num_in_malSign))){
+                    typingEffect("Wow!! You killed the opponent's mal. Yut will be rolled one more Time!");
                     cout << endl;
                     this_thread::sleep_for(chrono::seconds(2));
                     cout << endl;
                     while (true){
                         gameMap.printMap();
+                        this_thread::sleep_for(chrono::seconds(1));
                         typingEffect("Your ticket is...");
                         cout << endl;
                         for (int i = 0; i < 3; i++){
@@ -314,7 +327,7 @@ int main(){
                             break;
                         } else if (TicketResult >= 4){
                             cout << endl;
-                            typingEffect("Wow!! You got " + getTicketName(TicketResult) + " ticket! You can roll the Yut one more Time! Press Enter to roll the Yut.");
+                            typingEffect("Wow!! You got " + getTicketName(TicketResult) + " ticket! Yut will be rolled one more Time!");
                             cout << endl;
                             this_thread::sleep_for(chrono::seconds(2));
                             cout << endl;
@@ -327,13 +340,14 @@ int main(){
                     }
                 }
             } else if (turn == 1) {
-                if (killMal(gameMap, player1, turn, player2.getRow(malSelect), player2.getCol(malSelect))){
-                    typingEffect("Wow!! You killed the opponent's mal. You can roll the Yut one more Time!");
+                if (killMal(gameMap, player1, turn, player2.getRow(Num_in_malSign), player2.getCol(Num_in_malSign))){
+                    typingEffect("Wow!! You killed the opponent's mal. Yut will be rolled one more Time!");
                     cout << endl;
                     this_thread::sleep_for(chrono::seconds(2));
                     cout << endl;
                     while (true){
                         gameMap.printMap();
+                        this_thread::sleep_for(chrono::seconds(1));
                         typingEffect("Your ticket is...");
                         cout << endl;
                         for (int i = 0; i < 3; i++){
@@ -354,7 +368,7 @@ int main(){
                             break;
                         } else if (TicketResult >= 4){
                             cout << endl;
-                            typingEffect("Wow!! You got " + getTicketName(TicketResult) + " ticket! You can roll the Yut one more Time!");
+                            typingEffect("Wow!! You got " + getTicketName(TicketResult) + " ticket! Yut will be rolled one more Time!");
                             cout << endl;
                             this_thread::sleep_for(chrono::seconds(2));
                             cout << endl;
@@ -383,6 +397,7 @@ int main(){
         //When the game is over, the program automatically ends 
         if (checkwin == 1){
             typingEffect("Game is over. Finished game will not be saved");
+            cout << endl;
             typingEffect("Thank you for playing. See you in the next game!!!");
             break; 
         }
