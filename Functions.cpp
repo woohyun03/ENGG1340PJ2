@@ -448,8 +448,8 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
         malNums.push_back(stoi(malSign.substr(i,1)));
     }
 
-    for (int i = 0; i< malNums.size(); i++){
-        vector<int>::iterator NumExist = find(malNums.begin(), malNums.end(), malNums[i]);
+    for (int i = 1; i <= 3; i++){
+        vector<int>::iterator NumExist = find(malNums.begin(), malNums.end(), i);
         if (NumExist != malNums.end()){
             continue;
         } else if ( player.getMal(malNums[0]).row == player.getMal(malNums[i]).row && player.getMal(malNums[0]).column == player.getMal(malNums[i]).column){
