@@ -203,6 +203,7 @@ int main(){
             } 
         }
         if (turn == 0){
+            //When player gains secret ticket when there is no mal in the board (for each player)
             if (player1.no_Mal_on_Map() && TicketResult == -1){
                 cout << "You do not have any Mal to move backward!" << endl;
                 this_thread::sleep_for(chrono::seconds(2));
@@ -210,6 +211,7 @@ int main(){
                 continue;
             }
         } else {
+            //When player gains secret ticket when there is no mal in the board (for each player)
             if (player2.no_Mal_on_Map() && TicketResult == -1){
                 cout << "You do not have any Mal to move backward!" << endl;
                 this_thread::sleep_for(chrono::seconds(2));
@@ -278,8 +280,7 @@ int main(){
             }
             this_thread::sleep_for(chrono::seconds(2));
 
-            //Explaining the location that the mal arrived, and check if the moved mal killed any opponent's mal
-            
+            //Explaining the location that the mal arrived, and check if the moved mal killed any opponent's mal       
             if (turn == 0){
                 PrintExplain(player1.getRow(malSelect),player1.getCol(malSelect));
             } else if (turn == 1) {
