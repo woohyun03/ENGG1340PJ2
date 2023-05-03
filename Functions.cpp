@@ -258,7 +258,7 @@ int askWhichTicket(vector<int> &tickets){
 //Asking which mal to use to a player. Mals inn special conditions like being carried will not be provided as an option
 vector<string> askMalMovement(int turn, Player one, Player two){
     vector<string> choices;
-    bool haveCarried = false;
+    bool alreadyAdded = false;
 
     if (turn == 0){
         for (int i = 1; i <= 3; i++) {
@@ -266,18 +266,22 @@ vector<string> askMalMovement(int turn, Player one, Player two){
             
             if (currentMal.finished) {
                 continue;
-            } else if (one.getMal(i).carried){
-                string carriedMalNum;
-                carriedMalNum += to_string(i);
-                for (int j = i+1; j <= 3; j++){
-                    if (one.getMal(j).carried){
-                        carriedMalNum += to_string(j);
-                        haveCarried = true;
+            } else if (currentMal.carried) {
+                string prefix = "A" + to_string(i);
+                for (int j = i + 1; j <= 3; j++) {
+                    if (one.getMal(j).carried) {
+                        prefix += to_string(j);
                     }
                 }
-                if (haveCarried && i != 1 && choices[0].length() != 4){
-                    carriedMalNum = "A" + carriedMalNum;
-                    choices.push_back(carriedMalNum);
+                for (int j = 0; j < choices.size(); j ++){
+                    for (int a= 0; a < choices[j].length(); a++){
+                        if (choices[j].substr(a,1) == to_string(i)){
+                            alreadyAdded = true;
+                        }
+                    }
+                }
+                if (!alreadyAdded){
+                    choices.push_back(prefix);
                 }
             } else {
                 choices.push_back("A" + to_string(i));
@@ -289,18 +293,22 @@ vector<string> askMalMovement(int turn, Player one, Player two){
             
             if (currentMal.finished) {
                 continue;
-            } else if (two.getMal(i).carried){
-                string carriedMalNum;
-                carriedMalNum += to_string(i);
-                for (int j = i+1; j <= 3; j++){
-                    if (two.getMal(j).carried){
-                        carriedMalNum += to_string(j);
-                        haveCarried = true;
+            } else if (currentMal.carried) {
+                string prefix = "B" + to_string(i);
+                for (int j = i + 1; j <= 3; j++) {
+                    if (two.getMal(j).carried) {
+                        prefix += to_string(j);
                     }
                 }
-                if (haveCarried && i != 1 && choices[0].length() != 4){
-                    carriedMalNum = "B" + carriedMalNum;
-                    choices.push_back(carriedMalNum);
+                for (int j = 0; j < choices.size(); j ++){
+                    for (int a= 0; a < choices[j].length(); a++){
+                        if (choices[j].substr(a,1) == to_string(i)){
+                            alreadyAdded = true;
+                        }
+                    }
+                }
+                if (!alreadyAdded){
+                    choices.push_back(prefix);
                 }
             } else {
                 choices.push_back("B" + to_string(i));
