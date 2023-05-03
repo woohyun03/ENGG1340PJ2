@@ -176,8 +176,14 @@ int main(){
              //Shows which ticket the player gained
             cout << getTicketName(TicketResult) << "!!!" << endl;
             this_thread::sleep_for(chrono::seconds(2));
-            if ( (counter == 0 || counter == 1) && TicketResult == -1){
-                break;
+            if (turn == 0){
+                if (player1.no_Mal_on_Map() && TicketResult == -1){
+                    break;
+                }
+            } else {
+                if (player2.no_Mal_on_Map() && TicketResult == -1){
+                    break;
+                }
             }
             
             //Showing player that he or she is able to roll the Yut once more (get ticket once more) as the player picked a special ticket
@@ -197,10 +203,22 @@ int main(){
         if ( (counter == 0 || counter == 1) && TicketResult == -1){
             cout << "You do not have any Mal to move backward!" << endl;
             this_thread::sleep_for(chrono::seconds(2));
-            break;
+            continue;
+        }
+        if (turn == 0){
+            if (player1.no_Mal_on_Map() && TicketResult == -1){
+                cout << "You do not have any Mal to move backward!" << endl;
+                this_thread::sleep_for(chrono::seconds(2));
+                continue;
+            }
+        } else {
+            if (player2.no_Mal_on_Map() && TicketResult == -1){
+                cout << "You do not have any Mal to move backward!" << endl;
+                this_thread::sleep_for(chrono::seconds(2));
+                continue;
+            }
         }
         
-
 
 
         while (tickets.size() != 0){
@@ -272,7 +290,7 @@ int main(){
                 if (killMal(gameMap, player2, turn, player1.getRow(malSelect), player1.getCol(malSelect))){
                     typingEffect("Wow!! You killed the opponent's mal. You can roll the Yut one more Time! Press Enter to roll the Yut.\n");
                     cout << endl;
-                    getchar();
+                    this_thread::sleep_for(chrono::seconds(1));
                     cout << endl;
                     while (true){
                         gameMap.printMap();
@@ -307,9 +325,9 @@ int main(){
                 }
             } else if (turn == 1) {
                 if (killMal(gameMap, player1, turn, player2.getRow(malSelect), player2.getCol(malSelect))){
-                    typingEffect("Wow!! You killed the opponent's mal. You can roll the Yut one more Time! Press Enter to roll the Yut.");
+                    typingEffect("Wow!! You killed the opponent's mal. You can roll the Yut one more Time!");
                     cout << endl;
-                    getchar();
+                    this_thread::sleep_for(chrono::seconds(1));
                     cout << endl;
                     while (true){
                         gameMap.printMap();
