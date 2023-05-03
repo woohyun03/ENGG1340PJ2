@@ -31,6 +31,40 @@ int main(){
     for (int i = 0; i < 20; i++){
         cout << endl;
     }
+    // South Korea flag ASCII art
+    cout << "      *************" << endl;
+    cout << "   ********************" << endl;
+    cout << " *************************" << endl;
+    cout << "***************************" << endl;
+    cout << "***************************" << endl;
+    cout << " *************************" << endl;
+    cout << "   ********************" << endl;
+    cout << "      *************" << endl;
+    cout << "           **" << endl;
+    cout << "           **" << endl;
+    cout << "           **" << endl;
+    cout << "           **" << endl;
+    cout << "           **" << endl;
+    cout << "           **" << endl;
+    cout << "           **" << endl;
+
+    // Hong Kong flag ASCII art
+    cout << endl; // add a blank line to separate the flags
+    cout << "      ****************" << endl;
+    cout << "   ********************" << endl;
+    cout << " ************************" << endl;
+    cout << "*************************" << endl;
+    cout << "*************************" << endl;
+    cout << " ************************" << endl;
+    cout << "   ********************" << endl;
+    cout << "      ****************" << endl;
+    cout << "           **" << endl;
+    cout << "           **" << endl;
+    cout << "           **" << endl;
+    cout << "           **" << endl;
+    cout << "           **" << endl;
+    cout << "           **" << endl;
+    cout << "           **" << endl;
     
     
     //Welcoming ASCII art
