@@ -260,7 +260,7 @@ vector<string> askMalMovement(int turn, Player one, Player two){
 
     if (turn == 0){
         for (int i = 1; i <= 3; i++) {
-            bool alreadyAdded = false;
+            alreadyAdded = false;
             Mal currentMal = one.getMal(i);
             
             if (currentMal.finished) {
@@ -288,7 +288,7 @@ vector<string> askMalMovement(int turn, Player one, Player two){
         }
     } else {
         for (int i = 1; i <= 3; i++) {
-            bool alreadyAdded = false;
+            alreadyAdded = false;
             Mal currentMal = two.getMal(i);
             
             if (currentMal.finished) {
@@ -363,25 +363,25 @@ string getTicketName(int ticketNum){
 }
 
 //Check if the mal is being carried
-void move_or_carry_Mal(Player &player, int playerNum, int malSelect, string malSign, int TicketResult, Map &gameMap, int pRow, int pCol){
+void move_or_carry_Mal(Player &player, int playerNum, string malSign, int TicketResult, Map &gameMap, int pRow, int pCol){
     if (malSign.length() == 2){
-        player.moveMal(malSelect, TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(malSelect), player.getCol(malSelect), playerNum, malSelect);
+        player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(1,1))), player.getCol(stoi(malSign.substr(1,1))), playerNum, stoi(malSign.substr(1,1)));
     } else if (malSign.length() == 3){
         player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(malSelect), player.getCol(malSelect), playerNum, stoi(malSign.substr(1,1)));
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(1,1))), player.getCol(stoi(malSign.substr(1,1))), playerNum, stoi(malSign.substr(1,1)));
 
         player.moveMal(stoi(malSign.substr(2,1)), TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(malSelect), player.getCol(malSelect), playerNum, stoi(malSign.substr(2,1)));
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(2,1))), player.getCol(stoi(malSign.substr(2,1))), playerNum, stoi(malSign.substr(2,1)));
     } else {
         player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(malSelect), player.getCol(malSelect), playerNum, stoi(malSign.substr(1,1)));
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(1,1))), player.getCol(stoi(malSign.substr(1,1))), playerNum, stoi(malSign.substr(1,1)));
 
         player.moveMal(stoi(malSign.substr(2,1)), TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(malSelect), player.getCol(malSelect), playerNum, stoi(malSign.substr(2,1)));
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(2,1))), player.getCol(stoi(malSign.substr(2,1))), playerNum, stoi(malSign.substr(2,1)));
 
         player.moveMal(stoi(malSign.substr(3,1)), TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(malSelect), player.getCol(malSelect), playerNum, stoi(malSign.substr(3,1)));
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(3,1))), player.getCol(stoi(malSign.substr(3,1))), playerNum, stoi(malSign.substr(3,1)));
     }
 }
 
@@ -466,20 +466,6 @@ string carriedMalNums(Player &player, string malSign){
 
 //Shows the new position of moved mal aesthetically
 void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, int previCol, int row, int col){
-    vector<int> malNums;
-    for (int i = 1; i < malSign.length(); i++){
-        malNums.push_back(stoi(malSign.substr(i,1)));
-    }
-
-    for (int i = 1; i <= 3; i++){
-        vector<int>::iterator NumExist = find(malNums.begin(), malNums.end(), i);
-        if (NumExist != malNums.end()){
-            continue;
-        } else if ( player.getMal(malNums[0]).row == player.getMal(malNums[i]).row && player.getMal(malNums[0]).column == player.getMal(malNums[i]).column){
-            malSign += to_string(i);
-        }
-    }
-
     if (malSign == "A1"){
         string arrA1[3][3] = {
             {"A", "1", "A"},
