@@ -16,12 +16,12 @@
 #define RESET "\033[0m"
 #define RED "\033[31m"
 #define GREEN "\033[32m"
-#define YELLOW "\033[38;2;255;215;0m"
+#define YELLOW "\033[33m"
 #define BLUE "\033[34m"
 #define MAGENTA "\033[35m"
 #define CYAN "\033[36m"
 #define GRAY "\033[37m"
-#define BROWN "\033[38;2;205;127;50m"
+#define BROWN "\033[0;33m"
 using namespace std;
 
 //Welcoming players with ASCII art
