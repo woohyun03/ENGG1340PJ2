@@ -200,21 +200,18 @@ int main(){
                 }       
             } 
         }
-        if ( (counter == 0 || counter == 1) && TicketResult == -1){
-            cout << "You do not have any Mal to move backward!" << endl;
-            this_thread::sleep_for(chrono::seconds(2));
-            continue;
-        }
         if (turn == 0){
             if (player1.no_Mal_on_Map() && TicketResult == -1){
                 cout << "You do not have any Mal to move backward!" << endl;
                 this_thread::sleep_for(chrono::seconds(2));
+                tickets.clear();
                 continue;
             }
         } else {
             if (player2.no_Mal_on_Map() && TicketResult == -1){
                 cout << "You do not have any Mal to move backward!" << endl;
                 this_thread::sleep_for(chrono::seconds(2));
+                tickets.clear();
                 continue;
             }
         }
