@@ -20,7 +20,7 @@ Map::Map() {
             mapPlayerLocation[i][j].Playerone_third = false;
             mapPlayerLocation[i][j].Playertwo_first = false;
             mapPlayerLocation[i][j].Playertwo_second = false;
-            mapPlayerLocation[i][j].Playerone_third = false;
+            mapPlayerLocation[i][j].Playertwo_third = false;
         }
     }
     mapPlayerLocation[6][0].Playerone_first = true;
@@ -28,7 +28,7 @@ Map::Map() {
     mapPlayerLocation[6][0].Playerone_third = true;
     mapPlayerLocation[6][0].Playertwo_first = true;
     mapPlayerLocation[6][0].Playertwo_second = true;
-    mapPlayerLocation[6][0].Playerone_third = true;
+    mapPlayerLocation[6][0].Playertwo_third = true;
 
     for (int i = 0; i < 60; i++){
         for (int j = 0; j< 77; j++){
