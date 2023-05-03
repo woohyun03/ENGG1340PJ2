@@ -103,20 +103,14 @@ void Player::check_Carried(){
     Mals[0].carried = false;
     Mals[1].carried = false;
     Mals[2].carried = false;
-    for (int i = 0; i < 3; i++ ){
-        for (int j = i; j<3; j++){
+    for (int i = 0; i <= 3; i++ ){
+        for (int j = +1;  j<= 3; j++){
             if ((Mals[i].row !=6 || Mals[i].can_finish) && (Mals[i].column !=0 || Mals[i].can_finish) && Mals[i].row == Mals[j].row && Mals[i].column == Mals[j].column){
                 Mals[i].carried = true;
                 Mals[j].carried = true;
             }
         }
     }
-    /*cout << Mals[0].can_finish;
-    cout << Mals[1].can_finish;
-    cout << Mals[2].can_finish;
-    cout << Mals[0].carried;
-    cout << Mals[1].carried;
-    cout << Mals[2].carried;*/
 }
 
 bool Player::no_Mal_on_Map(){
@@ -156,6 +150,7 @@ void Player::newRowCol (Mal &playerMal, int &moveNum){
             moveStraight(playerMal, moveNum);
         }
     }
+    can_finish(playerMal);
     int newRowCol[2] = {playerMal.row, playerMal.column};
 }
 
