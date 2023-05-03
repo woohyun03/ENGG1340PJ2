@@ -104,7 +104,7 @@ void Player::check_Carried(){
     Mals[1].carried = false;
     Mals[2].carried = false;
     for (int i = 0; i <= 3; i++ ){
-        for (int j = +1;  j<= 3; j++){
+        for (int j = i+1;  j<= 3; j++){
             if ((Mals[i].row !=6 || Mals[i].can_finish) && (Mals[i].column !=0 || Mals[i].can_finish) && Mals[i].row == Mals[j].row && Mals[i].column == Mals[j].column){
                 Mals[i].carried = true;
                 Mals[j].carried = true;
