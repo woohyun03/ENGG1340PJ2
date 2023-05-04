@@ -391,6 +391,8 @@ int main(){
         if (checkwin == 1){
             typingEffect("Game is over. Finished game will not be saved");
             cout << endl;
+            EndingText();
+            cout << endl;
             typingEffect("Thank you for playing. See you in the next game!!!");
             break; 
         }
