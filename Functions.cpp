@@ -42,6 +42,20 @@ void WelcomeText(){
     cout << "\033[0m";
 }
 
+void EndingText(){
+    cout << "\033[1m";
+    cout<<RED<<" _____                             _         _       _   _               _" << endl;
+    cout<<RED<<"/  __ \\                           | |       | |     | | (_)             | |" << endl;
+    cout<<RED<<"| /  \\/ ___  _ __   __ _ _ __ __ _| |_ _   _| | __ _| |_ _  ___  _ __   | |" << endl;
+    cout<<RED<<"| |    / _ \\| '_ \\ / _` | '__/ _` | __| | | | |/ _` | __| |/ _ \\| '_ \\  | |" << endl;
+    cout<<BLUE<<"| \\__/\\ (_) | | | | (_| | | | (_| | |_| |_| | | (_| | |_| | (_) | | | | |_|" << endl;
+    cout<<BLUE<<" \\____/\\___/|_| |_|\\__, |_|  \\__,_|\\__|\\__,_|_|\\__,_|\\__|_|\\___/|_| |_| (_)" << endl;
+    cout<<BLUE<<"                    __/ |                                                  " << endl;
+    cout<<BLUE<<"                   |___/                                                   " << endl;
+    cout << "\033[0m";
+}
+
+
 void gameRuleText(){
     cout << "Yutnori is a traditional Korean board game that has been played for hundreds of years. " << endl;
     cout << "It is a game that involves strategy, luck, and skill. The game is played on a square board " << endl;
