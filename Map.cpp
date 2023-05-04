@@ -204,7 +204,6 @@ void Map::UpdatePlayerLocation(int previRow, int previCol, int row, int col, int
     addPlayerLocation(row, col, playerNum, malNum);
 }
 // Prints the map chart to the console
-// Prints the map chart to the console
 void Map::printMap(){
     for (int i = 0; i < 60; i++) {
         for (int j = 0; j < 77; j++) {
