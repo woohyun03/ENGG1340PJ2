@@ -57,7 +57,7 @@ int main(){
         cout << endl;
         loadGameNames();
         while (true){
-            typingEffect("Do you want to continue the game or to start new game?(1. Continue the new game, 2. Start a new game): ");
+            typingEffect("Do you want to continue the game or to start new game?(1. Continue the saved game, 2. Start a new game): ");
             
             cin >> id;
             if (id == 1){
