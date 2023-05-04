@@ -127,6 +127,11 @@ int main(){
                 cout << "Exit the Game." << endl;
                 break;
             } else if(input == "s"){
+                if (turn == 0){
+                    player1.check_Carried();
+                } else if (turn == 1) {
+                    player2.check_Carried();
+                }
                 cout << "Game Name : ";
                 cin >> input;
                 save_game(input, gameMap, player1, player2);
