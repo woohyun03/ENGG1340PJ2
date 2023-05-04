@@ -190,22 +190,22 @@ void save_game(string filename, Map gameMap, Player player1, Player player2) {
 
     // Saving player1 data
     for (int i = 1; i <= 3; i++) {
-        outFile << i << " ";
-        outFile << player1.getMal(i).row << " ";
-        outFile << player1.getMal(i).column << " ";
-        outFile << player1.getMal(i).can_finish << " ";
-        outFile << player1.getMal(i).finished << " ";
-        outFile << player1.getMal(i).carried << " ";
+        outFile << i << endl;
+        outFile << player1.getMal(i).row << endl;
+        outFile << player1.getMal(i).column << endl;
+        outFile << player1.getMal(i).can_finish << endl;
+        outFile << player1.getMal(i).finished << endl;
+        outFile << player1.getMal(i).carried << endl;
     }
 
 
     // Saving player2 data
     for (int i = 1; i <= 3; i++) {
-        outFile << i << " ";
-        outFile << player2.getMal(i).row << " ";
-        outFile << player2.getMal(i).column << " ";
-        outFile << player2.getMal(i).can_finish << " ";
-        outFile << player2.getMal(i).finished << " ";
+        outFile << i << endl;
+        outFile << player2.getMal(i).row << endl;
+        outFile << player2.getMal(i).column << endl;
+        outFile << player2.getMal(i).can_finish << endl;
+        outFile << player2.getMal(i).finished << endl;
         outFile << player2.getMal(i).carried << endl;
     }
     
@@ -224,27 +224,26 @@ void load_game(string filename, Map &gameMap, Player &player1, Player &player2, 
         loadfailed = 1;
         return;
     }
+    
+    string player1Name, player2Name;
+    int malNum, row, column;
+    bool can_finish, finished, carried;
+    int can_finish_int, finished_int, carried_int;
 
     // Load players' names and counter
-    string player1Name, player2Name;
     inFile >> player1Name >> player2Name;
     player1.setName(player1Name);
     player2.setName(player2Name);
 
-    int malNum, row, column;
-    bool can_finish, finished, carried;
     // Load player1 data
     for (int i = 1; i <= 3; i++) {
-        inFile >> malNum >> row >> column >> boolalpha >> can_finish >> boolalpha >> finished >> boolalpha >> carried;
-        cout << malNum;
-        cout << row;
-        cout << column;
-        cout << can_finish;
-        cout << finished;
-        cout << carried;
+        inFile >> malNum >> row >> column >> can_finish_int >> finished_int >> carried_int;
+
+        can_finish = static_cast<bool>(can_finish_int);
+        finished = static_cast<bool>(finished_int);
+        carried = static_cast<bool>(carried_int);
+
         player1.setMal(malNum, row, column, can_finish, finished, carried);
-        inFile.clear(); // Clear the input stream state
-        inFile.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 
     for (int i = 1; i<=3; i++){
@@ -254,9 +253,16 @@ void load_game(string filename, Map &gameMap, Player &player1, Player &player2, 
 
     // Load player2 data
     for (int i = 1; i <= 3; i++) {
-        inFile >> malNum >> row >> column >> boolalpha >> can_finish >> boolalpha >> finished >> boolalpha >> carried;
+        inFile >> malNum >> row >> column >> can_finish_int >> finished_int >> carried_int;
+
+        can_finish = static_cast<bool>(can_finish_int);
+        finished = static_cast<bool>(finished_int);
+        carried = static_cast<bool>(carried_int);
+
         player2.setMal(malNum, row, column, can_finish, finished, carried);
     }
+
+
      for (int i = 1; i<=3; i++){
         gameMap.addPlayerLocation(player2.getMal(i).row, player2.getMal(i).column, 0, i);
     }
@@ -264,6 +270,7 @@ void load_game(string filename, Map &gameMap, Player &player1, Player &player2, 
     inFile.close();
     cout << "Game loaded successfully." << endl;
 }
+
 
 //Asking player which ticket he or she will use. Invalid input is also provided
 int askWhichTicket(vector<int> &tickets){
