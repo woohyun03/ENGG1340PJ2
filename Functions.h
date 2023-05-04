@@ -23,6 +23,7 @@
 using namespace std;
 
 void WelcomeText();
+void EndingText();
 void gameRuleText();
 void typingEffect(string outputText);
 void saveGameName(string filename);
