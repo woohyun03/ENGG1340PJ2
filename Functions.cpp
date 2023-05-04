@@ -82,8 +82,25 @@ void typingEffect(string outputText){
 
 //Saving the name of the game into a file
 void saveGameName(string filename){
-    ofstream outFile;
-    outFile.open("Games.txt", ios::app);
+    ifstream inFile("Games.txt");
+    bool fileExists = false;
+
+    if (inFile.is_open()) {
+        string line;
+        while (getline(inFile, line)) {
+            if (line == filename) {
+                fileExists = true;
+                break;
+            }
+        }
+        inFile.close();
+    }
+
+    if (fileExists) {
+        return;
+    }
+
+    ofstream outFile("Games.txt", ios::app);
 
     if (outFile.fail()) {
         cout << "Error opening file for saving game names." << endl;
@@ -93,7 +110,6 @@ void saveGameName(string filename){
     outFile << filename << endl;
 
     outFile.close();
-    cout << "Game name saved successfully." << endl;
 }
 
 //Getting the number of saved games to check if a player saved the game previously
@@ -147,7 +163,7 @@ void loadGameNames(){
 //Game saving function. It saves each player's positions of the mals
 void save_game(string filename, Map gameMap, Player player1, Player player2) {
     ofstream outFile;
-    outFile.open(filename.c_str());
+    outFile.open((filename + ".txt").c_str());
 
     if (outFile.fail()) {
         cout << "Error opening file for saving game state." << endl;
@@ -160,22 +176,22 @@ void save_game(string filename, Map gameMap, Player player1, Player player2) {
 
     // Saving player1 data
     for (int i = 1; i <= 3; i++) {
-        outFile << i << endl;
-        outFile << player1.getMal(i).row << endl;
-        outFile << player1.getMal(i).column << endl;
-        outFile << player1.getMal(i).can_finish << endl;
-        outFile << player1.getMal(i).finished << endl;
-        outFile << player1.getMal(i).carried << endl;
+        outFile << i << " ";
+        outFile << player1.getMal(i).row << " ";
+        outFile << player1.getMal(i).column << " ";
+        outFile << player1.getMal(i).can_finish << " ";
+        outFile << player1.getMal(i).finished << " ";
+        outFile << player1.getMal(i).carried << " ";
     }
 
 
     // Saving player2 data
     for (int i = 1; i <= 3; i++) {
-        outFile << i << endl;
-        outFile << player2.getMal(i).row << endl;
-        outFile << player2.getMal(i).column << endl;
-        outFile << player2.getMal(i).can_finish << endl;
-        outFile << player2.getMal(i).finished << endl;
+        outFile << i << " ";
+        outFile << player2.getMal(i).row << " ";
+        outFile << player2.getMal(i).column << " ";
+        outFile << player2.getMal(i).can_finish << " ";
+        outFile << player2.getMal(i).finished << " ";
         outFile << player2.getMal(i).carried << endl;
     }
     
@@ -187,7 +203,7 @@ void save_game(string filename, Map gameMap, Player player1, Player player2) {
 //Bringing a saved game. If it fails to bring, new game will start
 void load_game(string filename, Map &gameMap, Player &player1, Player &player2, int &loadfailed) {
     ifstream inFile;
-    inFile.open(filename.c_str());
+    inFile.open((filename + ".txt").c_str());
 
     if (inFile.fail()) {
         cout << "Invalid input or Error in opening file." << endl;
@@ -206,11 +222,19 @@ void load_game(string filename, Map &gameMap, Player &player1, Player &player2, 
     // Load player1 data
     for (int i = 1; i <= 3; i++) {
         inFile >> malNum >> row >> column >> boolalpha >> can_finish >> boolalpha >> finished >> boolalpha >> carried;
+        cout << malNum;
+        cout << row;
+        cout << column;
+        cout << can_finish;
+        cout << finished;
+        cout << carried;
         player1.setMal(malNum, row, column, can_finish, finished, carried);
+        inFile.clear(); // Clear the input stream state
+        inFile.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 
     for (int i = 1; i<=3; i++){
-        gameMap.addPlayerLocation(player1.getMal(i).row, player1.getMal(i).row, 0, i);
+        gameMap.addPlayerLocation(player1.getMal(i).row, player1.getMal(i).column, 0, i);
     }
 
 
@@ -220,7 +244,7 @@ void load_game(string filename, Map &gameMap, Player &player1, Player &player2, 
         player2.setMal(malNum, row, column, can_finish, finished, carried);
     }
      for (int i = 1; i<=3; i++){
-        gameMap.addPlayerLocation(player2.getMal(i).row, player2.getMal(i).row, 0, i);
+        gameMap.addPlayerLocation(player2.getMal(i).row, player2.getMal(i).column, 0, i);
     }
 
     inFile.close();
@@ -665,7 +689,7 @@ void addMalDisplay(Map &gameMap, Player player1, Player player2){
         {"3", " ", "3"},
         {"2", "1", "B"}
         };
-    map<std::string, string[3][3]> malSign_to_malDisplay;
+    map<string, string[3][3]> malSign_to_malDisplay;
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             malSign_to_malDisplay["A1"][i][j] = arrA1[i][j];
@@ -727,21 +751,25 @@ void addMalDisplay(Map &gameMap, Player player1, Player player2){
         }
     }
 
+    cout << player1.getMal(2).row;
+    cout << player1.getMal(2).column;
+    cout << player1.getMal(2).can_finish;
 
-    if ( player1.getRow(1) !=6 || player1.getCol(1) != 0 && !player1.getMal(1).can_finish){
+
+    if (player1.getMal(1).can_finish){
         gameMap.addMal(player1.getRow(1), player1.getCol(1), malSign_to_malDisplay[carriedMalNums(player1, "A1")]);
-    } else if ( player1.getRow(1) !=6 || player1.getCol(1) != 0 && !player1.getMal(2).can_finish){
+    } else if (player1.getMal(2).can_finish){
         gameMap.addMal(player1.getRow(2), player1.getCol(2), malSign_to_malDisplay[carriedMalNums(player1, "A2")]);
-    } else if ( player1.getRow(1) !=6 || player1.getCol(1) != 0 && !player1.getMal(3).can_finish) {
+    } else if (player1.getMal(3).can_finish) {
         gameMap.addMal(player1.getRow(3), player1.getCol(3), malSign_to_malDisplay[carriedMalNums(player1, "A3")]);
     }
 
-    if ( player1.getRow(1) !=6 || player1.getCol(1) != 0 && !player2.getMal(1).can_finish){
-        gameMap.addMal(player2.getRow(1), player2.getCol(1), malSign_to_malDisplay[carriedMalNums(player1, "B1")]);
-    } else if ( player1.getRow(1) !=6 || player1.getCol(1) != 0 && !player2.getMal(2).can_finish){
-        gameMap.addMal(player2.getRow(2), player2.getCol(2), malSign_to_malDisplay[carriedMalNums(player1, "B2")]);
-    } else if ( player1.getRow(1) !=6 || player1.getCol(1) != 0 && !player2.getMal(3).can_finish) {
-        gameMap.addMal(player2.getRow(3), player2.getCol(3), malSign_to_malDisplay[carriedMalNums(player1, "B3")]);
+    if (player2.getMal(1).can_finish){
+        gameMap.addMal(player2.getRow(1), player2.getCol(1), malSign_to_malDisplay[carriedMalNums(player2, "B1")]);
+    } else if (player2.getMal(2).can_finish){
+        gameMap.addMal(player2.getRow(2), player2.getCol(2), malSign_to_malDisplay[carriedMalNums(player2, "B2")]);
+    } else if (player2.getMal(3).can_finish) {
+        gameMap.addMal(player2.getRow(3), player2.getCol(3), malSign_to_malDisplay[carriedMalNums(player2, "B3")]);
     }
 
 }
