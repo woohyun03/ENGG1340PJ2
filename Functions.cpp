@@ -728,19 +728,19 @@ void addMalDisplay(Map &gameMap, Player player1, Player player2){
     }
 
 
-    if (player1.getRow(1) !=6 || player1.getCol(1) != 0){
+    if (player1.getRow(1) == 6 && player1.getCol(1) == 0){
         gameMap.addMal(player1.getRow(1), player1.getCol(1), malSign_to_malDisplay[carriedMalNums(player1, "A1")]);
-    } else if (player1.getRow(2) !=6 || player1.getCol(2) != 0){
+    } else if (player1.getRow(2) == 6 && player1.getCol(2) == 0){
         gameMap.addMal(player1.getRow(2), player1.getCol(2), malSign_to_malDisplay[carriedMalNums(player1, "A2")]);
-    } else if (player1.getRow(3) !=6 || player1.getCol(3) != 0) {
+    } else if (player1.getRow(3) == 6 && player1.getCol(3) == 0) {
         gameMap.addMal(player1.getRow(3), player1.getCol(3), malSign_to_malDisplay[carriedMalNums(player1, "A3")]);
     }
 
-    if (player2.getRow(1) !=6 || player2.getCol(1) != 0){
+    if (player2.getRow(1) ==6 && player2.getCol(1) == 0){
         gameMap.addMal(player2.getRow(1), player2.getCol(1), malSign_to_malDisplay[carriedMalNums(player1, "B1")]);
-    } else if (player2.getRow(2) !=6 || player2.getCol(2) != 0){
+    } else if (player2.getRow(2) ==6 && player2.getCol(2) == 0){
         gameMap.addMal(player2.getRow(2), player2.getCol(2), malSign_to_malDisplay[carriedMalNums(player1, "B2")]);
-    } else if (player2.getRow(3) !=6 || player2.getCol(3) != 0) {
+    } else if (player2.getRow(3) ==6 && player2.getCol(3) == 0) {
         gameMap.addMal(player2.getRow(3), player2.getCol(3), malSign_to_malDisplay[carriedMalNums(player1, "B3")]);
     }
 
