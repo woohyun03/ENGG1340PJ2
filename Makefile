@@ -19,7 +19,8 @@ game: main.o Functions.o Player.o MapChartDisplay.o Map.o
 	g++ $(FLAGS) $^ -o $@
 
 clean:
-	rm -f game main.o Functions.o Player.o MapChartDisplay.o Map.o
+	rm -f game main.o Functions.o Player.o MapChartDisplay.o Map.o *.txt
+	touch Games.txt
 
 tar:
 	tar -czvf game.tgz *.cpp *.h
