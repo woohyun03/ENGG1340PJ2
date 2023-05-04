@@ -26,6 +26,7 @@ int main(){
     int malSelect;
     vector<int> tickets;
     string outputText;
+    int id;
     
      //For aesthetic purpose
     for (int i = 0; i < 20; i++){
@@ -55,39 +56,46 @@ int main(){
         typingEffect("You have " + to_string(Get_Number_of_Saved_Games()) + " saved games.");
         cout << endl;
         loadGameNames();
-        typingEffect("Type the game you want to load.");
-        cout << endl;
-        cin >> input;
-        int loadfailed = 0;
-        load_game(input, gameMap, player1, player2, loadfailed);
-        if (loadfailed == 1){
-            typingEffect("Failed to load game. We will start a new game.");
-            cout << endl;
-            typingEffect("Press Enter to Start");
-            getline(cin, input);
-            typingEffect("Enter player 1's name: ");
-            cin >> input;
-            player1.setName(input);
-            typingEffect("Enter player 2's name: ");
-            cin >> input;
-            player2.setName(input);
-            loadfailed = 0;   
-        } else {
-            addMalDisplay(gameMap, player1, player2);
+        while (true){
+            typingEffect("Do you want to continue the game or to start new game?(1. Continue the new game, 2. Start a new game): ");
+            
+            cin >> id;
+            if (id == 1){
+                typingEffect("Type a game that you want to continue: ");
+                cin >> input;
+                int loadfailed = 0;
+                load_game(input, gameMap, player1, player2, loadfailed);
+
+                if (loadfailed == 1){
+                    typingEffect("Failed to load game. Please input");
+                    continue;
+                
+                } else {
+                    addMalDisplay(gameMap, player1, player2);
+                    break;
+                }
+
+
+
+            }
+            else if (id == 2){
+                typingEffect("New game will be started.");
+                cout << endl;
+                typingEffect("Press Enter to Start");
+                getline(cin, input);
+                typingEffect("Enter player 1's name: ");
+                cin >> input;
+                player1.setName(input);
+                typingEffect("Enter player 2's name: ");
+                cin >> input;
+                player2.setName(input);
+                break;
+            }
+            else {
+                typingEffect("Invalid input. Please input the proper number to contintue.");
+                cout << endl;
+            }
         }
-    } else {
-        typingEffect("There are no saved games. We will start a new game!");
-        cout << endl;
-        typingEffect("Press Enter to Start");
-        getline(cin, input);
-        typingEffect("Enter player 1's name: ");
-        cin >> input;
-        player1.setName(input);
-        typingEffect("Enter player 2's name: ");
-        cin >> input;
-        player2.setName(input);
-    }
-    
 
 
     //For aesthetic purpose
