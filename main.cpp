@@ -75,8 +75,6 @@ int main(){
                     break;
                 }
 
-
-
             }
             else if (id == 2){
                 typingEffect("New game will be started.");
@@ -96,8 +94,8 @@ int main(){
                 cout << endl;
             }
         }
-
-
+    }
+    
     //For aesthetic purpose
     typingEffect("We will start game in...");
     cout << endl;
