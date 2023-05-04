@@ -94,8 +94,21 @@ int main(){
                 cout << endl;
             }
         }
+    } else {
+        typingEffect("There are no saved games. We will start a new game!");
+        cout << endl;
+        typingEffect("Press Enter to Start");
+        getline(cin, input);
+        typingEffect("Enter player 1's name: ");
+        cin >> input;
+        player1.setName(input);
+        typingEffect("Enter player 2's name: ");
+        cin >> input;
+        player2.setName(input);
     }
-    
+
+
+
     //For aesthetic purpose
     typingEffect("We will start game in...");
     cout << endl;
