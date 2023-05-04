@@ -51,7 +51,7 @@ int main(){
     getline(cin, input);
     
     //If there are saved games, the system asks the player which game to load. If unsuccessful or no saved games, create a new game to play
-    if (Get_Number_of_Saved_Games() >0){
+    if (Get_Number_of_Saved_Games() > 0){
         typingEffect("You have " + to_string(Get_Number_of_Saved_Games()) + " saved games.");
         cout << endl;
         loadGameNames();
@@ -72,6 +72,8 @@ int main(){
             cin >> input;
             player2.setName(input);
             loadfailed = 0;   
+        } else {
+            addMalDisplay(gameMap, player1, player2);
         }
     } else {
         typingEffect("There are no saved games. We will start a new game!");
@@ -128,6 +130,7 @@ int main(){
                 cout << "Game Name : ";
                 cin >> input;
                 save_game(input, gameMap, player1, player2);
+                saveGameName(input);
                 cout << "See you later!" << endl;
                 cout << endl;
                 cout << endl;
@@ -330,12 +333,7 @@ int main(){
                             typingEffect("Wow!! You got " + getTicketName(TicketResult) + " ticket! Yut will be rolled one more Time!");
                             cout << endl;
                             this_thread::sleep_for(chrono::seconds(2));
-                            cout << endl;
-                            cout << "Your ticket is..." << endl;
-                            for (int i = 0; i < 3; i++){
-                                cout << "\r" << 3 - i << "..." << endl;
-                                this_thread::sleep_for(chrono::seconds(1));
-                            }         
+                            cout << endl;     
                         } 
                     }
                 }
@@ -371,12 +369,7 @@ int main(){
                             typingEffect("Wow!! You got " + getTicketName(TicketResult) + " ticket! Yut will be rolled one more Time!");
                             cout << endl;
                             this_thread::sleep_for(chrono::seconds(2));
-                            cout << endl;
-                            cout << "Your ticket is..." << endl;
-                            for (int i = 0; i < 3; i++){
-                                cout << "\r" << 3 - i << "..." << endl;
-                                this_thread::sleep_for(chrono::seconds(1));
-                            }         
+                            cout << endl;         
                         } 
                     }
                 }
