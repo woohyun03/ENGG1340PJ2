@@ -39,5 +39,6 @@ bool killMal(Map &gameMap, Player &opponent, int playerNum, int newRow, int newC
 void displayTicket(int moves);
 string carriedMalNums(Player &player, string malSign);
 void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, int previCol, int row, int col);
+void addMalDisplay(Map &gameMap, Player player1, Player player2);
 void PrintExplain(int row, int col);
 #endif

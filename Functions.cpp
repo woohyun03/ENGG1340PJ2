@@ -160,22 +160,22 @@ void save_game(string filename, Map gameMap, Player player1, Player player2) {
 
     // Saving player1 data
     for (int i = 1; i <= 3; i++) {
-        outFile << i;
-        outFile << player1.getMal(i).row;
-        outFile << player1.getMal(i).column;
-        outFile << player1.getMal(i).can_finish;
-        outFile << player1.getMal(i).finished;
+        outFile << i << endl;
+        outFile << player1.getMal(i).row << endl;
+        outFile << player1.getMal(i).column << endl;
+        outFile << player1.getMal(i).can_finish << endl;
+        outFile << player1.getMal(i).finished << endl;
         outFile << player1.getMal(i).carried << endl;
     }
 
 
     // Saving player2 data
     for (int i = 1; i <= 3; i++) {
-        outFile << i;
-        outFile << player2.getMal(i).row;
-        outFile << player2.getMal(i).column;
-        outFile << player2.getMal(i).can_finish;
-        outFile << player2.getMal(i).finished;
+        outFile << i << endl;
+        outFile << player2.getMal(i).row << endl;
+        outFile << player2.getMal(i).column << endl;
+        outFile << player2.getMal(i).can_finish << endl;
+        outFile << player2.getMal(i).finished << endl;
         outFile << player2.getMal(i).carried << endl;
     }
     
@@ -590,6 +590,160 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
         gameMap.moveMal(previRow, previCol, row, col, arrB123);
     };
 
+
+}
+
+//Add mal display when loading the game
+void addMalDisplay(Map &gameMap, Player player1, Player player2){
+    string arrA1[3][3] = {
+        {"A", "1", "A"},
+        {"1", " ", "1"},
+        {"A", "1", "A"}
+        };
+    string arrA2[3][3] = {
+        {"A", "2", "A"},
+        {"2", " ", "2"},
+        {"A", "2", "A"}
+        };
+    string arrA3[3][3] = {
+        {"A", "3", "A"},
+        {"3", " ", "3"},
+        {"A", "3", "A"}
+        };
+    string arrA12[3][3] = {
+        {"A", "1", "2"},
+        {"1", " ", "A"},
+        {"A", "2", "1"}
+        };
+    string arrA23[3][3] = {
+        {"A", "2", "3"},
+        {"2", " ", "A"},
+        {"A", "3", "2"}
+        };
+    string arrA13[3][3] = {
+        {"A", "1", "3"},
+        {"1", " ", "A"},
+        {"A", "3", "1"}
+        };
+    string arrA123[3][3] = {
+        {"A", "1", "2"},
+        {"3", " ", "3"},
+        {"2", "1", "A"}
+        };
+    string arrB1[3][3] = {
+        {"B", "1", "B"},
+        {"1", " ", "1"},
+        {"B", "1", "B"}
+        };
+    string arrB2[3][3] = {
+        {"B", "2", "B"},
+        {"2", " ", "2"},
+        {"B", "2", "B"}
+        };
+    string arrB3[3][3] = {
+        {"B", "3", "B"},
+        {"3", " ", "3"},
+        {"B", "3", "B"}
+        };
+    string arrB12[3][3] = {
+        {"B", "1", "2"},
+        {"1", " ", "B"},
+        {"B", "2", "1"}
+        };
+    string arrB23[3][3] = {
+        {"B", "2", "3"},
+        {"2", " ", "B"},
+        {"B", "3", "2"}
+        };
+    string arrB13[3][3] = {
+        {"B", "1", "3"},
+        {"1", " ", "B"},
+        {"B", "3", "1"}
+        };
+    string arrB123[3][3] = {
+        {"B", "1", "2"},
+        {"3", " ", "3"},
+        {"2", "1", "B"}
+        };
+    map<std::string, string[3][3]> malSign_to_malDisplay;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            malSign_to_malDisplay["A1"][i][j] = arrA1[i][j];
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            malSign_to_malDisplay["A2"][i][j] = arrA2[i][j];
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            malSign_to_malDisplay["A3"][i][j] = arrA3[i][j];
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            malSign_to_malDisplay["A12"][i][j] = arrA12[i][j];
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            malSign_to_malDisplay["A23"][i][j] = arrA23[i][j];
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            malSign_to_malDisplay["A123"][i][j] = arrA123[i][j];
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            malSign_to_malDisplay["B1"][i][j] = arrB1[i][j];
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            malSign_to_malDisplay["B2"][i][j] = arrB2[i][j];
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            malSign_to_malDisplay["B3"][i][j] = arrB3[i][j];
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            malSign_to_malDisplay["B12"][i][j] = arrB12[i][j];
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            malSign_to_malDisplay["B23"][i][j] = arrB23[i][j];
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            malSign_to_malDisplay["B123"][i][j] = arrB123[i][j];
+        }
+    }
+
+
+    if (player1.getRow(1) !=6 && player1.getCol(1) != 0){
+        cout << player1.getRow(1);
+        gameMap.addMal(player1.getRow(1), player1.getCol(1), malSign_to_malDisplay[carriedMalNums(player1, "A1")]);
+    } else if (player1.getRow(2) !=6 && player1.getCol(2) != 0){
+        gameMap.addMal(player1.getRow(2), player1.getCol(2), malSign_to_malDisplay[carriedMalNums(player1, "A2")]);
+    } else if (player1.getRow(3) !=6 && player1.getCol(3) != 0) {
+        gameMap.addMal(player1.getRow(3), player1.getCol(3), malSign_to_malDisplay[carriedMalNums(player1, "A3")]);
+    }
+
+    if (player2.getRow(1) !=6 && player2.getCol(1) != 0){
+        gameMap.addMal(player2.getRow(1), player2.getCol(1), malSign_to_malDisplay[carriedMalNums(player1, "B1")]);
+    } else if (player2.getRow(2) !=6 && player2.getCol(2) != 0){
+        gameMap.addMal(player2.getRow(2), player2.getCol(2), malSign_to_malDisplay[carriedMalNums(player1, "B2")]);
+    } else if (player2.getRow(3) !=6 && player2.getCol(3) != 0) {
+        gameMap.addMal(player2.getRow(3), player2.getCol(3), malSign_to_malDisplay[carriedMalNums(player1, "B3")]);
+    }
 
 }
 
