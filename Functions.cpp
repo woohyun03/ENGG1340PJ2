@@ -307,7 +307,6 @@ int askWhichTicket(vector<int> &tickets){
     }
     cout << endl;
     cout << "Please choose the Ticket you want to use: ";
-    cin >> input;
     while (!valid_input) {
         cin >> inputstr;
         
@@ -417,7 +416,7 @@ int getTicket(){
     else if (randNum == 2)
         return 4; //platinum
     else if (randNum <= 6)
-        return 3; //gold
+        return 4; //gold
     else if (randNum <= 12)
         return 2; //silver
     else if (randNum <= 16)
