@@ -224,7 +224,12 @@ void save_game(string filename, Map gameMap, Player player1, Player player2) {
     //Need to be finished
 }
 
-//Bringing a saved game. If it fails to bring, new game will start
+// Purpose: This function loads game data from a specified file, including players' names, 'Mal' data, and updates the game map.
+// Inputs: string filename - the name of the file to load game data from.
+//         Map &gameMap - reference to the game map to update.
+//         Player &player1, &player2 - references to the player objects to load data into.
+//         int &loadfailed - reference to an integer flag that is set to 1 if loading the game fails.
+// Outputs: No return value. However, it modifies the input Map and Player objects by loading data into them from the file. If the file cannot be opened, it sets the 'loadfailed' flag to 1.
 void load_game(string filename, Map &gameMap, Player &player1, Player &player2, int &loadfailed) {
     ifstream inFile;
     inFile.open((filename + ".txt").c_str());
