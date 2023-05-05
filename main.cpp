@@ -273,22 +273,20 @@ int main(){
                 cin >> malSelect;
             }
             int Num_in_malSign = stoi(malVector[malSelect-1].substr(1,1));
-
-            while(true){
-                if(turn == 0){
-                    if (TicketResult == -1 && !player1.getMal(Num_in_malSign).can_finish){
-                        cout << "Invalid input. The selected mal did not start yet. Please input an mal number that is on the map." << endl;
-                        cout << "Type here: ";
-                        cin.ignore(); 
-                        cin >> malSelect;
-                    }
-                } else {
-                    if (TicketResult == -1 && !player2.getMal(Num_in_malSign).can_finish){
-                        cout << "Invalid input. The selected mal did not start yet. Please input an mal number that is on the map." << endl;
-                        cout << "Type here: ";
-                        cin.ignore(); 
-                        cin >> malSelect;
-                    }
+            
+            if(turn == 0){
+                while ( !isdigit(to_string(malSelect))|| malSelect < 1 || malSelect > malVector.size() || (TicketResult == -1 && !player1.getMal(Num_in_malSign).can_finish)){
+                    cout << "Invalid input. The selected mal did not start yet. Please input an appropriate mal number that is on the map." << endl;
+                    cout << "Type here: ";
+                    cin.ignore(); 
+                    cin >> malSelect;
+                }
+            } else {
+                while ( !isdigit(to_string(malSelect))|| malSelect < 1 || malSelect > malVector.size() || (TicketResult == -1 && !player2.getMal(Num_in_malSign).can_finish)){
+                    cout << "Invalid input. The selected mal did not start yet. Please input an appropriate mal number that is on the map." << endl;
+                    cout << "Type here: ";
+                    cin.ignore(); 
+                    cin >> malSelect;
                 }
             }
 
