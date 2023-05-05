@@ -137,12 +137,14 @@ int main(){
             }
             getline(cin, input);
             while (input != "q" && input != "s" && !input.empty()){
-                cout << "Invalid input. Please enter a valid character 'q' or 's'." << endl;
+                cout << "Invalid input. Please enter a valid character 'q' or 's' or Press Enter" << endl;
                 cout << "Type here: ";
                 cin.ignore(); 
                 cin >> input;
             }
-            if (input == "q"){
+            if (input.empty()){
+                break;
+            }else if (input == "q"){
                 cout << "Exit the Game." << endl;
                 break;
             } else if(input == "s"){
