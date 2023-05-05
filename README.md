@@ -109,4 +109,6 @@
 
 
 ### How to Compile and Run
-> makegame
+> Type "make game" in the same directory
+> Type "./game" to launch the game
+> Type "make clean", if you want to delete load games and start a new game.
