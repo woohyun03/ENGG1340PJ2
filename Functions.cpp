@@ -130,7 +130,9 @@ void saveGameName(string filename){
     outFile.close();
 }
 
-//Getting the number of saved games to check if a player saved the game previously
+// Purpose: This function calculates and returns the total number of saved games by reading the "Games.txt" file.
+// Inputs: None.
+// Outputs: int - the total number of saved games. If the file cannot be opened or there is an error, it returns 0.
 int Get_Number_of_Saved_Games(){
     ifstream inFile;
     inFile.open("Games.txt");
