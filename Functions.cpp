@@ -416,7 +416,7 @@ int getTicket(){
     else if (randNum == 2)
         return 4; //platinum
     else if (randNum <= 6)
-        return 4; //gold
+        return 3; //gold
     else if (randNum <= 12)
         return 2; //silver
     else if (randNum <= 16)
@@ -491,23 +491,23 @@ bool killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int c
     bool killThird = false;
 
     if (killerPlayerNum == 0){
-        if (gameMap.getPlayerLocation(row, col).Playertwo_first && !opponent.getMal(1).finished){
+        if (gameMap.getPlayerLocation(row, col).Playertwo_first && !opponent.getMal(1).finished && opponent.getMal(1).can_finish){
             killFirst = true;
         }
-        if (gameMap.getPlayerLocation(row, col).Playertwo_second && !opponent.getMal(2).finished){
+        if (gameMap.getPlayerLocation(row, col).Playertwo_second && !opponent.getMal(2).finished && opponent.getMal(2).can_finish){
             killSecond = true;
         }
-        if (gameMap.getPlayerLocation(row, col).Playertwo_third && !opponent.getMal(3).finished){
+        if (gameMap.getPlayerLocation(row, col).Playertwo_third && !opponent.getMal(3).finished && opponent.getMal(3).can_finish){
             killThird = true;
         }
     } else if (killerPlayerNum == 1){
-        if (gameMap.getPlayerLocation(row, col).Playerone_first && !opponent.getMal(1).finished){
+        if (gameMap.getPlayerLocation(row, col).Playerone_first && !opponent.getMal(1).finished && opponent.getMal(1).can_finish){
             killFirst = true;
         }
-        if (gameMap.getPlayerLocation(row, col).Playerone_second && !opponent.getMal(2).finished){
+        if (gameMap.getPlayerLocation(row, col).Playerone_second && !opponent.getMal(2).finished && opponent.getMal(2).can_finish){
             killSecond = true;
         }
-        if (gameMap.getPlayerLocation(row, col).Playerone_third && !opponent.getMal(3).finished){
+        if (gameMap.getPlayerLocation(row, col).Playerone_third && !opponent.getMal(3).finished && opponent.getMal(3).can_finish){
             killThird = true;
         }
     }
@@ -585,7 +585,7 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
             {"1", " ", "1"},
             {"A", "1", "A"}
             };
-        gameMap.moveMal(previRow, previCol, row, col, arrA1);
+        gameMap.moveMal(previRow, previCol, row, col, arrA1, false);
     }
     
     if (malSign == "A2"){
@@ -594,7 +594,7 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
             {"2", " ", "2"},
             {"A", "2", "A"}
             };
-        gameMap.moveMal(previRow, previCol, row, col, arrA2);
+        gameMap.moveMal(previRow, previCol, row, col, arrA2, false);
     };
    if (malSign == "A3"){
         string arrA3[3][3] = {
@@ -602,7 +602,7 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
             {"3", " ", "3"},
             {"A", "3", "A"}
             };
-        gameMap.moveMal(previRow, previCol, row, col, arrA3);
+        gameMap.moveMal(previRow, previCol, row, col, arrA3, false);
     };
    if (malSign == "A12"){
         string arrA12[3][3] = {
@@ -610,7 +610,7 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
             {"1", " ", "A"},
             {"A", "2", "1"}
             };
-        gameMap.moveMal(previRow, previCol, row, col, arrA12);
+        gameMap.moveMal(previRow, previCol, row, col, arrA12, false);
     };
    if (malSign == "A23"){
         string arrA23[3][3] = {
@@ -618,7 +618,7 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
             {"2", " ", "A"},
             {"A", "3", "2"}
             };
-        gameMap.moveMal(previRow, previCol, row, col, arrA23);
+        gameMap.moveMal(previRow, previCol, row, col, arrA23, false);
     };
 
    if (malSign == "A13"){
@@ -627,7 +627,7 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
             {"1", " ", "A"},
             {"A", "3", "1"}
             };
-        gameMap.moveMal(previRow, previCol, row, col, arrA13);
+        gameMap.moveMal(previRow, previCol, row, col, arrA13, false);
     };
    if (malSign == "A123"){
         string arrA123[3][3] = {
@@ -635,7 +635,7 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
             {"3", " ", "3"},
             {"2", "1", "A"}
             };
-        gameMap.moveMal(previRow, previCol, row, col, arrA123);
+        gameMap.moveMal(previRow, previCol, row, col, arrA123, false);
     };
 
 
@@ -645,7 +645,7 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
             {"1", " ", "1"},
             {"B", "1", "B"}
             };
-        gameMap.moveMal(previRow, previCol, row, col, arrB1);
+        gameMap.moveMal(previRow, previCol, row, col, arrB1, false);
     };
 
    if (malSign == "B2"){
@@ -654,7 +654,7 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
             {"2", " ", "2"},
             {"B", "2", "B"}
             };
-        gameMap.moveMal(previRow, previCol, row, col, arrB2);
+        gameMap.moveMal(previRow, previCol, row, col, arrB2, false);
     };
    if (malSign == "B3"){
         string arrB3[3][3] = {
@@ -662,7 +662,7 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
             {"3", " ", "3"},
             {"B", "3", "B"}
             };
-        gameMap.moveMal(previRow, previCol, row, col, arrB3);
+        gameMap.moveMal(previRow, previCol, row, col, arrB3, false);
     };
 
    if (malSign == "B12"){
@@ -671,7 +671,7 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
             {"1", " ", "B"},
             {"B", "2", "1"}
             };
-        gameMap.moveMal(previRow, previCol, row, col, arrB12);
+        gameMap.moveMal(previRow, previCol, row, col, arrB12, false);
     };
 
    if (malSign == "B23"){
@@ -680,7 +680,7 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
             {"2", " ", "B"},
             {"B", "3", "2"}
             };
-        gameMap.moveMal(previRow, previCol, row, col, arrB23);
+        gameMap.moveMal(previRow, previCol, row, col, arrB23, false);
     };
 
    if (malSign == "B13"){
@@ -689,7 +689,7 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
             {"1", " ", "B"},
             {"B", "3", "1"}
             };
-        gameMap.moveMal(previRow, previCol, row, col, arrB13);
+        gameMap.moveMal(previRow, previCol, row, col, arrB13, false);
     };
 
    if (malSign == "B123"){
@@ -698,7 +698,7 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
             {"3", " ", "3"},
             {"2", "1", "B"}
             };
-        gameMap.moveMal(previRow, previCol, row, col, arrB123);
+        gameMap.moveMal(previRow, previCol, row, col, arrB123, false);
     };
 
 
