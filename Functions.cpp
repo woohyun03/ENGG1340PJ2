@@ -392,7 +392,7 @@ vector<string> askMalMovement(int turn, Player one, Player two){
 }
 
 // Purpose: Simulates the drawing of a random "ticket" with various rarities.
-// Returns: An integer representing the ticket. Higher numbers are rarer tickets.
+// outputs: An integer representing the ticket. Higher numbers are rarer tickets.
 int getTicket(){
     srand(time(NULL));
     int randNum = rand() % 16 + 1;
@@ -526,6 +526,9 @@ bool killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int c
     return true;
 }
 
+// Purpose: To find and return a string of mals (game pieces) that can be carried by the mal (game piece) whose number is passed in the malSign string. 
+// Inputs: Reference to a Player object for whom to find the carried mals. A string 'malSign' which contains the sign of the mal in the first character and the number of the mal as the rest of the string.
+// Returns: A string 'malSign' which contains the sign of the mal in the first character and the numbers of the mals that can be carried as the rest of the string.
 string carriedMalNums(Player &player, string malSign){
     int malNum = stoi(malSign.substr(1,1));
     for (int i = 1; i <= 3; i++){
