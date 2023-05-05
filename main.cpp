@@ -185,6 +185,10 @@ int main(){
                 }
             }
         }
+        if (input == "q"){
+            cout << "Exit the Game." << endl;
+            break;
+        }
         
         //Able to track which player's turn
         counter = counter + 1;
