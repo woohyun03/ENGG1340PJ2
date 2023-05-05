@@ -13,7 +13,6 @@
 #include "Map.h"
 #include "Player.h"
 #include "Station.h"
-#include <cctype>
 #define RESET "\033[0m"
 #define RED "\033[31m"
 #define GREEN "\033[32m"
@@ -24,15 +23,6 @@
 #define GRAY "\033[37m"
 #define BROWN "\033[0;33m"
 using namespace std;
-
-bool isAllDigits(const string& str) {
-    for (char c : str) {
-        if (!isdigit(c)) {
-            return false;
-        }
-    }
-    return true;
-}
 
 //Welcoming players with ASCII art
 void WelcomeText(){
@@ -946,7 +936,9 @@ void displayTicket(int moves){
     cout << RESET << endl;
 }
 
-//Provides an information about the location in the map where the mal has arrived
+// Purpose: This function is used to print an explanation message based on the current position of the player on the game map.
+// Inputs: row is an integer representing the row number of the player's current position, and col is an integer representing the column number of the player's current position.
+// Outputs: This function does not return a value, but it prints a message to the console explaining the significance of the player's current position on the game map.
 void PrintExplain(int row, int col){
     if (row == 0 && col == 0)
     {
