@@ -64,7 +64,6 @@ int main(){
         while (true){
             typingEffect("Do you want to continue the game or to start new game?(1. Continue the saved game, 2. Start a new game): ");
             
-            cin >> idstr;
             valid_input = false;
 
             while (!valid_input) {
@@ -89,19 +88,20 @@ int main(){
                 typingEffect("Type a game that you want to continue: ");
                 cin >> input;
                 int loadfailed = 0;
-                
                 load_game(input, gameMap, player1, player2, loadfailed);
 
                 while(loadfailed == 1){
                     typingEffect("Failed to load game. Please input a correct name of the game: ");
                     cin >> input;
                     load_game(input, gameMap, player1, player2, loadfailed);
-                
-                addMalDisplay(gameMap, player1, player2);
+                    break;
+                }
+                if (loadfailed == 0){
+                    addMalDisplay(gameMap, player1, player2);
+                    break;
                 }
 
-            }
-            else if (id == 2){
+            } else if (id == 2){
                 typingEffect("New game will be started.");
                 cout << endl;
                 typingEffect("Press Enter to Start");
@@ -161,9 +161,7 @@ int main(){
                 cout << "Invalid input. Please enter a valid character 'q' or 's' or Press Enter" << endl;
                 cout << "Type here: " << endl;
                 getline(cin, input);
-                if (input.empty()){
-                    break;
-                }
+            }
                 if (input == "q"){
                     cout << "Exit the Game." << endl;
                     break;
@@ -183,13 +181,9 @@ int main(){
                     cout << endl;
                     break;
                 }
-            }
+            
         }
-        if (input == "q"){
-            cout << "Exit the Game." << endl;
-            break;
-        }
-        
+
         //Able to track which player's turn
         counter = counter + 1;
 
