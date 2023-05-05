@@ -13,6 +13,7 @@
 #include "Map.h"
 #include "Player.h"
 #include "Station.h"
+#include <cctype>
 #define RESET "\033[0m"
 #define RED "\033[31m"
 #define GREEN "\033[32m"
@@ -23,6 +24,15 @@
 #define GRAY "\033[37m"
 #define BROWN "\033[0;33m"
 using namespace std;
+
+bool isAllDigits(const string& str) {
+    for (char c : str) {
+        if (!isdigit(c)) {
+            return false;
+        }
+    }
+    return true;
+}
 
 //Welcoming players with ASCII art
 void WelcomeText(){
