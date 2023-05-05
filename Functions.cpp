@@ -55,7 +55,7 @@ void EndingText(){
     cout << "\033[0m";
 }
 
-
+// Breif explanation of the game 
 void gameRuleText(){
     cout << "Yutnori is a traditional Korean board game that has been played for hundreds of years. " << endl;
     cout << "It is a game that involves strategy, luck, and skill. The game is played on a square board " << endl;
