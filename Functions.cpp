@@ -491,23 +491,23 @@ bool killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int c
     bool killThird = false;
 
     if (killerPlayerNum == 0){
-        if (gameMap.getPlayerLocation(row, col).Playertwo_first){
+        if (gameMap.getPlayerLocation(row, col).Playertwo_first && !opponent.getMal(1).finished){
             killFirst = true;
         }
-        if (gameMap.getPlayerLocation(row, col).Playertwo_second){
+        if (gameMap.getPlayerLocation(row, col).Playertwo_second && !opponent.getMal(2).finished){
             killSecond = true;
         }
-        if (gameMap.getPlayerLocation(row, col).Playertwo_third){
+        if (gameMap.getPlayerLocation(row, col).Playertwo_third && !opponent.getMal(3).finished){
             killThird = true;
         }
     } else if (killerPlayerNum == 1){
-        if (gameMap.getPlayerLocation(row, col).Playerone_first){
+        if (gameMap.getPlayerLocation(row, col).Playerone_first && !opponent.getMal(1).finished){
             killFirst = true;
         }
-        if (gameMap.getPlayerLocation(row, col).Playerone_second){
+        if (gameMap.getPlayerLocation(row, col).Playerone_second && !opponent.getMal(2).finished){
             killSecond = true;
         }
-        if (gameMap.getPlayerLocation(row, col).Playerone_third){
+        if (gameMap.getPlayerLocation(row, col).Playerone_third && !opponent.getMal(3).finished){
             killThird = true;
         }
     }
@@ -522,18 +522,21 @@ bool killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int c
         gameMap.UpdatePlayerLocation(row, col, 6, 0, (killerPlayerNum + 1)%2, 1);
         opponent.setRowCol(1,6,0);
         opponent.set_cannot_finish(1);
+        opponent.set_not_Carried(1);
         cout << RED << " 1";
     }
     if (killSecond){
         gameMap.UpdatePlayerLocation(row, col, 6, 0, (killerPlayerNum + 1)%2, 2);
         opponent.setRowCol(2,6,0);
         opponent.set_cannot_finish(2);
+        opponent.set_not_Carried(2);
         cout << RED << " 2";
     }
     if (killThird){
         gameMap.UpdatePlayerLocation(row, col, 6, 0, (killerPlayerNum + 1)%2, 3);
         opponent.setRowCol(3,6,0);
         opponent.set_cannot_finish(3);
+        opponent.set_not_Carried(3);
         cout << RED << " 3";
     }
 
