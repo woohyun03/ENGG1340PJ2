@@ -39,6 +39,7 @@ Map::Map() {
 }
 // Constructor with parameter: initializes the map with provided player locations
 // Input: a 7x7 array of Station objects representing the player's locations
+// Output: No return value. Modifies class state.
 Map::Map(Station mapPlayerLocation[7][7]) {
     for (int i = 0; i < 7; i++) {
         for (int j = 0; j < 7; j++) {
@@ -135,6 +136,7 @@ pair<int, int> Map::mapPlayerLocation_to_mapChart(int row, int col){
 
 // Removes a mal token from the specified row and column in the map chart
 // Input: row and column where the mal token should be removed
+
 void Map::removeMal(int row, int col){
     pair<int, int> rowCol = mapPlayerLocation_to_mapChart(row,col);
 
