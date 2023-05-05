@@ -815,7 +815,7 @@ void displayTicket(int moves){
     else if (moves == 3)
     {
         cout << YELLOW << "   _________ _________ _________ _________ " << RESET << "\n";
-        cout << YELLOW << "  /         |         |         |         |" << RESET << "\n";
+        cout << YELLOW << "  /         |         |         |        |" << RESET << "\n";
         cout << YELLOW << " /    G    /    O    /    L    /    D    /" << RESET << "\n";
         cout << YELLOW << "/_________/_________/_________/_________/" << RESET << "\n";
         cout << YELLOW << "┌─────────┐\n";
@@ -829,7 +829,7 @@ void displayTicket(int moves){
     else if (moves == 2)
     {
         cout << GRAY << "   _________ _________ _________ _________ _________ _________ " << RESET << "\n";
-        cout << GRAY << "  /         |         |         |         |         |         |" << RESET << "\n";
+        cout << GRAY << "  /         |         |         |         |         |        |" << RESET << "\n";
         cout << GRAY << " /    S    /    I    /    L    /    V    /    E    /    R    /" << RESET << "\n";
         cout << GRAY << "/_________/_________/_________/_________/_________/_________/" << RESET << "\n";
         cout << GRAY << "┌─────────┐\n";
@@ -843,7 +843,7 @@ void displayTicket(int moves){
     else if (moves == 1)
     {
         cout << BROWN << "   _________ _________ _________ _________ _________ _________" << RESET << "\n";
-        cout << BROWN << "  /         |         |         |         |         |         |" << RESET << "\n";
+        cout << BROWN << "  /         |         |         |         |         |        |" << RESET << "\n";
         cout << BROWN << " /    B    /    R    /    O    /    N    /    Z    /    E    /" << RESET << "\n";
         cout << BROWN << "/_________/_________/_________/_________/_________/_________/" << RESET << "\n";
         cout << BROWN << "┌─────────┐\n";
