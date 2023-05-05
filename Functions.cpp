@@ -413,7 +413,39 @@ string getTicketName(int ticketNum){
         return "Secret";
 }
 
-//Check if the mal is being carried
+// Purpose: This function moves or carries a player's 'Mal' based on the 'malSign' value. It can move or carry 1, 2, or 3 'Mal' objects depending on the length of 'malSign'.
+// Inputs: Player &player - reference to the player whose 'Mal' will be moved or carried.
+//         int playerNum - the player number.
+//         string malSign - a string that represents the 'Mal' to be moved or carried. The length of this string determines the number of 'Mal' objects to be moved or carried.
+//         int TicketResult - the result of the ticket which determines how far a 'Mal' can move.
+//         Map &gameMap - reference to the game map.
+//         int pRow, pCol - the row and column of the player's current position.
+// Outputs: No return value. However, it modifies the input Player and Map objects by moving the 'Mal' and updating the game map.
+void move_or_carry_Mal(Player &player, int playerNum, string malSign, int TicketResult, Map &gameMap, int pRow, int pCol){
+    // If 'malSign' length is 2, move one 'Mal'
+    if (malSign.length() == 2){
+        player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(1,1))), player.getCol(stoi(malSign.substr(1,1))), playerNum, stoi(malSign.substr(1,1)));
+    } 
+    // If 'malSign' length is 3, move two 'Mal's
+    else if (malSign.length() == 3){
+        player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(1,1))), player.getCol(stoi(malSign.substr(1,1))), playerNum, stoi(malSign.substr(1,1)));
+
+        player.moveMal(stoi(malSign.substr(2,1)), TicketResult);
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(2,1))), player.getCol(stoi(malSign.substr(2,1))), playerNum, stoi(malSign.substr(2,1)));
+    } 
+    // If 'malSign' length is more than 3, move three 'Mal's
+    else {
+        player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(1,1))), player.getCol(stoi(malSign.substr(1,1))), playerNum, stoi(malSign.substr(1,1)));
+
+        player.moveMal(stoi(malSign.substr(2,1)), TicketResult);
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(2,1))), player.getCol(stoi(malSign.substr(2,1))), playerNum, stoi(malSign.substr(2,1)));
+
+        player.moveMal(stoi(malSign.substr(3,1)), TicketResult);
+        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(3,1))), player.getCol(stoi(malSign.substr(3,1))), playerNum, stoi(malSign.substr(3,
+
 void move_or_carry_Mal(Player &player, int playerNum, string malSign, int TicketResult, Map &gameMap, int pRow, int pCol){
     if (malSign.length() == 2){
         player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
