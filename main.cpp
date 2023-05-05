@@ -60,6 +60,10 @@ int main(){
             typingEffect("Do you want to continue the game or to start new game?(1. Continue the saved game, 2. Start a new game): ");
             
             cin >> id;
+            while(id != 1 && id != 2){
+                typingEffect("Invalid input. Please input the proper number to contintue: ");
+                cin >> id;
+            }
             if (id == 1){
                 typingEffect("Type a game that you want to continue: ");
                 cin >> input;
@@ -68,7 +72,7 @@ int main(){
                 load_game(input, gameMap, player1, player2, loadfailed);
 
                 while(loadfailed == 1){
-                    typingEffect("Failed to load game. Please input a correct name of the game");
+                    typingEffect("Failed to load game. Please input a correct name of the game: ");
                     cin >> input;
                     load_game(input, gameMap, player1, player2, loadfailed);
                 
@@ -88,10 +92,6 @@ int main(){
                 cin >> input;
                 player2.setName(input);
                 break;
-            }
-            else {
-                typingEffect("Invalid input. Please input the proper number to contintue.");
-                cout << endl;
             }
         }
     } else {
