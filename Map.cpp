@@ -206,11 +206,14 @@ void Map::addPlayerLocation(int row, int col, int playerNum, int malNum){
 }
 // Updates a player's mal token location in the mapPlayerLocation array
 // Input: previous row and column, new row and column, player number (0 or 1), and mal number (1, 2, or 3)
+// Output: Modifies mapPlayerLocation array, marking the given player's piece as present at the specified location.
 void Map::UpdatePlayerLocation(int previRow, int previCol, int row, int col, int playerNum, int malNum) {
     removePlayerLocation(previRow, previCol, playerNum);
     addPlayerLocation(row, col, playerNum, malNum);
 }
-// Prints the map chart to the console
+// Prints the game map with specific elements in different colors.
+// Input: None. It uses the class's mapChart 2D array for printing.
+// Output: No return value. Outputs the map state to the console.
 void Map::printMap(){
     for (int i = 0; i < 60; i++) {
         for (int j = 0; j < 77; j++) {
