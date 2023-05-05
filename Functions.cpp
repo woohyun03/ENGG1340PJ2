@@ -83,7 +83,9 @@ void gameRuleText(){
 }
 
 
-//For aesthetic purpose
+// Purpose: This function prints out a string to the console character by character, with a delay between each character, to simulate the effect of typing.
+// Inputs: string outputText - the text to be printed to the console with the typing effect.
+// Outputs: No return value. However, it prints out the input text to the console with the typing effect.
 void typingEffect(string outputText){
     cout << "\033[1m"; 
     for (int i = 0; i < outputText.length(); i++) {
