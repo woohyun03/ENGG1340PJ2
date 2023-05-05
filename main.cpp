@@ -4,6 +4,8 @@
 #include <vector>
 #include <chrono>
 #include <thread>
+#include <typeinfo>
+#include <limits>
 #include "Functions.h"
 #include "Map.h"
 #include "Player.h"
@@ -27,6 +29,9 @@ int main(){
     vector<int> tickets;
     string outputText;
     int id;
+    string idstr;
+    bool valid_input;
+    string malSelectstr;
     
      //For aesthetic purpose
     for (int i = 0; i < 20; i++){
@@ -59,11 +64,27 @@ int main(){
         while (true){
             typingEffect("Do you want to continue the game or to start new game?(1. Continue the saved game, 2. Start a new game): ");
             
-            cin >> id;
-            while( !isAllDigits(to_string(id)) || (id != 1 && id != 2)){
-                typingEffect("Invalid input. Please input the proper number to contintue: ");
-                cin >> id;
+            cin >> idstr;
+            valid_input = false;
+
+            while (!valid_input) {
+                cin >> idstr;
+                
+                try {
+                    id = stoi(idstr);
+                    
+                    if ((id != 1 && id != 2)) {
+                        cout << "Invalid input. Please input the proper number to contintue: " << endl;
+                    } else {
+                        valid_input = true;
+                    }
+                } catch (...) {
+                    cout << "Invalid input. Input must be an integer." << endl;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
             }
+
             if (id == 1){
                 typingEffect("Type a game that you want to continue: ");
                 cin >> input;
@@ -138,30 +159,30 @@ int main(){
             getline(cin, input);
             while (input != "q" && input != "s" && !input.empty()){
                 cout << "Invalid input. Please enter a valid character 'q' or 's' or Press Enter" << endl;
-                cout << "Type here: ";
-                cin.ignore(); 
-                cin >> input;
-            }
-            if (input.empty()){
-                break;
-            }else if (input == "q"){
-                cout << "Exit the Game." << endl;
-                break;
-            } else if(input == "s"){
-                if (turn == 0){
-                    player1.check_Carried();
-                } else if (turn == 1) {
-                    player2.check_Carried();
+                cout << "Type here: " << endl;
+                getline(cin, input);
+                if (input.empty()){
+                    break;
                 }
-                cout << "Game Name : ";
-                cin >> input;
-                save_game(input, gameMap, player1, player2);
-                saveGameName(input);
-                cout << "See you later!" << endl;
-                cout << endl;
-                cout << endl;
-                cout << endl;
-                break;
+                if (input == "q"){
+                    cout << "Exit the Game." << endl;
+                    break;
+                } else if(input == "s"){
+                    if (turn == 0){
+                        player1.check_Carried();
+                    } else if (turn == 1) {
+                        player2.check_Carried();
+                    }
+                    cout << "Game Name : ";
+                    cin >> input;
+                    save_game(input, gameMap, player1, player2);
+                    saveGameName(input);
+                    cout << "See you later!" << endl;
+                    cout << endl;
+                    cout << endl;
+                    cout << endl;
+                    break;
+                }
             }
         }
         
@@ -266,31 +287,66 @@ int main(){
             TicketResult = askWhichTicket(tickets);
             displayTicket(TicketResult);
             vector<string> malVector = askMalMovement(turn, player1, player2);
-            cin >> malSelect;
-            while (malSelect < 1 || malSelect > malVector.size() || !isAllDigits(to_string(malSelect))){
 
-                cout << "Invalid input. Please input an appropriate mal number 1-3" << endl;
-                cout << "Type here: ";
-                cin.ignore(); 
-                cin >> malSelect;
-                break;
+            valid_input = false;
+            while (!valid_input) {
+                cin >> malSelectstr;
+                
+                try {
+                    malSelect = stoi(malSelectstr);
+                    
+                    if (malSelect < 1 || malSelect > malVector.size()) {
+                        cout << "Invalid input. Please input an appropriate mal number in the given selection." << endl;
+                    } else {
+                        valid_input = true;
+                    }
+                } catch (...) {
+                    cout << "Invalid input. Input must be an integer." << endl;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
             }
+
             int Num_in_malSign = stoi(malVector[malSelect-1].substr(1,1));
-            
-            if(turn == 0){
-                while ( !isAllDigits(to_string(malSelect))|| malSelect < 1 || malSelect > malVector.size() || (TicketResult == -1 && !player1.getMal(Num_in_malSign).can_finish)){
-                    cout << "Invalid input. The selected mal did not start yet. Please input an appropriate mal number that is on the map." << endl;
-                    cout << "Type here: ";
-                    cin.ignore(); 
-                    cin >> malSelect;
+
+
+            if (turn == 0){
+                while (!valid_input) {
+                    cin >> malSelectstr;
+                    
+                    try {
+                        malSelect = stoi(malSelectstr);
+                        
+                        if (malSelect < 1 || malSelect > malVector.size() || (TicketResult == -1 && !player2.getMal(Num_in_malSign).can_finish)) {
+                            cout << "Invalid input. The selected mal did not start yet. Please input an appropriate mal number that is on the map." << endl;
+                        } else {
+                            valid_input = true;
+                        }
+                    } catch (...) {
+                        cout << "Invalid input. Input must be an integer." << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
                 }
             } else {
-                while ( !isAllDigits(to_string(malSelect))|| malSelect < 1 || malSelect > malVector.size() || (TicketResult == -1 && !player2.getMal(Num_in_malSign).can_finish)){
-                    cout << "Invalid input. The selected mal did not start yet. Please input an appropriate mal number that is on the map." << endl;
-                    cout << "Type here: ";
-                    cin.ignore(); 
-                    cin >> malSelect;
+                while (!valid_input) {
+                    cin >> malSelectstr;
+                    
+                    try {
+                        malSelect = stoi(malSelectstr);
+                        
+                        if (malSelect < 1 || malSelect > malVector.size() || (TicketResult == -1 && !player2.getMal(Num_in_malSign).can_finish)) {
+                            cout << "Invalid input. The selected mal did not start yet. Please input an appropriate mal number that is on the map." << endl;
+                        } else {
+                            valid_input = true;
+                        }
+                    } catch (...) {
+                        cout << "Invalid input. Input must be an integer." << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
                 }
+
             }
 
             //Showing the location of the mal selected by the player before the movement
