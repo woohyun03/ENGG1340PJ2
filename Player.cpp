@@ -126,9 +126,17 @@ bool Player::no_Mal_on_Map(){
 
 // Function for moving mal.
 void Player::moveMal(int malNum, int moveNum) {
-    Mals[malNum-1].previousRow = Mals[malNum-1].row;
-    Mals[malNum-1].previousColumn = Mals[malNum-1].column;
+    int currentRow = Mals[malNum-1].row;
+    int currentCol = Mals[malNum-1].column;
+    if (moveNum != -1){
+        Mals[malNum-1].previousRow = Mals[malNum-1].row;
+        Mals[malNum-1].previousColumn = Mals[malNum-1].column;
+    }
     newRowCol(Mals[malNum-1], moveNum);
+    if (moveNum == -1){
+        Mals[malNum-1].previousRow = currentRow;
+        Mals[malNum-1].previousColumn = currentCol;
+    }
 }
 
 //Function for new col and row with number of moving
