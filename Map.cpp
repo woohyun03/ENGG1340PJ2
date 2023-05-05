@@ -137,8 +137,12 @@ pair<int, int> Map::mapPlayerLocation_to_mapChart(int row, int col){
 // Removes a mal token from the specified row and column in the map chart
 // Input: row and column where the mal token should be removed
 // Outputs: This function does not return any value (void). It modifies the mapChart 2D array by removing the 'mal' from the specified 3x3 area.
-void Map::removeMal(int row, int col){
+void Map::removeMal(int row, int col, bool finish){
     pair<int, int> rowCol = mapPlayerLocation_to_mapChart(row,col);
+
+    if (row == 6 && col == 0){
+        return;
+    }
 
     for (int i = rowCol.first; i < rowCol.first+3; i++){
         for (int j = rowCol.second; j < rowCol.second+3; j++){
@@ -162,8 +166,8 @@ void Map::addMal(int row, int col, string mal[3][3]){
 // Moves a mal token from a previous location to a new location in the map chart
 // Input: previous row and column, new row and column, and a 3x3 string array representing the mal token
 // Output: This function does not return any value (void). It modifies the mapChart 2D array by moving the 'mal' from its previous location to the new specified location.
-void Map::moveMal(int previRow, int previCol, int row, int col, string mal[3][3]) {
-    removeMal(previRow, previCol);
+void Map::moveMal(int previRow, int previCol, int row, int col, string mal[3][3], bool finish) {
+    removeMal(previRow, previCol, finish);
     addMal(row, col, mal);
 }
 
