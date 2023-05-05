@@ -842,7 +842,9 @@ void addMalDisplay(Map &gameMap, Player player1, Player player2){
 
 }
 
-//Shows the ticket aesthetically
+// Purpose: to display the ticket players recieve
+// Inputs: number of moves avaliable for the player
+// Outputs: Ticket display how many numbers of moves are avaliable
 void displayTicket(int moves){
     if (moves == 4)
     {
