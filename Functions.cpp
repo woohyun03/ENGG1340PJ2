@@ -391,7 +391,8 @@ vector<string> askMalMovement(int turn, Player one, Player two){
     return choices;
 }
 
-//Randomly getting ticket function. Probability of each ticket is different
+// Purpose: Simulates the drawing of a random "ticket" with various rarities.
+// Returns: An integer representing the ticket. Higher numbers are rarer tickets.
 int getTicket(){
     srand(time(NULL));
     int randNum = rand() % 16 + 1;
@@ -410,7 +411,9 @@ int getTicket(){
     return 0;
 }
 
-//Defining the type of ticket depending on the randomly generated number
+// Purpose: This function translates a ticket number into a human-readable ticket name.
+// inputs: An integer representing the ticket. Higher numbers are rarer tickets.
+// ourputs: A string containing the name of the ticket.
 string getTicketName(int ticketNum){
     if (ticketNum == 5)
         return "Diamond";
