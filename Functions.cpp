@@ -178,7 +178,9 @@ void loadGameNames(){
     cout << endl;
 }
 
-//Game saving function. It saves each player's positions of the mals
+// Purpose: This function saves the current state of the game into a file, including the players' names, and the status of each of their 'Mal' objects.
+// Inputs: string filename - the name of the file to save the game state to. Map gameMap - the current state of the game map. Player player1 - the first player in the game. Player player2 - the second player in the game.
+// Outputs: No return value. However, it creates/modifies a file with the given filename and saves the current game state into it.
 void save_game(string filename, Map gameMap, Player player1, Player player2) {
     ofstream outFile;
     outFile.open((filename + ".txt").c_str());
