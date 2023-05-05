@@ -4,7 +4,6 @@
 #include <vector>
 #include <chrono>
 #include <thread>
-#include <cctype>
 #include "Functions.h"
 #include "Map.h"
 #include "Player.h"
@@ -61,7 +60,7 @@ int main(){
             typingEffect("Do you want to continue the game or to start new game?(1. Continue the saved game, 2. Start a new game): ");
             
             cin >> id;
-            while(id != 1 && id != 2){
+            while( !isAllDigits(to_string(id)) || (id != 1 && id != 2)){
                 typingEffect("Invalid input. Please input the proper number to contintue: ");
                 cin >> id;
             }
@@ -266,7 +265,7 @@ int main(){
             displayTicket(TicketResult);
             vector<string> malVector = askMalMovement(turn, player1, player2);
             cin >> malSelect;
-            while (malSelect < 1 || malSelect > malVector.size() || !isdigit(to_string(malSelect))){
+            while (malSelect < 1 || malSelect > malVector.size() || !isAllDigits(to_string(malSelect))){
 
                 cout << "Invalid input. Please input an appropriate mal number 1-3" << endl;
                 cout << "Type here: ";
@@ -277,14 +276,14 @@ int main(){
             int Num_in_malSign = stoi(malVector[malSelect-1].substr(1,1));
             
             if(turn == 0){
-                while ( !isdigit(to_string(malSelect))|| malSelect < 1 || malSelect > malVector.size() || (TicketResult == -1 && !player1.getMal(Num_in_malSign).can_finish)){
+                while ( !isAllDigits(to_string(malSelect))|| malSelect < 1 || malSelect > malVector.size() || (TicketResult == -1 && !player1.getMal(Num_in_malSign).can_finish)){
                     cout << "Invalid input. The selected mal did not start yet. Please input an appropriate mal number that is on the map." << endl;
                     cout << "Type here: ";
                     cin.ignore(); 
                     cin >> malSelect;
                 }
             } else {
-                while ( !isdigit(to_string(malSelect))|| malSelect < 1 || malSelect > malVector.size() || (TicketResult == -1 && !player2.getMal(Num_in_malSign).can_finish)){
+                while ( !isAllDigits(to_string(malSelect))|| malSelect < 1 || malSelect > malVector.size() || (TicketResult == -1 && !player2.getMal(Num_in_malSign).can_finish)){
                     cout << "Invalid input. The selected mal did not start yet. Please input an appropriate mal number that is on the map." << endl;
                     cout << "Type here: ";
                     cin.ignore(); 
