@@ -154,11 +154,9 @@ void Player::newRowCol (Mal &playerMal, int &moveNum){
         }
         if (playerMal.row == playerMal.column && playerMal.row == 3){
             center(playerMal, moveNum);
-        }
-        if ((playerMal.row == playerMal.column && playerMal.row != 0) || (playerMal.row + playerMal.column == 6 && playerMal.row != 6)){
+        } else if ((playerMal.row == playerMal.column && playerMal.row != 0) || (playerMal.row + playerMal.column == 6 && playerMal.row != 6)){
             corner_and_diagonal(playerMal, moveNum);
-        }
-        if (playerMal.row == 6 || playerMal.row == 0 || playerMal.column == 0 || playerMal.column == 6){
+        } else if (playerMal.row == 6 || playerMal.row == 0 || playerMal.column == 0 || playerMal.column == 6){
             moveStraight(playerMal, moveNum);
         }
     }
