@@ -10,7 +10,9 @@
 #define BLUE "\033[34m"
 using namespace std;
 
-// Default constructor: initializes the player's locations on the map
+// Purpose: Initializes the Map class, setting player locations and copying an external map.
+// Input: None. Uses predefined mapPlayerLocation and external_map arrays.
+// Output: No return value. Modifies class state.
 Map::Map() {
     for (int i = 0; i < 7; i++) {
         for (int j = 0; j < 7; j++) {
