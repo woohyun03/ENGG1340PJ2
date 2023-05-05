@@ -140,7 +140,7 @@ pair<int, int> Map::mapPlayerLocation_to_mapChart(int row, int col){
 void Map::removeMal(int row, int col, bool finish){
     pair<int, int> rowCol = mapPlayerLocation_to_mapChart(row,col);
 
-    if (row == 6 && col == 0){
+    if ( row == 6 && col == 0 && !finish){
         return;
     }
 
