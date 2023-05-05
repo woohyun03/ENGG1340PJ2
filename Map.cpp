@@ -169,6 +169,7 @@ void Map::moveMal(int previRow, int previCol, int row, int col, string mal[3][3]
 
 // Removes a player's mal token from the specified location in the mapPlayerLocation array
 // Input: row and column where the mal token should be removed, player number (0 or 1), and mal number (1, 2, or 3)
+// Output: This function does not return any value (void). It modifies the mapPlayerLocation 2D array by removing the specified player's location information at the given row and column.
 void Map::removePlayerLocation(int row, int col, int playerNum){
     if (playerNum == 0){
         mapPlayerLocation[row][col].Playerone_first = false;
@@ -183,6 +184,7 @@ void Map::removePlayerLocation(int row, int col, int playerNum){
 
 // Adds a player's mal token to the specified location in the mapPlayerLocation array
 // Input: row and column where the mal token should be added, player number (0 or 1), and mal number (1, 2, or 3)
+// Outputs: No return value. Modifies class state.
 void Map::addPlayerLocation(int row, int col, int playerNum, int malNum){
     if (playerNum == 0){
         if (malNum == 1){
