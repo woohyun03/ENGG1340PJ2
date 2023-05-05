@@ -287,7 +287,9 @@ void load_game(string filename, Map &gameMap, Player &player1, Player &player2, 
 }
 
 
-//Asking player which ticket he or she will use. Invalid input is also provided
+// Purpose: This function allows the user to select a ticket from their ticket pool. If the player only has one ticket, it automatically selects it for them.
+// Inputs: vector<int> &tickets - a reference to a vector of integers representing the player's pool of tickets.
+// Outputs: int - the selected ticket. Also modifies the input vector by removing the selected ticket.
 int askWhichTicket(vector<int> &tickets){
     if (tickets.size() == 1){
         cout << "You got " << getTicketName(tickets[0]) << " ticket." << endl;
@@ -313,7 +315,9 @@ int askWhichTicket(vector<int> &tickets){
     return ticket;
 }
 
-//Asking which mal to use to a player. Mals inn special conditions like being carried will not be provided as an option
+// Purpose: This function allows the user to select a ticket from their ticket pool. If the player only has one ticket, it automatically selects it for them.
+// Inputs: vector<int> &tickets - a reference to a vector of integers representing the player's pool of tickets.
+// Outputs: int - the selected ticket. Also modifies the input vector by removing the selected ticket.
 vector<string> askMalMovement(int turn, Player one, Player two){
     vector<string> choices;
     bool alreadyAdded = false;
