@@ -41,7 +41,7 @@ void WelcomeText(){
     cout<<MAGENTA<<"   \\_/   \\___/   \\_/   \\____/\\_| |_/\\_|  |_/\\____/ (_)(_)"<<endl;
     cout << "\033[0m";
 }
-
+// Indication of the end of game
 void EndingText(){
     cout << "\033[1m";
     cout<<RED<<" _____                             _         _       _   _               _" << endl;
