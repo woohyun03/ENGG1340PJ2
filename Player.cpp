@@ -231,10 +231,10 @@ void Player::center(Mal &playerMal, int &moveNum){
 //Function when moving back
 void Player::Back(Mal &playerMal){
     if (playerMal.row == 3 && playerMal.column == 3){
-        if (playerMal.previousRow == 2){
+        if (playerMal.previousRow == 2 || playerMal.previousRow == 1 || playerMal.previousRow == 0){
             playerMal.row -= 1;
             playerMal.column += 1;
-        } else if (playerMal.previousRow == 4){
+        } else if (playerMal.previousRow == 4 || playerMal.previousRow == 5 || playerMal.previousRow == 6){
             playerMal.row += 1;
             playerMal.column += 1;
         }
@@ -245,20 +245,41 @@ void Player::Back(Mal &playerMal){
             playerMal.row += 1;
             playerMal.column += 1;
         }
+    } else if (playerMal.row == 6 && playerMal.column == 0 && playerMal.can_finish){
+        if (playerMal.previousColumn == 0){
+            playerMal.row -= 1;
+        } else if (playerMal.row + playerMal.column == 6){
+            playerMal.row -= 1;
+            playerMal.column += 1;
+        }
     } else if (playerMal.row == 6 && 0 < playerMal.column){
         playerMal.column -=1;
+        if (playerMal.row == 6 && playerMal.column == 3){
+            playerMal.column -= 1;
+        }
     } else if (playerMal.column == 6 && 6 > playerMal.row){
         playerMal.row +=1;
+        if (playerMal.row == 3 && playerMal.column == 6){
+            playerMal.row += 1;
+        }
     } else if (playerMal.row == 0 && playerMal.column < 6){
         playerMal.column += 1;
+        if (playerMal.row == 0 && playerMal.column == 3){
+            playerMal.column += 1;
+        }
     } else if (playerMal.column == 0 && playerMal.row > 0){
         playerMal.row -= 1;
+        if (playerMal.row == 3 && playerMal.column == 0){
+            playerMal.row -= 1;
+        }
     } else if (playerMal.row == playerMal.column){
         playerMal.row += 1;
         playerMal.column += 1;
+        only_six_positions_in_edges(playerMal);
     } else if (playerMal.row + playerMal.column == 6){
         playerMal.row -= 1;
         playerMal.column += 1;
+        only_six_positions_in_edges(playerMal);
     }
 }
 
