@@ -265,12 +265,13 @@ int main(){
             displayTicket(TicketResult);
             vector<string> malVector = askMalMovement(turn, player1, player2);
             cin >> malSelect;
-            while (malSelect < 1 || malSelect > malVector.size()){
+            while (malSelect < 1 || malSelect > malVector.size() || !isdigit(to_string(malSelect))){
 
-                cout << "Invalid input. Please input an appropriate number from the list given above." << endl;
+                cout << "Invalid input. Please input an appropriate mal number 1-3" << endl;
                 cout << "Type here: ";
                 cin.ignore(); 
                 cin >> malSelect;
+                break;
             }
             int Num_in_malSign = stoi(malVector[malSelect-1].substr(1,1));
             
