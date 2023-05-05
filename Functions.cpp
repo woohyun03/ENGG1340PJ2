@@ -553,7 +553,13 @@ string carriedMalNums(Player &player, string malSign){
     return malSign;
 }
 
-//Shows the new position of moved mal aesthetically
+// Purpose: Updates the game map to display the specified player's mal at the new position, and removes it from the previous position.
+// Inputs: Map &gameMap - a reference to the game map object.
+//         Player player - the Player object of the player whose mal is being moved.
+//         string malSign - a string representing the mal's unique identifier (e.g., "A1", "A2", "A3").
+//         int previRow, int previCol - the previous row and column of the mal's location.
+//         int row, int col - the new row and column of the mal's location.
+// Outputs: display mals on the game graphic Array[3][3]
 void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, int previCol, int row, int col){
     if (malSign == "A1"){
         string arrA1[3][3] = {
