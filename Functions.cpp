@@ -94,7 +94,6 @@ void typingEffect(string outputText){
     cout << "\033[0m";
 }
 
-// Function: saveGameName
 // Purpose: This function checks if a given game name (filename) already exists in the "Games.txt" file. If not, it appends the new game name to the file.
 // Inputs: string filename - the name of the game to be saved.
 // Outputs: No return value. However, it may modify "Games.txt" file by appending a new game name.
@@ -151,7 +150,9 @@ int Get_Number_of_Saved_Games(){
     return count;
 }
 
-//Showing the name of the games saved previously. Error shown when unable to laod the names
+// Purpose: This function reads game names from the "Games.txt" file and displays them on the console.
+// Inputs: None.
+// Outputs: No return value. However, it prints out the game names stored in the "Games.txt" file.
 void loadGameNames(){
     ifstream inFile;
     inFile.open("Games.txt");
