@@ -316,7 +316,7 @@ int askWhichTicket(vector<int> &tickets){
     cout << endl;
     cout << "Please choose the Ticket you want to use: ";
     cin >> input;
-    while (input < 1 || input > tickets.size()){
+    while (!isAllDigits(to_string(input)) ||input < 1 || input > tickets.size()){
         cout << "Invalid input. Please input a proper number for ticket use." << endl;
         cin >> input;
     }
