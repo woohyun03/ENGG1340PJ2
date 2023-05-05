@@ -30,10 +30,11 @@ class Player {
     void setPreviousRowCol(int malNum, int row, int col); // Function for setting previous row and column
     Mal getMal(int malNum); //Function for getting a mal return the mal type.
     void setMal(int malNum, int row, int col, bool can_finish, bool finished, bool carried); //Function for set a mal
-    void set_cannot_finish(int malNum); // Function when unable to finish
+    void set_cannot_finish(int malNum); // Function to set mal to not 'can_finish'
     bool win(); //Function for distinguishing end of game
     void check_Carried(); //Function for checking carried mals
-    bool no_Mal_on_Map(); //Function for chekcing if there are any mals on the game map
+    void set_not_Carried(int malNum); //Function to set mal to not 'carried'
+    bool no_Mal_on_Map(); //Function for checking if there are any mals on the game map
     void moveMal(int malNum, int moveNum); //Function for moving mal
     void newRowCol (Mal &playerMal, int &moveNum); //Function for setting new location of mal after moving
     void can_finish(Mal &playerMal); //Function when able to finish
