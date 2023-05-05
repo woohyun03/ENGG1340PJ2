@@ -4,12 +4,12 @@
 #include <vector>
 #include <chrono>
 #include <thread>
+#include <cctype>
 #include "Functions.h"
 #include "Map.h"
 #include "Player.h"
 #include "Station.h"
 #include "Mal.h"
-#include <cctype>
 using namespace std;
 
 //Comments in this file explains the general flow of the game play.
