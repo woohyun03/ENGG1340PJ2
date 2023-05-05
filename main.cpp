@@ -64,15 +64,15 @@ int main(){
                 typingEffect("Type a game that you want to continue: ");
                 cin >> input;
                 int loadfailed = 0;
+                
                 load_game(input, gameMap, player1, player2, loadfailed);
 
-                if (loadfailed == 1){
-                    typingEffect("Failed to load game. Please input");
-                    continue;
+                while(loadfailed == 1){
+                    typingEffect("Failed to load game. Please input a correct name of the game");
+                    cin >> input;
+                    load_game(input, gameMap, player1, player2, loadfailed);
                 
-                } else {
-                    addMalDisplay(gameMap, player1, player2);
-                    break;
+                addMalDisplay(gameMap, player1, player2);
                 }
 
             }
