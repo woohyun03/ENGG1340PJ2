@@ -375,6 +375,7 @@ int main(){
                     player2.check_Carried();
                 }
                 if (player1.getMal(stoi(malVector[malSelect-1].substr(1,1))).finished){
+                    gameMap.removeMal(player1.getPreviousRow(Num_in_malSign), player1.getPreviousCol(Num_in_malSign), true);
                     gameMap.removeMal(player1.getRow(Num_in_malSign), player1.getCol(Num_in_malSign), true);
                     finish = true;
                 } else {
@@ -388,6 +389,7 @@ int main(){
                     player2.check_Carried();
                 }
                 if (player2.getMal(stoi(malVector[malSelect-1].substr(1,1))).finished){
+                    gameMap.removeMal(player2.getPreviousRow(Num_in_malSign), player2.getPreviousCol(Num_in_malSign), true);
                     gameMap.removeMal(player2.getRow(Num_in_malSign), player2.getCol(Num_in_malSign), true);
                     finish = true;
                 } else {
