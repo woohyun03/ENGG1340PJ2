@@ -9,6 +9,7 @@
 #include <ctime>
 #include <list>
 #include <algorithm>
+#include <cctype>
 #include "Functions.h"
 #include "Map.h"
 #include "Player.h"
@@ -23,6 +24,15 @@
 #define GRAY "\033[37m"
 #define BROWN "\033[0;33m"
 using namespace std;
+
+bool isAllDigits(const string& str) {
+    for (char c : str) {
+        if (!isdigit(c)) {
+            return false;
+        }
+    }
+    return true;
+}
 
 //Welcoming players with ASCII art
 void WelcomeText(){
