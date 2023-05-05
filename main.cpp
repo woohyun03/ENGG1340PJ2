@@ -4,7 +4,6 @@
 #include <vector>
 #include <chrono>
 #include <thread>
-#include <typeinfo>
 #include <limits>
 #include "Functions.h"
 #include "Map.h"
@@ -305,17 +304,20 @@ int main(){
                 }
             }
 
-            int Num_in_malSign = stoi(malVector[malSelect-1].substr(1,1));
-
+            valid_input = false;
+            int count = 0;
 
             if (turn == 0){
                 while (!valid_input) {
-                    cin >> malSelectstr;
+                    if (count != 0){
+                        cin >> malSelectstr;
+                    }
                     
                     try {
+                        count ++;
                         malSelect = stoi(malSelectstr);
                         
-                        if (malSelect < 1 || malSelect > malVector.size() || (TicketResult == -1 && !player2.getMal(Num_in_malSign).can_finish)) {
+                        if (malSelect < 1 || malSelect > malVector.size() || (TicketResult == -1 && !player1.getMal(stoi(malVector[malSelect-1].substr(1,1))).can_finish)) {
                             cout << "Invalid input. The selected mal did not start yet. Please input an appropriate mal number that is on the map." << endl;
                         } else {
                             valid_input = true;
@@ -328,12 +330,15 @@ int main(){
                 }
             } else {
                 while (!valid_input) {
-                    cin >> malSelectstr;
+                    if (count != 0){
+                        cin >> malSelectstr;
+                    }
                     
                     try {
+                        count++;
                         malSelect = stoi(malSelectstr);
                         
-                        if (malSelect < 1 || malSelect > malVector.size() || (TicketResult == -1 && !player2.getMal(Num_in_malSign).can_finish)) {
+                        if (malSelect < 1 || malSelect > malVector.size() || (TicketResult == -1 && !player2.getMal(stoi(malVector[malSelect-1].substr(1,1))).can_finish)) {
                             cout << "Invalid input. The selected mal did not start yet. Please input an appropriate mal number that is on the map." << endl;
                         } else {
                             valid_input = true;
@@ -347,6 +352,8 @@ int main(){
 
             }
 
+            int Num_in_malSign = stoi(malVector[malSelect-1].substr(1,1));
+
             //Showing the location of the mal selected by the player before the movement
             if (turn == 0){
                 cout << "Current Position of " << malVector[malSelect-1] << " is " << gameMap.mapPlayerLocation_to_station(player1.getRow(Num_in_malSign),player1.getCol(Num_in_malSign)) << endl;
@@ -357,6 +364,8 @@ int main(){
             cout << endl;
 
             //Save the location of the selected mal after the movement, display some features of the game (ticket, map ..etc)
+
+            bool finish = false;
             
             if (turn == 0){
                 move_or_carry_Mal(player1, 0, malVector[malSelect-1], TicketResult, gameMap, player1.getRow(Num_in_malSign), player1.getCol(Num_in_malSign));
@@ -366,7 +375,8 @@ int main(){
                     player2.check_Carried();
                 }
                 if (player1.getMal(stoi(malVector[malSelect-1].substr(1,1))).finished){
-                    gameMap.removeMal(player1.getRow(Num_in_malSign), player1.getCol(Num_in_malSign));
+                    gameMap.removeMal(player1.getRow(Num_in_malSign), player1.getCol(Num_in_malSign), true);
+                    finish = true;
                 } else {
                     moveMalDisplay(gameMap, player1, carriedMalNums(player1, malVector[malSelect-1]), player1.getPreviousRow(Num_in_malSign), player1.getPreviousCol(Num_in_malSign),player1.getRow(Num_in_malSign), player1.getCol(Num_in_malSign));
                 }
@@ -377,8 +387,9 @@ int main(){
                 } else if (turn == 1) {
                     player2.check_Carried();
                 }
-                if (player1.getMal(stoi(malVector[malSelect-1].substr(1,1))).finished){
-                    gameMap.removeMal(player2.getRow(Num_in_malSign), player2.getCol(Num_in_malSign));
+                if (player2.getMal(stoi(malVector[malSelect-1].substr(1,1))).finished){
+                    gameMap.removeMal(player2.getRow(Num_in_malSign), player2.getCol(Num_in_malSign), true);
+                    finish = true;
                 } else {
                     moveMalDisplay(gameMap, player2, carriedMalNums(player2, malVector[malSelect-1]), player2.getPreviousRow(Num_in_malSign), player2.getPreviousCol(Num_in_malSign),player2.getRow(Num_in_malSign), player2.getCol(Num_in_malSign));
                 }
@@ -386,16 +397,25 @@ int main(){
 
             //Showing the new position of the selected mal
             if (turn == 0){
-                cout << malVector[malSelect-1] << " will move to " << gameMap.mapPlayerLocation_to_station(player1.getRow(Num_in_malSign),player1.getCol(Num_in_malSign)) << endl;
+                if (!finish){
+                    cout << malVector[malSelect-1] << " will move to " << gameMap.mapPlayerLocation_to_station(player1.getRow(Num_in_malSign),player1.getCol(Num_in_malSign)) << endl;
+                } else {
+                    cout << malVector[malSelect-1] << " will finish." << endl;
+                }
             } else if (turn == 1) {
-                cout << malVector[malSelect-1] << " will move to " << gameMap.mapPlayerLocation_to_station(player2.getRow(Num_in_malSign),player2.getCol(Num_in_malSign)) << endl;
+                if (!finish){
+                    cout << malVector[malSelect-1] << " will move to " << gameMap.mapPlayerLocation_to_station(player2.getRow(Num_in_malSign),player2.getCol(Num_in_malSign)) << endl;
+                } else {
+                    cout << malVector[malSelect-1] << " will finish." << endl;
+                }
             }
+
             this_thread::sleep_for(chrono::seconds(2));
 
             //Explaining the location that the mal arrived, and check if the moved mal killed any opponent's mal       
-            if (turn == 0){
+            if (turn == 0 && !finish){
                 PrintExplain(player1.getRow(Num_in_malSign),player1.getCol(Num_in_malSign));
-            } else if (turn == 1) {
+            } else if (turn == 1 && !finish) {
                 PrintExplain(player2.getRow(Num_in_malSign),player2.getCol(Num_in_malSign));
             }
             
