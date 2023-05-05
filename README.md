@@ -45,6 +45,10 @@
 * `<cstdlib>`
 * `<ctime>`
 * `<list>`
+* `<typeinfo>`
+* `<utility>`
+* `<map>`
+* `<array>`
 * `<algorithm>`
 <br/>
 
