@@ -11,6 +11,7 @@
 #include "Map.h"
 #include "Player.h"
 #include "Station.h"
+#include <cctype>
 #define RESET "\033[0m"
 #define RED "\033[31m"
 #define GREEN "\033[32m"
@@ -22,6 +23,7 @@
 #define BROWN "\033[0;33m"
 using namespace std;
 
+bool isAllDigits(const string& str);
 void WelcomeText();
 void EndingText();
 void gameRuleText();
