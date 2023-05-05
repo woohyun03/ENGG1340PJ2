@@ -857,8 +857,8 @@ void displayTicket(int moves){
     else if (moves == 5)
     {
         cout << BLUE << "   _________ _________ _________ _________ _________ _________ _________" << RESET << "\n";
-        cout << BLUE << "  /         |         |         |         |         |        |          |" << RESET << "\n";
-        cout << BLUE << " /    D    /    I    /    A    /    M    /    O    /    N   /     D    /" << RESET << "\n";
+        cout << BLUE << "  /         |         |         |         |         |        |         |" << RESET << "\n";
+        cout << BLUE << " /    D    /    I    /    A    /    M    /    O    /    N    /    D    /" << RESET << "\n";
         cout << BLUE << "/_________/_________/_________/_________/_________/_________/_________/" << RESET << "\n";
         cout << BLUE << "┌─────────┐\n";
         cout << BLUE << "│ x     x │\n";
