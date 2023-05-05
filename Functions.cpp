@@ -481,7 +481,12 @@ void move_or_carry_Mal(Player &player, int playerNum, string malSign, int Ticket
     }
 }
 
-//Check if the mal is killing opponent's mal. If yes, opponent's mal will go back to the starting point
+// Purpose: Checks if an opponent's mal is present at the given location and, if so, kills the mal(s) and moves them back to the starting position.
+// Inputs: Map &gameMap - a reference to the game map object.
+//         Player &opponent - a reference to the opponent's Player object.
+//         int killerPlayerNum - the number of the player who may kill the mal (0 or 1).
+//         int row, int col - the row and column of the location to check for the opponent's mal.
+// Outputs: bool - returns true if any opponent mal(s) are killed, false otherwise.
 bool killMal(Map &gameMap, Player &opponent, int killerPlayerNum, int row, int col){
     bool killFirst = false;
     bool killSecond = false;
