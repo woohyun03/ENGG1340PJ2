@@ -104,6 +104,7 @@ int main(){
                 typingEffect("New game will be started.");
                 cout << endl;
                 typingEffect("Press Enter to Start");
+                cout << endl;
                 getline(cin, input);
                 typingEffect("Enter player 1's name: ");
                 cin >> input;
@@ -149,7 +150,7 @@ int main(){
         cout << endl;
         
         //Asks the player to continue or save the game when turn changes. Does not process until the player enters a valid input. Game will still continue after saving
-        if (counter != -1){
+        if (counter != -1 && turn == 1){
             typingEffect("Continue the Game? ('q' for exit / 's' to save / Press Enter to continue)");
             cout << endl;
             if (!input.empty()){
