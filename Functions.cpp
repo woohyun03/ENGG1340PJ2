@@ -7,9 +7,8 @@
 #include <thread>
 #include <cstdlib>
 #include <ctime>
-#include <list>
 #include <algorithm>
-#include <cctype>
+#include <limits>
 #include "Functions.h"
 #include "Map.h"
 #include "Player.h"
@@ -24,15 +23,6 @@
 #define GRAY "\033[37m"
 #define BROWN "\033[0;33m"
 using namespace std;
-
-bool isAllDigits(const string& str) {
-    for (char c : str) {
-        if (!isdigit(c)) {
-            return false;
-        }
-    }
-    return true;
-}
 
 //Welcoming players with ASCII art
 void WelcomeText(){
@@ -301,6 +291,8 @@ void load_game(string filename, Map &gameMap, Player &player1, Player &player2, 
 // Inputs: vector<int> &tickets - a reference to a vector of integers representing the player's pool of tickets.
 // Outputs: int - the selected ticket. Also modifies the input vector by removing the selected ticket.
 int askWhichTicket(vector<int> &tickets){
+    bool valid_input = false;
+    string inputstr;
     if (tickets.size() == 1){
         cout << "You got " << getTicketName(tickets[0]) << " ticket." << endl;
         int ticket = tickets[0];
@@ -316,10 +308,24 @@ int askWhichTicket(vector<int> &tickets){
     cout << endl;
     cout << "Please choose the Ticket you want to use: ";
     cin >> input;
-    while (!isAllDigits(to_string(input)) ||input < 1 || input > tickets.size()){
-        cout << "Invalid input. Please input a proper number for ticket use." << endl;
-        cin >> input;
+    while (!valid_input) {
+        cin >> inputstr;
+        
+        try {
+            input = stoi(inputstr);
+            
+            if (input < 1 || input > tickets.size()) {
+                cout << "Invalid input. Please input a proper number for ticket use." << endl;
+            } else {
+                valid_input = true;
+            }
+        } catch (...) {
+            cout << "Invalid input. Input must be an integer." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
     }
+
     int ticket = tickets[input-1];
     tickets.erase(tickets.begin() + (input-1));
     return ticket;
