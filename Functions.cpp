@@ -94,7 +94,10 @@ void typingEffect(string outputText){
     cout << "\033[0m";
 }
 
-//Saving the name of the game into a file
+// Function: saveGameName
+// Purpose: This function checks if a given game name (filename) already exists in the "Games.txt" file. If not, it appends the new game name to the file.
+// Inputs: string filename - the name of the game to be saved.
+// Outputs: No return value. However, it may modify "Games.txt" file by appending a new game name.
 void saveGameName(string filename){
     ifstream inFile("Games.txt");
     bool fileExists = false;
