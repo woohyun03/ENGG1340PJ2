@@ -457,26 +457,6 @@ void move_or_carry_Mal(Player &player, int playerNum, string malSign, int Ticket
         gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(2,1))), player.getCol(stoi(malSign.substr(2,1))), playerNum, stoi(malSign.substr(2,1)));
 
         player.moveMal(stoi(malSign.substr(3,1)), TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(3,1))), player.getCol(stoi(malSign.substr(3,1))), playerNum, stoi(malSign.substr(3,
-
-void move_or_carry_Mal(Player &player, int playerNum, string malSign, int TicketResult, Map &gameMap, int pRow, int pCol){
-    if (malSign.length() == 2){
-        player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(1,1))), player.getCol(stoi(malSign.substr(1,1))), playerNum, stoi(malSign.substr(1,1)));
-    } else if (malSign.length() == 3){
-        player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(1,1))), player.getCol(stoi(malSign.substr(1,1))), playerNum, stoi(malSign.substr(1,1)));
-
-        player.moveMal(stoi(malSign.substr(2,1)), TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(2,1))), player.getCol(stoi(malSign.substr(2,1))), playerNum, stoi(malSign.substr(2,1)));
-    } else {
-        player.moveMal(stoi(malSign.substr(1,1)), TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(1,1))), player.getCol(stoi(malSign.substr(1,1))), playerNum, stoi(malSign.substr(1,1)));
-
-        player.moveMal(stoi(malSign.substr(2,1)), TicketResult);
-        gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(2,1))), player.getCol(stoi(malSign.substr(2,1))), playerNum, stoi(malSign.substr(2,1)));
-
-        player.moveMal(stoi(malSign.substr(3,1)), TicketResult);
         gameMap.UpdatePlayerLocation(pRow, pCol, player.getRow(stoi(malSign.substr(3,1))), player.getCol(stoi(malSign.substr(3,1))), playerNum, stoi(malSign.substr(3,1)));
     }
 }
