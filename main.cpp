@@ -267,7 +267,7 @@ int main(){
             cin >> malSelect;
             while (malSelect < 1 || malSelect > malVector.size()){
 
-                cout << "Invalid input. Please input an appropriate mal number 1-3" << endl;
+                cout << "Invalid input. Please input an appropriate number from the list given above." << endl;
                 cout << "Type here: ";
                 cin.ignore(); 
                 cin >> malSelect;
