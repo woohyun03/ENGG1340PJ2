@@ -67,7 +67,7 @@ string Map::mapPlayerLocation_to_station(int row, int col){
     rowColMatch.insert(make_pair(make_pair(6, 5), "Western Market"));
     rowColMatch.insert(make_pair(make_pair(6, 6), "Admiralty"));
     rowColMatch.insert(make_pair(make_pair(5, 0), "Repulse Bay"));
-    rowColMatch.insert(make_pair(make_pair(5, 1), "Victoria Park"));
+    rowColMatch.insert(make_pair(make_pair(5, 1), "Victoria Peak"));
     rowColMatch.insert(make_pair(make_pair(5, 5), "Tai Kwun"));
     rowColMatch.insert(make_pair(make_pair(5, 6), "Tai O"));
     rowColMatch.insert(make_pair(make_pair(4, 0), "HKMOA"));
