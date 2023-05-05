@@ -8,10 +8,10 @@
 #include <thread>
 #include <list>
 #include <algorithm>
+#include <cctype>
 #include "Map.h"
 #include "Player.h"
 #include "Station.h"
-#include <cctype>
 #define RESET "\033[0m"
 #define RED "\033[31m"
 #define GREEN "\033[32m"
