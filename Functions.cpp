@@ -838,23 +838,23 @@ void addMalDisplay(Map &gameMap, Player player1, Player player2){
         }
     }
 
-    if (player1.getMal(1).can_finish){
+    if (player1.getMal(1).can_finish && !player1.getMal(1).finished){
         gameMap.addMal(player1.getRow(1), player1.getCol(1), malSign_to_malDisplay[carriedMalNums(player1, "A1")]);
     } 
-    if (player1.getMal(2).can_finish){
+    if (player1.getMal(2).can_finish && !player1.getMal(2).finished){
         gameMap.addMal(player1.getRow(2), player1.getCol(2), malSign_to_malDisplay[carriedMalNums(player1, "A2")]);
     } 
-    if (player1.getMal(3).can_finish) {
+    if (player1.getMal(3).can_finish && !player1.getMal(3).finished) {
         gameMap.addMal(player1.getRow(3), player1.getCol(3), malSign_to_malDisplay[carriedMalNums(player1, "A3")]);
     }
 
-    if (player2.getMal(1).can_finish){
+    if (player2.getMal(1).can_finish && !player2.getMal(1).finished){
         gameMap.addMal(player2.getRow(1), player2.getCol(1), malSign_to_malDisplay[carriedMalNums(player2, "B1")]);
     } 
-    if (player2.getMal(2).can_finish){
+    if (player2.getMal(2).can_finish && !player2.getMal(2).finished){
         gameMap.addMal(player2.getRow(2), player2.getCol(2), malSign_to_malDisplay[carriedMalNums(player2, "B2")]);
     } 
-    if (player2.getMal(3).can_finish) {
+    if (player2.getMal(3).can_finish && !player2.getMal(3).finished) {
         gameMap.addMal(player2.getRow(3), player2.getCol(3), malSign_to_malDisplay[carriedMalNums(player2, "B3")]);
     }
 
