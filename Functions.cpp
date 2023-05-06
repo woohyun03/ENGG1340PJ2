@@ -577,7 +577,7 @@ string carriedMalNums(Player &player, string malSign){
 //         string malSign - a string representing the mal's unique identifier (e.g., "A1", "A2", "A3").
 //         int previRow, int previCol - the previous row and column of the mal's location.
 //         int row, int col - the new row and column of the mal's location.
-// Outputs: display mals on the game graphic Array[3][3]
+// Outputs: No return value. Display mals on the game graphic Array[3][3]
 void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, int previCol, int row, int col){
     if (malSign == "A1"){
         string arrA1[3][3] = {
@@ -709,7 +709,7 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
 // Inputs: Map &gameMap - a reference to the game map object.
 //         Player player1 - the Player object of player1 in the main
 //         Player player2 - the Player object of player2 in the main
-// Outputs: Add mal display to gameMap
+// Outputs: No return value. Add mal display to gameMap
 void addMalDisplay(Map &gameMap, Player player1, Player player2){
     string arrA1[3][3] = {
         {"A", "1", "A"},
@@ -867,7 +867,7 @@ void addMalDisplay(Map &gameMap, Player player1, Player player2){
 
 // Purpose: to display the ticket players recieve
 // Inputs: number of moves avaliable for the player
-// Outputs: Ticket display how many numbers of moves are avaliable
+// Outputs: No return value. Ticket display how many numbers of moves are avaliable
 void displayTicket(int moves){
     if (moves == 4)
     {
