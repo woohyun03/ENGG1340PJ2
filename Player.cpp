@@ -6,6 +6,8 @@ using namespace std;
 
 
 //Initializing the vector named Mals.
+// Input: none.
+// Output: No return value. Modifies class state.
 Player::Player() {
     name = "";
     Mal first = {6, 0, 6, 0, false, false, false};
@@ -17,6 +19,8 @@ Player::Player() {
 }
 
 //Constructor for vector mal.
+// Input: variables for the Mal Struct
+// Output: No return value. Modifies class state.
 Player::Player(string name, int first1, int first2, int second1, int second2, int third1, int third2) {
     this->name = name;
     Mal first = {first1, first2, 6, 0, false, false, false};
@@ -28,54 +32,74 @@ Player::Player(string name, int first1, int first2, int second1, int second2, in
 }
 
 //Function for getting a name.
+// Input: None
+// Output: Returns player's name
 string Player::getName() {
     return name;
 }
 
 //Function for setting a name.
+// Input: string name (new name for player)
+// Output: No return value. Modifies class state.
 void Player::setName(string name) {
     this->name = name;
 }
 
 
 //Function for getting a row
+// Input: int malNum (number of Mal)
+// Output: Returns row of the specified Mal
 int Player::getRow(int malNum){
     return Mals[malNum-1].row;
 }
 
 //Function for getting a column
+// Input: int malNum (number of Mal)
+// Output: Returns column of the specified Mal
 int Player::getCol(int malNum){
     return Mals[malNum-1].column;
 }
 
 //Function for setting a row and column
+// Input: int malNum (number of Mal), int row, int col
+// Output: None. Modifies the row and column of the Mal
 void Player::setRowCol(int malNum, int row, int col){
     Mals[malNum-1].row = row;
     Mals[malNum-1].column = col;
 }
 
 //Function for getting preivous row
+// Input: int malNum (number of Mal)
+// Output: Returns previous row of the specified Mal
 int Player::getPreviousRow(int malNum){
     return Mals[malNum-1].previousRow;
 }
 
 //Function for getting preivous col
+// Input: int malNum (number of Mal)
+// Output: Returns previous col of the specified Mal
 int Player::getPreviousCol(int malNum){
     return Mals[malNum-1].previousColumn;
 }
 
 //Function for setting a Previous column
+// Input: int malNum (number of Mal), int row, int col
+// Output: None, Modifies the previous row and column
 void Player::setPreviousRowCol(int malNum, int row, int col){
     Mals[malNum-1].previousRow = row;
     Mals[malNum-1].previousColumn = col;
 }
 
 //Function for getting a mal
+// Input: int malNum (number of Mal)
+// Output: Returns the specified Mal
 Mal Player::getMal(int malNum){
     return Mals[malNum-1];
 }
 
 //Function for setting a Mal with input of malNum, row, col.
+// Input: int malNum (number of Mal), int row, int col, bool can_finish, bool finished, bool carried
+// Output: None, Modifies the specified Mal
 void Player::setMal(int malNum, int row, int col, bool can_finish, bool finished, bool carried){
     Mals[malNum-1].row = row;
     Mals[malNum-1].column = col;
@@ -84,12 +108,16 @@ void Player::setMal(int malNum, int row, int col, bool can_finish, bool finished
     Mals[malNum-1].carried = carried;
 }
 
-//Changing the bool type can_finish member in Mal class
+//Function: Changing the bool type can_finish member in Mal class
+// Input: int malNum (number of Mal)
+// Output: None, Modifies the specified Mal
 void Player::set_cannot_finish(int malNum){
     Mals[malNum-1].can_finish = false;
 }
 
-// Checking whether the player win or not
+//Function: Checking whether the player win or not
+// Input: None
+// Output: None
 bool Player::win(){
     if (Mals[0].finished && Mals[1].finished && Mals[2].finished){
         return true;
@@ -98,7 +126,9 @@ bool Player::win(){
     }
 }
 
-// Checking whether mals are carried or not.
+//Function: Checking whether mals are carried or not.
+// Input: None
+// Output: None
 void Player::check_Carried(){
     Mals[0].carried = false;
     Mals[1].carried = false;
@@ -113,10 +143,16 @@ void Player::check_Carried(){
     }
 }
 
+//Function: Setting the specified Mal to not "carried"
+// Input: int malNum (number of Mal)
+// Output: None
 void Player::set_not_Carried(int malNum){
     Mals[malNum - 1].carried = false;
 }
 
+//Function: Checks whether there are mals on the map
+// Input: none
+// Output: None
 bool Player::no_Mal_on_Map(){
     if ( Mals[0].row == Mals[1].row && Mals[1].row == Mals[2].row && Mals[2].row == 6 && Mals[0].column == Mals[1].column && Mals[1].column == Mals[2].column && Mals[2].column == 0 ){
         return true;
@@ -125,6 +161,8 @@ bool Player::no_Mal_on_Map(){
 }
 
 // Function for moving mal.
+// Input: int malNum (number of Mal), int moveNum (number of moves)
+// Output: None
 void Player::moveMal(int malNum, int moveNum) {
     int currentRow = Mals[malNum-1].row;
     int currentCol = Mals[malNum-1].column;
@@ -140,6 +178,8 @@ void Player::moveMal(int malNum, int moveNum) {
 }
 
 //Function for new col and row with number of moving
+// Input: Mal &playerMal, int &moveNum (number of moves)
+// Output: None
 void Player::newRowCol (Mal &playerMal, int &moveNum){
     can_finish(playerMal);
     if (moveNum == -1){
@@ -165,6 +205,8 @@ void Player::newRowCol (Mal &playerMal, int &moveNum){
 }
 
 //Functions when mal is in edges
+// Input: Mal &playerMal
+// Output: None
 void Player::only_six_positions_in_edges(Mal &playerMal){
     if (playerMal.row == 6 && playerMal.column == 3){
         playerMal.column += 1;
@@ -178,6 +220,8 @@ void Player::only_six_positions_in_edges(Mal &playerMal){
 }
 
 //Functions for moving straight
+// Input: Mal &playerMal, int &moveNum (number of moves)
+// Output: None
 void Player::moveStraight(Mal &playerMal, int &moveNum){
     if (playerMal.row == 6){
         while (playerMal.column != 6 && moveNum != 0){
@@ -207,6 +251,8 @@ void Player::moveStraight(Mal &playerMal, int &moveNum){
 }
 
 //Funtions when mal is in corner or diagonal
+// Input: Mal &playerMal, int &moveNum (number of moves)
+// Output: None
 void Player::corner_and_diagonal(Mal &playerMal, int &moveNum){
     if (playerMal.row == playerMal.column && playerMal.row != 0){
         while (playerMal.row != 0 && moveNum != 0){
@@ -224,6 +270,8 @@ void Player::corner_and_diagonal(Mal &playerMal, int &moveNum){
 }
 
 //Function when mal is in center
+// Input: Mal &playerMal, int &moveNum (number of moves)
+// Output: None
 void Player::center(Mal &playerMal, int &moveNum){
     if (playerMal.row == playerMal.column && playerMal.row == 3){
         while(playerMal.row != 6 && moveNum != 0){
@@ -235,6 +283,8 @@ void Player::center(Mal &playerMal, int &moveNum){
 }
 
 //Function when moving back
+// Input: Mal &playerMal
+// Output: None
 void Player::Back(Mal &playerMal){
     if (playerMal.row == 3 && playerMal.column == 3){
         if (playerMal.previousRow == 2 || playerMal.previousRow == 1 || playerMal.previousRow == 0){
@@ -290,6 +340,8 @@ void Player::Back(Mal &playerMal){
 }
 
 //Function for when playermal can finish.
+// Input: Mal &playerMal
+// Output: None
 void Player::can_finish(Mal &playerMal){
     if (playerMal.row != 6 || playerMal.column != 0 ){
         playerMal.can_finish = true;
@@ -297,6 +349,8 @@ void Player::can_finish(Mal &playerMal){
 }
 
 //Functions when playermal finished.
+// Input: Mal &playerMal, int &moveNum (number of moves)
+// Output: None
 void Player::finish(Mal &playerMal, int &moveNum){
     if (playerMal.row == 6 && playerMal.column == 0 && moveNum >=1 && playerMal.can_finish){
         playerMal.finished = true;
