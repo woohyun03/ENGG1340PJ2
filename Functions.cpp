@@ -704,7 +704,12 @@ void moveMalDisplay(Map &gameMap, Player player, string malSign, int previRow, i
 
 }
 
-//Add mal display when loading the game
+
+// Purpose: Add mal display when loading the game
+// Inputs: Map &gameMap - a reference to the game map object.
+//         Player player1 - the Player object of player1 in the main
+//         Player player2 - the Player object of player2 in the main
+// Outputs: Add mal display to gameMap
 void addMalDisplay(Map &gameMap, Player player1, Player player2){
     string arrA1[3][3] = {
         {"A", "1", "A"},
