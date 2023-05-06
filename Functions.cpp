@@ -77,8 +77,8 @@ void gameRuleText(){
     cout << "There are some special rules in this game. If you can move to the same position with the opponent's mal, " << endl;
     cout << "then you can throw \"yut\" one more time and make the opponent's mal move back to the starting point. " << endl;
     cout << "In a similar situation, when one mal can be positioned on the same spot as another mal, the two mals need " << endl;
-    cout << "to move together until they pass the finish line or are caught by the opponent's mal. Moreover, there " << endl;
-    cout << "is a certain path that the \"Mal\" must follow on the board." << endl;
+    cout << "is a certain path that the \"Mal\" must follow on the board. When mals are placed on the corner of the map." << endl;
+    cout << "Mals will move to the center of map, and when they moved to the center of the map mals will move toward the end point." <<endl;
 
 }
 
