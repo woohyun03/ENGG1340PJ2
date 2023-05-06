@@ -91,7 +91,7 @@ There are some special rules in this game. If you can move to the same position 
 ### Functions.cpp
 > various functions that we used to run the game
 
-|Name|Type|Type|Parameter|
+|Name|Type|Purpose|Parameter|
 |:-:|:-:|:-:|:-:|
 |save_game|void|Saves the game state to a file|string &filename, Map &gameMap, Player &player1, Player &player2, int counter|
 |load_game|bool|Loads the game state from a file| string &filename, Map &gameMap, Player &player1, Player &player2, int &counter|
@@ -102,7 +102,8 @@ There are some special rules in this game. If you can move to the same position 
 |move_or_carry_Mal|void|Moves or carries a mal based on the malSign string| Player &player, int playerNum, int malSelect, string malSign, int TicketResult, Map &gameMap, int pRow, int pCol, int row, int col|
 |killMal|void|Kills an opponent's mal based on its location| Map &gameMap, Player &opponent, int killerPlayerNum, int row, int col|
 |moveMalDisplay|void|Updates the game map after moving a mal| Map &gameMap, string malSign, int previRow, int previCol, int row, int col|
-|player1|Player|Represents| avs|
+|addMalDisplay|void|Adds Mal display when loading the saved game| Map &gameMap, Player player1, Player player2|
+|PrintExplain|void|Prints out the explanation of the location| int row, int col|
 
 
 ### Map.cpp
